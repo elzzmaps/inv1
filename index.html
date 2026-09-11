@@ -37,7 +37,7 @@ body{font-family:var(--font);background:var(--bg-gradient);background-attachment
 
 /* TABS */
 .tab-bar{display:flex;gap:6px;background:#fff;padding:6px;border-radius:20px;box-shadow:var(--shadow-sm);margin-bottom:20px;border:1px solid var(--border)}
-.tab-btn{flex:1;padding:13px 16px;border-radius:15px;background:transparent;border:none;font-family:var(--font);font-weight:800;font-size:.92rem;color:var(--text-muted);cursor:pointer;transition:all .22s ease;display:flex;align-items:center;justify-content:center;gap:8px;letter-spacing:.1px}
+.tab-btn{flex:1;padding:13px 10px;border-radius:15px;background:transparent;border:none;font-family:var(--font);font-weight:800;font-size:.86rem;color:var(--text-muted);cursor:pointer;transition:all .22s ease;display:flex;align-items:center;justify-content:center;gap:6px;letter-spacing:.1px}
 .tab-btn.active{background:linear-gradient(135deg,#6366f1 0%,#4f46e5 100%);color:#fff;box-shadow:0 10px 22px -8px rgba(99,102,241,.65),inset 0 1px 0 rgba(255,255,255,.2)}
 .tab-btn:not(.active):hover{background:var(--primary-light);color:var(--primary-dark)}
 .tab-panel{animation:panelIn .28s ease}
@@ -131,12 +131,14 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
 .customer-name{text-decoration:underline;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-decoration-thickness:1.5px;text-underline-offset:3px}
 .customer-name-cash{color:#059669}
 .customer-name-debt{color:#d97706}
+.customer-name-unregistered{color:#7f1d1d}
 .customer-count-badge{background:#e0e7ff;color:#3730a3;border-radius:30px;padding:3px 10px;font-size:.72rem;font-weight:800;white-space:nowrap}
 .customer-qty-badge{background:#fef3c7;color:#854d0e;border-radius:30px;padding:3px 10px;font-size:.72rem;font-weight:800;white-space:nowrap}
 .customer-date{font-size:.68rem;color:var(--text-muted);white-space:nowrap;font-weight:600}
 .payment-badge{font-size:.68rem;font-weight:800;padding:4px 10px;border-radius:30px;letter-spacing:.3px}
 .payment-cash{background:#d1fae5;color:#065f46}
 .payment-debt{background:#ffedd5;color:#b45309}
+.payment-unregistered{background:#7f1d1d;color:#fecaca}
 .payment-status-badge{font-size:.62rem;padding:3px 8px;border-radius:20px;font-weight:800;text-transform:uppercase;letter-spacing:.4px}
 .status-paid{background:#bbf7d0;color:#14532d}
 .status-partial{background:#fef08a;color:#854d0e}
@@ -195,6 +197,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
 .log-icon.delete{background:rgba(239,68,68,.14);border-color:rgba(239,68,68,.3)}
 .log-icon.edit{background:rgba(251,191,36,.14);border-color:rgba(251,191,36,.3)}
 .log-icon.purchase{background:rgba(99,102,241,.16);border-color:rgba(99,102,241,.3)}
+.log-icon.unregistered{background:rgba(127,29,29,.28);border-color:rgba(127,29,29,.5)}
 .log-body{flex:1;min-width:0}
 .log-title{font-weight:700;font-size:.86rem;color:#f8fafc;line-height:1.35;word-break:break-word}
 .log-title .accent{color:#fbbf24;font-weight:800}
@@ -293,6 +296,22 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
 .auth-card.success .auth-brand-mark::after{border-color:rgba(34,197,94,.35)}
 .auth-card.success #authCodeInput{border-color:#22c55e;box-shadow:0 0 0 5px rgba(34,197,94,.18)}
 
+/* CALCULATOR */
+.calc-display{background:linear-gradient(155deg,#14142b 0%,#1e1b4b 100%);color:#fff;padding:34px 24px 22px;border-radius:22px;text-align:right;font-size:2.5rem;font-weight:800;letter-spacing:-.8px;min-height:96px;word-break:break-all;box-shadow:inset 0 2px 10px rgba(0,0,0,.35),0 8px 20px -8px rgba(20,18,55,.4);margin-bottom:8px;overflow:hidden;line-height:1.15;transition:background .3s}
+.calc-display.error{background:linear-gradient(155deg,#450a0a 0%,#7f1d1d 100%)}
+.calc-history{text-align:right;font-size:.85rem;color:var(--text-muted);font-weight:700;min-height:22px;margin-bottom:16px;padding-right:8px;letter-spacing:.3px}
+.calc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.calc-btn{padding:20px 6px;border:none;border-radius:18px;font-family:var(--font);font-size:1.3rem;font-weight:800;cursor:pointer;background:#f1f2f8;color:var(--text-dark);transition:transform .12s ease,background .18s ease,box-shadow .18s ease;user-select:none;box-shadow:0 2px 4px rgba(30,27,75,.04)}
+.calc-btn:hover{background:#e7e9f3;transform:translateY(-1px)}
+.calc-btn:active{transform:scale(.94)}
+.calc-btn.calc-op{background:linear-gradient(135deg,#eef2ff 0%,#e0e7ff 100%);color:#4338ca;font-weight:800}
+.calc-btn.calc-op:hover{background:linear-gradient(135deg,#e0e7ff 0%,#c7d2fe 100%)}
+.calc-btn.calc-fn{background:linear-gradient(135deg,#fef3c7 0%,#fde68a 100%);color:#92400e;font-weight:800;font-size:1.1rem}
+.calc-btn.calc-fn:hover{background:linear-gradient(135deg,#fde68a 0%,#fcd34d 100%)}
+.calc-btn.calc-equals{background:linear-gradient(135deg,#6366f1 0%,#4f46e5 100%);color:#fff;box-shadow:0 8px 20px -6px rgba(99,102,241,.65)}
+.calc-btn.calc-equals:hover{transform:translateY(-2px);box-shadow:0 12px 24px -6px rgba(99,102,241,.8)}
+.calc-btn.calc-zero{grid-column:span 2}
+
 @media (max-width:400px){
   .sold-section{flex-direction:column;align-items:flex-start;border-radius:20px}
   .logo-text h1{font-size:1.5rem}
@@ -300,6 +319,9 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
   .btn-sale-big{padding:20px 50px;font-size:1.2rem;letter-spacing:2px}
   .hero-stat-value{font-size:1.2rem}
   .category-picker{grid-template-columns:repeat(auto-fill,minmax(120px,1fr))}
+  .tab-btn{font-size:.78rem;padding:12px 8px}
+  .calc-display{font-size:2rem;padding:28px 18px 18px}
+  .calc-btn{padding:18px 4px;font-size:1.15rem}
 }
 </style>
 </head>
@@ -324,6 +346,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
   <div class="tab-bar" role="tablist">
     <button class="tab-btn active" data-tab="sale" role="tab">🛒 Sale</button>
     <button class="tab-btn" data-tab="manage" role="tab">⚙️ Manage</button>
+    <button class="tab-btn" data-tab="calculator" role="tab">🧮 Calc</button>
   </div>
 
   <!-- SALE TAB -->
@@ -436,6 +459,36 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
           <span class="admin-log-count" id="adminLogCount">0 events</span>
           <button class="admin-clear-btn" id="adminClearBtn">🗑️ Clear Log</button>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CALCULATOR TAB -->
+  <div class="tab-panel hidden" id="tab-calculator">
+    <div class="card">
+      <div class="section-title">🧮 Calculator</div>
+      <div class="calc-display" id="calcDisplay">0</div>
+      <div class="calc-history" id="calcHistory"></div>
+      <div class="calc-grid" id="calcGrid">
+        <button class="calc-btn calc-fn" data-action="clear">C</button>
+        <button class="calc-btn calc-fn" data-action="backspace">⌫</button>
+        <button class="calc-btn calc-fn" data-action="percent">%</button>
+        <button class="calc-btn calc-op" data-action="divide">÷</button>
+        <button class="calc-btn" data-num="7">7</button>
+        <button class="calc-btn" data-num="8">8</button>
+        <button class="calc-btn" data-num="9">9</button>
+        <button class="calc-btn calc-op" data-action="multiply">×</button>
+        <button class="calc-btn" data-num="4">4</button>
+        <button class="calc-btn" data-num="5">5</button>
+        <button class="calc-btn" data-num="6">6</button>
+        <button class="calc-btn calc-op" data-action="subtract">−</button>
+        <button class="calc-btn" data-num="1">1</button>
+        <button class="calc-btn" data-num="2">2</button>
+        <button class="calc-btn" data-num="3">3</button>
+        <button class="calc-btn calc-op" data-action="add">+</button>
+        <button class="calc-btn calc-zero" data-num="0">0</button>
+        <button class="calc-btn" data-num=".">.</button>
+        <button class="calc-btn calc-equals" data-action="equals">=</button>
       </div>
     </div>
   </div>
@@ -598,6 +651,9 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
     products.forEach(p=>(p.customers||[]).forEach(c=>{ map[c.name]=(map[c.name]||0)+(c.quantity||1); }));
     return map;
   }
+  function paymentLabel(pt){ return pt==='cash'?'Cash':pt==='debt'?'Debt':'Unregistered'; }
+  function paymentBadgeClass(pt){ return pt==='cash'?'payment-cash':pt==='debt'?'payment-debt':'payment-unregistered'; }
+  function paymentNameClass(pt){ return pt==='cash'?'customer-name-cash':pt==='debt'?'customer-name-debt':'customer-name-unregistered'; }
 
   // ===== LOAD/SAVE =====
   function loadCategories(){
@@ -671,11 +727,13 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
   const tabButtons = document.querySelectorAll('.tab-btn');
   const tabSale = document.getElementById('tab-sale');
   const tabManage = document.getElementById('tab-manage');
+  const tabCalc = document.getElementById('tab-calculator');
 
   function switchTab(name){
     tabButtons.forEach(b=>b.classList.toggle('active',b.dataset.tab===name));
-    if(name==='sale'){ tabSale.classList.remove('hidden'); tabManage.classList.add('hidden'); }
-    else { tabSale.classList.add('hidden'); tabManage.classList.remove('hidden'); }
+    tabSale.classList.toggle('hidden', name!=='sale');
+    tabManage.classList.toggle('hidden', name!=='manage');
+    tabCalc.classList.toggle('hidden', name!=='calculator');
   }
   tabButtons.forEach(b=>b.addEventListener('click',()=>switchTab(b.dataset.tab)));
 
@@ -795,14 +853,14 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
       const custTags=customers.map((cust,idx)=>{
         const name=cust.name||'Unknown';
         const pt=cust.paymentType||'cash';
-        const nameCls=pt==='cash'?'customer-name-cash':'customer-name-debt';
-        const badgeCls=pt==='cash'?'payment-cash':'payment-debt';
+        const nameCls=paymentNameClass(pt);
+        const badgeCls=paymentBadgeClass(pt);
         const qty=cust.quantity||1;
         const totalQty=qtyMap[name]||qty;
         const lacksCls=cust.lacksPayment?'lacks-payment':'';
         const pStatus=cust.paymentStatus||'paid';
         const statusBadge=pt==='debt'?'<span class="payment-status-badge status-'+pStatus+'">'+pStatus+'</span>':'';
-        return '<div class="customer-tag '+lacksCls+'"><div class="customer-info" data-customer-index="'+idx+'" data-product-id="'+product.id+'"><span class="customer-name '+nameCls+' '+lacksCls+'">👤 '+escapeHTML(name)+'</span><span class="customer-count-badge">'+totalQty+' total</span><span class="customer-qty-badge">x'+qty+'</span><span class="customer-date">'+formatDate(cust.date)+'</span><span class="payment-badge '+badgeCls+'">'+(pt==='cash'?'Cash':'Debt')+'</span>'+statusBadge+'</div><button class="delete-customer" data-product-id="'+product.id+'" data-customer-index="'+idx+'">✕</button></div>';
+        return '<div class="customer-tag '+lacksCls+'"><div class="customer-info" data-customer-index="'+idx+'" data-product-id="'+product.id+'"><span class="customer-name '+nameCls+' '+lacksCls+'">👤 '+escapeHTML(name)+'</span><span class="customer-count-badge">'+totalQty+' total</span><span class="customer-qty-badge">x'+qty+'</span><span class="customer-date">'+formatDate(cust.date)+'</span><span class="payment-badge '+badgeCls+'">'+paymentLabel(pt)+'</span>'+statusBadge+'</div><button class="delete-customer" data-product-id="'+product.id+'" data-customer-index="'+idx+'">✕</button></div>';
       }).join('');
       let stockInfo='';
       if(product.totalStock>0){
@@ -816,7 +874,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
         '<div class="customer-section"><label>👥 Customers ('+customers.length+')</label>'+
         '<div class="add-customer-row"><input type="text" class="customer-name-input" data-product-id="'+product.id+'" placeholder="Name" autocomplete="off" list="customer-suggestions"><datalist id="customer-suggestions">'+frequentCustomers.map(n=>'<option value="'+escapeHTML(n)+'">').join('')+'</datalist>'+
         '<input type="number" class="customer-quantity-input" data-product-id="'+product.id+'" placeholder="Qty" min="1" value="1" style="max-width:70px;">'+
-        '<select class="customer-payment-select" data-product-id="'+product.id+'"><option value="cash" selected>💵 Cash</option><option value="debt">📒 Debt</option></select>'+
+        '<select class="customer-payment-select" data-product-id="'+product.id+'"><option value="cash" selected>💵 Cash</option><option value="debt">📒 Debt</option><option value="unregistered">📋 Unregistered</option></select>'+
         '<button class="btn btn-light add-customer-btn" data-id="'+product.id+'" style="padding:11px 16px;">+ Add</button></div>'+
         '<div class="customer-list">'+(custTags||'<div style="color:#9aa0b8;font-size:.85rem;">No customers yet</div>')+'</div></div></div>';
     });
@@ -880,7 +938,13 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
         case 'product_added': icon='📦'; iconClass='add'; title='<span class="accent">Added product</span> "'+escapeHTML(d.name||'')+'" <span class="soft">— ₱'+(d.price||0).toFixed(2)+' ('+escapeHTML(d.category||'')+')</span>'; break;
         case 'product_edited': icon='✏️'; iconClass='edit'; title='<span class="accent">Edited product</span> "'+escapeHTML(d.name||'')+'"'; break;
         case 'product_deleted': icon='🗑️'; iconClass='delete'; title='<span class="accent">Deleted product</span> "'+escapeHTML(d.name||'')+'" <span class="soft">— ₱'+(d.price||0).toFixed(2)+'</span>'; break;
-        case 'purchase': icon='🛒'; iconClass='purchase'; title='<span class="accent">'+escapeHTML(d.customer||'Customer')+'</span> bought <strong>'+(d.qty||1)+'×</strong> "'+escapeHTML(d.product||'')+'" <span class="soft">— ₱'+(d.amount||0).toFixed(2)+' ('+escapeHTML(d.payment||'cash')+')</span>'; break;
+        case 'purchase': {
+          const isUnreg = (d.payment==='unregistered');
+          icon = isUnreg ? '📋' : '🛒';
+          iconClass = isUnreg ? 'unregistered' : 'purchase';
+          title = '<span class="accent">'+escapeHTML(d.customer||'Customer')+'</span> bought <strong>'+(d.qty||1)+'×</strong> "'+escapeHTML(d.product||'')+'" <span class="soft">— ₱'+(d.amount||0).toFixed(2)+' ('+escapeHTML(paymentLabel(d.payment||'cash'))+')</span>';
+          break;
+        }
         case 'customer_deleted': icon='❌'; iconClass='delete'; title='<span class="accent">Removed customer</span> "'+escapeHTML(d.customer||'')+'" <span class="soft">from "'+escapeHTML(d.product||'')+'"</span>'; break;
         case 'debt_added': icon='📒'; iconClass='edit'; title='<span class="accent">New debt</span> '+escapeHTML(d.customer||'')+' <span class="soft">— ₱'+(d.amount||0).toFixed(2)+(d.productLabel?' ('+escapeHTML(d.productLabel)+')':'')+'</span>'; break;
         case 'expense_added': icon='💸'; iconClass='delete'; title='<span class="accent">New expense</span> '+escapeHTML(d.name||'')+' <span class="soft">— ₱'+(d.amount||0).toFixed(2)+'</span>'; break;
@@ -1321,7 +1385,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
     if(!customer) return;
 
     const customerName=customer.name;
-    let totalCash=0, totalDebt=0, totalQuantity=0, summaryItems=[];
+    let totalCash=0, totalDebt=0, totalUnreg=0, totalQuantity=0, summaryItems=[];
 
     products.forEach(prod=>{
       (prod.customers||[]).forEach(c=>{
@@ -1329,7 +1393,9 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
           const qty=c.quantity||1;
           const amt=(parseFloat(prod.price)||0)*qty;
           totalQuantity+=qty;
-          if(c.paymentType==='cash') totalCash+=amt; else totalDebt+=amt;
+          if(c.paymentType==='cash') totalCash+=amt;
+          else if(c.paymentType==='debt') totalDebt+=amt;
+          else totalUnreg+=amt;
           if(c.lacksPayment&&c.lackAmount>0) totalDebt+=c.lackAmount;
           summaryItems.push({ productName:prod.name, price:prod.price, paymentType:c.paymentType, unit:prod.cigaretteUnit||null, date:c.date, quantity:qty, amount:amt });
         }
@@ -1337,9 +1403,10 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
     });
 
     let listHtml = summaryItems.length===0 ? '<div>No purchases found.</div>' :
-      summaryItems.map(item=>
-        '<div class="summary-item"><div class="summary-item-left"><span><strong>'+escapeHTML(item.productName)+'</strong> '+(item.unit?'('+(item.unit==='stick'?'Per Stick':'Per Box')+')':'')+' (₱'+parseFloat(item.price).toFixed(2)+' x '+item.quantity+')</span><span class="summary-item-date">📅 '+formatDate(item.date)+' · <span class="summary-qty">₱'+item.amount.toFixed(2)+'</span></span></div><span class="payment-badge '+(item.paymentType==='cash'?'payment-cash':'payment-debt')+'">'+(item.paymentType==='cash'?'Cash':'Debt')+'</span></div>'
-      ).join('');
+      summaryItems.map(item=>{
+        const pt=item.paymentType||'cash';
+        return '<div class="summary-item"><div class="summary-item-left"><span><strong>'+escapeHTML(item.productName)+'</strong> '+(item.unit?'('+(item.unit==='stick'?'Per Stick':'Per Box')+')':'')+' (₱'+parseFloat(item.price).toFixed(2)+' x '+item.quantity+')</span><span class="summary-item-date">📅 '+formatDate(item.date)+' · <span class="summary-qty">₱'+item.amount.toFixed(2)+'</span></span></div><span class="payment-badge '+paymentBadgeClass(pt)+'">'+paymentLabel(pt)+'</span></div>';
+      }).join('');
 
     if(customer.lacksPayment&&customer.lackAmount>0){
       listHtml+='<div class="summary-item"><div class="summary-item-left"><span><strong>⚠️ Lack Payment</strong></span><span class="summary-item-date">Additional debt from lack</span></div><span class="payment-badge payment-debt">₱'+customer.lackAmount.toFixed(2)+'</span></div>';
@@ -1353,6 +1420,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
 
     modalBody.innerHTML=
       '<div class="summary-stats"><div class="stat-box"><div class="stat-value">'+totalQuantity+'</div><div class="stat-label">Items</div></div><div class="stat-box"><div class="stat-value">₱'+totalCash.toFixed(2)+'</div><div class="stat-label">Cash</div></div><div class="stat-box"><div class="stat-value">₱'+totalDebt.toFixed(2)+'</div><div class="stat-label">Debt</div></div></div>'+
+      (totalUnreg>0?'<div class="summary-stats" style="margin-top:-10px;"><div class="stat-box" style="background:#7f1d1d;border-color:#7f1d1d;"><div class="stat-value" style="color:#fecaca;">₱'+totalUnreg.toFixed(2)+'</div><div class="stat-label" style="color:#fca5a5;">Unregistered</div></div></div>':'')+
       '<div class="summary-list">'+listHtml+'</div>'+
       '<hr style="margin:16px 0;border-color:#eef0f8;">'+
       '<div style="margin-top:12px;">'+
@@ -1475,14 +1543,23 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
       const inputField=document.querySelector('.customer-name-input[data-product-id="'+pid+'"]');
       const qtyField=document.querySelector('.customer-quantity-input[data-product-id="'+pid+'"]');
       const selField=document.querySelector('.customer-payment-select[data-product-id="'+pid+'"]');
-      const cName=inputField?inputField.value.trim():'';
+      let cName=inputField?inputField.value.trim():'';
       const pType=selField?selField.value:'cash';
       const qty=qtyField?parseInt(qtyField.value)||1:1;
-      if(!cName){ alert('Please enter a customer name.'); return; }
+      if(!cName){
+        if(pType==='unregistered') cName='Unregistered';
+        else { alert('Please enter a customer name.'); return; }
+      }
       if(qty<1){ alert('Quantity must be at least 1.'); return; }
       const product=products.find(p=>p.id===pid);
       if(product){
-        product.customers.push({ name:cName, paymentType:pType, date:new Date().toISOString(), quantity:qty, lacksPayment:false, paymentStatus:pType==='debt'?'unpaid':'paid', note:'', partialPercent:pType==='debt'?100:0, lackAmount:0 });
+        const isDebt=pType==='debt';
+        product.customers.push({
+          name:cName, paymentType:pType, date:new Date().toISOString(), quantity:qty,
+          lacksPayment:false,
+          paymentStatus:isDebt?'unpaid':'paid',
+          note:'', partialPercent:isDebt?100:0, lackAmount:0
+        });
         product.stockLeft=Math.max(0,(product.stockLeft||0)-qty);
         saveProducts();
         renderProductList();
@@ -1526,13 +1603,23 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
       const inputField=e.target;
       const qtyField=document.querySelector('.customer-quantity-input[data-product-id="'+pid+'"]');
       const selField=document.querySelector('.customer-payment-select[data-product-id="'+pid+'"]');
-      const cName=inputField.value.trim();
+      let cName=inputField.value.trim();
       const pType=selField?selField.value:'cash';
       const qty=qtyField?parseInt(qtyField.value)||1:1;
-      if(cName&&pid){
+      if(!cName){
+        if(pType==='unregistered') cName='Unregistered';
+        else return;
+      }
+      if(pid){
         const product=products.find(p=>p.id===pid);
         if(product){
-          product.customers.push({ name:cName, paymentType:pType, date:new Date().toISOString(), quantity:qty, lacksPayment:false, paymentStatus:pType==='debt'?'unpaid':'paid', note:'', partialPercent:pType==='debt'?100:0, lackAmount:0 });
+          const isDebt=pType==='debt';
+          product.customers.push({
+            name:cName, paymentType:pType, date:new Date().toISOString(), quantity:qty,
+            lacksPayment:false,
+            paymentStatus:isDebt?'unpaid':'paid',
+            note:'', partialPercent:isDebt?100:0, lackAmount:0
+          });
           product.stockLeft=Math.max(0,(product.stockLeft||0)-qty);
           saveProducts();
           renderProductList();
@@ -1542,6 +1629,127 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
         }
       }
     }
+  });
+
+  // ===== CALCULATOR =====
+  let calcState = { current:'0', previous:null, operator:null, shouldReset:false, error:false };
+
+  function calcUpdateDisplay(){
+    const disp=document.getElementById('calcDisplay');
+    const hist=document.getElementById('calcHistory');
+    if(!disp) return;
+    disp.textContent=calcState.current;
+    disp.classList.toggle('error', calcState.error);
+    if(hist){
+      if(calcState.operator&&calcState.previous!==null){
+        const sym={add:'+',subtract:'−',multiply:'×',divide:'÷'}[calcState.operator]||'';
+        hist.textContent=calcState.previous+' '+sym;
+      } else {
+        hist.textContent='';
+      }
+    }
+  }
+
+  function calcReset(){ calcState={current:'0',previous:null,operator:null,shouldReset:false,error:false}; }
+
+  function calcInputNumber(num){
+    if(calcState.error) calcReset();
+    if(calcState.shouldReset){
+      calcState.current=num;
+      calcState.shouldReset=false;
+    } else {
+      if(calcState.current==='0'&&num!=='.') calcState.current=num;
+      else if(num==='.'&&calcState.current.includes('.')) return;
+      else calcState.current+=num;
+    }
+    // limit length
+    if(calcState.current.replace('-','').replace('.','').length>12){
+      calcState.current=calcState.current.slice(0,-1);
+    }
+    calcUpdateDisplay();
+  }
+
+  function calcChooseOperator(op){
+    if(calcState.error) return;
+    if(calcState.operator&&!calcState.shouldReset&&calcState.previous!==null){
+      calcCompute(false);
+    }
+    calcState.previous=parseFloat(calcState.current);
+    calcState.operator=op;
+    calcState.shouldReset=true;
+    calcUpdateDisplay();
+  }
+
+  function calcCompute(final){
+    if(calcState.previous===null||calcState.operator===null) return;
+    const a=calcState.previous;
+    const b=parseFloat(calcState.current);
+    let result=0;
+    switch(calcState.operator){
+      case 'add': result=a+b; break;
+      case 'subtract': result=a-b; break;
+      case 'multiply': result=a*b; break;
+      case 'divide':
+        if(b===0){ calcState.current='Cannot ÷ 0'; calcState.error=true; calcState.previous=null; calcState.operator=null; calcState.shouldReset=true; calcUpdateDisplay(); return; }
+        result=a/b; break;
+    }
+    result=Math.round(result*1e10)/1e10;
+    calcState.current=String(result);
+    calcState.previous=null;
+    calcState.operator=null;
+    calcState.shouldReset=true;
+    if(final!==false) calcUpdateDisplay();
+  }
+
+  function calcAction(action){
+    if(action==='clear'){ calcReset(); }
+    else if(action==='backspace'){
+      if(calcState.error){ calcReset(); }
+      else if(calcState.shouldReset){ calcState.current='0'; calcState.shouldReset=false; }
+      else if(calcState.current.length>1) calcState.current=calcState.current.slice(0,-1);
+      else calcState.current='0';
+    }
+    else if(action==='percent'){
+      if(calcState.error){ calcReset(); }
+      else {
+        const v=parseFloat(calcState.current)/100;
+        calcState.current=String(Math.round(v*1e10)/1e10);
+      }
+    }
+    else if(action==='add'||action==='subtract'||action==='multiply'||action==='divide'){
+      calcChooseOperator(action); return;
+    }
+    else if(action==='equals'){
+      calcCompute(true);
+    }
+    calcUpdateDisplay();
+  }
+
+  const calcGrid=document.getElementById('calcGrid');
+  if(calcGrid){
+    calcGrid.addEventListener('click',function(e){
+      const btn=e.target.closest('.calc-btn');
+      if(!btn) return;
+      const num=btn.getAttribute('data-num');
+      const act=btn.getAttribute('data-action');
+      if(num!==null) calcInputNumber(num);
+      else if(act) calcAction(act);
+    });
+  }
+  // keyboard support for calculator when tab is visible
+  document.addEventListener('keydown',function(e){
+    if(tabCalc.classList.contains('hidden')) return;
+    if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA') return;
+    if(e.key>='0'&&e.key<='9'){ calcInputNumber(e.key); e.preventDefault(); }
+    else if(e.key==='.'){ calcInputNumber('.'); e.preventDefault(); }
+    else if(e.key==='+'){ calcAction('add'); e.preventDefault(); }
+    else if(e.key==='-'){ calcAction('subtract'); e.preventDefault(); }
+    else if(e.key==='*'){ calcAction('multiply'); e.preventDefault(); }
+    else if(e.key==='/'){ calcAction('divide'); e.preventDefault(); }
+    else if(e.key==='Enter'||e.key==='='){ calcAction('equals'); e.preventDefault(); }
+    else if(e.key==='Backspace'){ calcAction('backspace'); e.preventDefault(); }
+    else if(e.key==='Escape'){ calcAction('clear'); e.preventDefault(); }
+    else if(e.key==='%'){ calcAction('percent'); e.preventDefault(); }
   });
 
   // ===== INIT =====
@@ -1561,6 +1769,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
   renderDebtorsOverview();
   renderHeroStats();
   renderCategoryPicker();
+  calcUpdateDisplay();
 
   productCategoryInput.value=categories[0]?.name||'other';
   toggleCigaretteUnit();
