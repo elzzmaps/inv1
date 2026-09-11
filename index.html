@@ -1,0 +1,1571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+<title>ELZZMAPS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#6366f1;--primary-light:#eef2ff;--primary-dark:#4338ca;--primary-soft:#c7d2fe;
+  --bg-gradient:linear-gradient(160deg,#fafbff 0%,#f0f2fb 55%,#eef1fa 100%);
+  --card-bg:#fff;--text-dark:#1e1b4b;--text-muted:#6b7280;--border:#e5e7f0;
+  --shadow-sm:0 2px 6px rgba(30,27,75,.04),0 1px 2px rgba(30,27,75,.03);
+  --shadow-md:0 10px 30px -8px rgba(30,27,75,.10),0 2px 6px rgba(30,27,75,.04);
+  --shadow-lg:0 24px 50px -12px rgba(30,27,75,.18),0 4px 12px rgba(30,27,75,.06);
+  --radius-lg:24px;--radius-md:16px;
+  --font:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;
+  --dark-green:#0b4f36;--dark-green-bg:#d4f7e7;
+  --debt-bg:#fff8ef;--debt-border:#fde4c2;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:var(--font);background:var(--bg-gradient);background-attachment:fixed;min-height:100vh;padding:24px 14px 48px;display:flex;justify-content:center;color:var(--text-dark);-webkit-font-smoothing:antialiased}
+.app-container{max-width:620px;width:100%}
+
+/* HEADER */
+.app-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;padding:0 6px;gap:12px}
+.logo-area{display:flex;align-items:center;gap:14px;min-width:0}
+.logo-icon{position:relative;background:linear-gradient(140deg,#818cf8 0%,#6366f1 45%,#4338ca 100%);width:56px;height:56px;border-radius:18px;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 24px -8px rgba(99,102,241,.55),inset 0 1px 0 rgba(255,255,255,.3);flex-shrink:0;overflow:hidden;transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
+.logo-icon::before{content:'';position:absolute;top:-30%;left:-30%;width:160%;height:160%;background:radial-gradient(circle at 30% 20%,rgba(255,255,255,.4),transparent 55%);pointer-events:none}
+.logo-icon:hover{transform:rotate(-4deg) scale(1.05)}
+.logo-icon svg{position:relative;z-index:1;filter:drop-shadow(0 2px 3px rgba(0,0,0,.18))}
+.logo-text h1{font-size:1.7rem;font-weight:800;letter-spacing:-.6px;line-height:1.1;background:linear-gradient(135deg,#4338ca 0%,#6366f1 60%,#8b5cf6 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.logo-text span{display:block;font-size:.68rem;font-weight:700;color:var(--text-muted);letter-spacing:1.5px;text-transform:uppercase;margin-top:2px}
+.header-date{background:#fff;padding:10px 16px;border-radius:30px;font-weight:700;font-size:.8rem;color:var(--primary-dark);box-shadow:var(--shadow-sm);white-space:nowrap;border:1px solid var(--border);flex-shrink:0}
+
+/* TABS */
+.tab-bar{display:flex;gap:6px;background:#fff;padding:6px;border-radius:20px;box-shadow:var(--shadow-sm);margin-bottom:20px;border:1px solid var(--border)}
+.tab-btn{flex:1;padding:13px 16px;border-radius:15px;background:transparent;border:none;font-family:var(--font);font-weight:800;font-size:.92rem;color:var(--text-muted);cursor:pointer;transition:all .22s ease;display:flex;align-items:center;justify-content:center;gap:8px;letter-spacing:.1px}
+.tab-btn.active{background:linear-gradient(135deg,#6366f1 0%,#4f46e5 100%);color:#fff;box-shadow:0 10px 22px -8px rgba(99,102,241,.65),inset 0 1px 0 rgba(255,255,255,.2)}
+.tab-btn:not(.active):hover{background:var(--primary-light);color:var(--primary-dark)}
+.tab-panel{animation:panelIn .28s ease}
+@keyframes panelIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* HERO */
+.hero-card{background:linear-gradient(155deg,#eef2ff 0%,#e0e7ff 55%,#c7d2fe 100%);border-radius:var(--radius-lg);padding:42px 24px 28px;text-align:center;position:relative;overflow:hidden;border:1px solid rgba(99,102,241,.15);box-shadow:var(--shadow-md)}
+.hero-card::before{content:'';position:absolute;top:-70px;right:-70px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(99,102,241,.25),transparent 70%);pointer-events:none}
+.hero-card::after{content:'';position:absolute;bottom:-90px;left:-70px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(139,92,246,.18),transparent 70%);pointer-events:none}
+.hero-icon{font-size:3.6rem;margin-bottom:14px;position:relative;z-index:1;animation:heroFloat 3.4s ease-in-out infinite;filter:drop-shadow(0 12px 20px rgba(99,102,241,.35))}
+@keyframes heroFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.hero-title{font-size:1.55rem;font-weight:800;color:var(--text-dark);letter-spacing:-.4px;position:relative;z-index:1;margin-bottom:8px}
+.hero-sub{font-size:.9rem;color:var(--text-muted);font-weight:500;margin-bottom:26px;position:relative;z-index:1;padding:0 20px;line-height:1.5}
+.btn-sale-big{position:relative;z-index:1;padding:22px 70px;font-size:1.4rem;font-weight:800;letter-spacing:3px;border-radius:24px;background:linear-gradient(135deg,#6366f1 0%,#4f46e5 100%);color:#fff;box-shadow:0 20px 45px -12px rgba(99,102,241,.8),inset 0 1px 0 rgba(255,255,255,.25);border:none;cursor:pointer;font-family:var(--font);transition:transform .2s,box-shadow .28s}
+.btn-sale-big:hover{transform:translateY(-3px);box-shadow:0 26px 52px -12px rgba(99,102,241,.9),inset 0 1px 0 rgba(255,255,255,.3)}
+.btn-sale-big:active{transform:scale(.97)}
+.hero-stats{display:flex;gap:10px;margin-top:30px;position:relative;z-index:1}
+.hero-stat{flex:1;background:rgba(255,255,255,.75);border-radius:16px;padding:13px 8px;border:1px solid rgba(255,255,255,.95);backdrop-filter:blur(4px);box-shadow:0 2px 8px rgba(30,27,75,.05)}
+.hero-stat-value{font-size:1.4rem;font-weight:800;color:var(--primary-dark);letter-spacing:-.5px;line-height:1.1}
+.hero-stat-label{font-size:.63rem;color:var(--text-muted);font-weight:800;text-transform:uppercase;letter-spacing:.7px;margin-top:4px}
+
+/* CARDS */
+.card{background:var(--card-bg);border-radius:var(--radius-lg);padding:24px 22px;box-shadow:var(--shadow-md);margin-bottom:20px;border:1px solid var(--border);transition:transform .18s ease,box-shadow .25s ease}
+.card:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px)}
+.add-product-form,.manual-debt-form,.personal-expense-form{display:flex;flex-direction:column;gap:16px}
+.input-row{display:flex;gap:12px;flex-wrap:wrap}
+.input-field{flex:1;min-width:130px}
+.input-field label{display:block;font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.9px;color:var(--text-muted);margin-bottom:8px}
+input,select,textarea{width:100%;padding:14px 16px;border:1.5px solid var(--border);border-radius:var(--radius-md);font-size:.95rem;background:#fbfbfe;transition:border-color .2s,background .2s,box-shadow .2s;outline:none;font-family:var(--font);color:var(--text-dark);font-weight:500}
+input::placeholder,textarea::placeholder{color:#a5aac0;font-weight:500}
+input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#fff;box-shadow:0 0 0 4px rgba(99,102,241,.13)}
+
+/* BUTTONS */
+.btn{border:none;font-weight:700;padding:13px 22px;border-radius:var(--radius-md);font-size:.92rem;cursor:pointer;transition:transform .15s ease,box-shadow .22s ease,background .22s ease;display:inline-flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap;font-family:var(--font);letter-spacing:.1px}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:linear-gradient(135deg,#6366f1 0%,#4f46e5 100%);color:#fff;box-shadow:0 10px 22px -8px rgba(99,102,241,.65),inset 0 1px 0 rgba(255,255,255,.2)}
+.btn-primary:hover{box-shadow:0 14px 28px -8px rgba(99,102,241,.75),inset 0 1px 0 rgba(255,255,255,.25);transform:translateY(-1px)}
+.btn-light{background:#f1f2f8;color:#4b5069;box-shadow:var(--shadow-sm)}
+.btn-light:hover{background:#e7e9f3}
+.btn-danger{background:#fff1f2;color:#be123c}
+.btn-danger:hover{background:#ffe1e5}
+.btn-outline{background:#fff;border:1.5px solid var(--border);color:#4b5069}
+.btn-outline:hover{background:#f7f8fc;border-color:var(--primary-soft)}
+#formMessage{font-size:.85rem;font-weight:600;min-height:20px;color:#b45309}
+.section-title{font-size:1.15rem;font-weight:800;margin-bottom:16px;display:flex;align-items:center;gap:10px;color:var(--text-dark);letter-spacing:-.2px}
+
+/* DIRECTORY */
+.customer-directory{margin-bottom:20px}
+.directory-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.directory-tag{background:var(--primary-light);color:var(--primary-dark);padding:8px 16px;border-radius:30px;font-size:.88rem;font-weight:700;display:inline-flex;align-items:center;gap:8px;box-shadow:0 2px 6px rgba(99,102,241,.10);border:1px solid rgba(99,102,241,.12)}
+.delete-directory-btn{background:transparent;border:none;color:#e11d48;cursor:pointer;font-size:.95rem;padding:0 2px;line-height:1;opacity:.75;transition:.15s}
+.delete-directory-btn:hover{opacity:1;transform:scale(1.2)}
+
+/* CHIPS */
+.category-filter{display:flex;gap:8px;overflow-x:auto;padding:6px 2px 12px;margin-bottom:14px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.category-filter::-webkit-scrollbar{display:none}
+.category-chip{flex:0 0 auto;padding:9px 18px;border-radius:30px;background:#fff;border:1.5px solid var(--border);color:#4b5069;font-weight:700;font-size:.84rem;cursor:pointer;transition:all .2s ease;white-space:nowrap;box-shadow:var(--shadow-sm);font-family:var(--font)}
+.category-chip.active{background:linear-gradient(135deg,#6366f1 0%,#4f46e5 100%);color:#fff;border-color:transparent;box-shadow:0 8px 18px -6px rgba(99,102,241,.7)}
+.category-chip:hover{background:var(--primary-light);color:var(--primary-dark);border-color:var(--primary-soft)}
+.category-chip.active:hover{background:linear-gradient(135deg,#6366f1 0%,#4f46e5 100%);color:#fff}
+.product-list{display:flex;flex-direction:column;gap:20px}
+
+/* PRODUCT ITEM */
+.product-item{border-radius:var(--radius-lg);padding:22px 20px;box-shadow:var(--shadow-md);border:1px solid var(--border);transition:transform .15s ease,box-shadow .25s ease;position:relative;overflow:hidden}
+.product-item::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.35),rgba(255,255,255,0) 40%);pointer-events:none}
+.product-item:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px)}
+.product-item.stock-low{border-left:6px solid #f59e0b}
+.product-item.stock-critical{border-left:6px solid #ef4444;box-shadow:0 0 0 3px rgba(239,68,68,.14),var(--shadow-md)}
+.product-header{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;margin-bottom:18px;position:relative;z-index:1}
+.product-title{font-size:1.35rem;font-weight:800;color:var(--text-dark);display:flex;align-items:center;gap:8px;flex-wrap:wrap;letter-spacing:-.3px}
+.badge{background:rgba(255,255,255,.85);color:#4338ca;padding:5px 14px;border-radius:30px;font-size:.78rem;font-weight:800;letter-spacing:.2px;box-shadow:0 2px 6px rgba(30,27,75,.08);border:1px solid rgba(255,255,255,.9)}
+.category-badge{background:rgba(237,233,254,.9);color:#6d28d9}
+.unit-badge{background:rgba(254,243,199,.9);color:#92400e}
+.product-actions{display:flex;gap:6px;flex-wrap:wrap}
+.sold-section{display:flex;align-items:center;gap:12px;margin:16px 0;background:rgba(255,255,255,.75);padding:12px 18px;border-radius:50px;border:1px solid rgba(255,255,255,.9);backdrop-filter:blur(4px);position:relative;z-index:1}
+.sold-label{font-weight:700;font-size:.85rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.5px}
+.sold-count{font-weight:800;font-size:1.9rem;color:var(--primary-dark);line-height:1;letter-spacing:-.5px}
+.stock-info{display:flex;align-items:center;gap:8px;margin-bottom:14px;font-size:.85rem;font-weight:700;position:relative;z-index:1}
+.stock-badge{padding:6px 14px;border-radius:30px;background:rgba(255,255,255,.9);color:var(--text-dark);border:1px solid rgba(255,255,255,.9);box-shadow:0 2px 6px rgba(30,27,75,.06)}
+.customer-section{margin-top:14px;border-top:1px dashed rgba(99,102,241,.2);padding-top:16px;position:relative;z-index:1}
+.customer-section label{font-size:.68rem;font-weight:800;color:var(--text-muted);text-transform:uppercase;letter-spacing:.9px;display:block;margin-bottom:10px}
+.add-customer-row{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;align-items:center}
+.add-customer-row input[type="text"],.add-customer-row input[type="number"]{flex:1;min-width:100px;padding:12px 16px;border-radius:50px;background:rgba(255,255,255,.85)}
+.add-customer-row select{flex:0 0 auto;width:auto;padding:12px 16px;border-radius:50px;background:rgba(255,255,255,.95);font-weight:700;color:var(--text-dark);border:1.5px solid var(--border)}
+.customer-list{display:flex;flex-direction:column;gap:8px;max-height:280px;overflow-y:auto;padding-right:4px}
+.customer-tag{background:rgba(255,255,255,.85);border-radius:18px;padding:11px 16px;font-size:.88rem;display:flex;justify-content:space-between;align-items:center;border:1px solid rgba(255,255,255,.9);transition:.15s;flex-wrap:wrap;gap:6px;box-shadow:0 2px 6px rgba(30,27,75,.05);backdrop-filter:blur(3px)}
+.customer-tag:hover{background:#fff;box-shadow:0 4px 10px rgba(30,27,75,.08)}
+.customer-tag.lacks-payment{background:var(--dark-green-bg);border-color:var(--dark-green)}
+.customer-name.lacks-payment{color:var(--dark-green)}
+.customer-info{display:flex;align-items:center;gap:8px;flex:1;cursor:pointer;min-width:0;flex-wrap:wrap}
+.customer-name{text-decoration:underline;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-decoration-thickness:1.5px;text-underline-offset:3px}
+.customer-name-cash{color:#059669}
+.customer-name-debt{color:#d97706}
+.customer-count-badge{background:#e0e7ff;color:#3730a3;border-radius:30px;padding:3px 10px;font-size:.72rem;font-weight:800;white-space:nowrap}
+.customer-qty-badge{background:#fef3c7;color:#854d0e;border-radius:30px;padding:3px 10px;font-size:.72rem;font-weight:800;white-space:nowrap}
+.customer-date{font-size:.68rem;color:var(--text-muted);white-space:nowrap;font-weight:600}
+.payment-badge{font-size:.68rem;font-weight:800;padding:4px 10px;border-radius:30px;letter-spacing:.3px}
+.payment-cash{background:#d1fae5;color:#065f46}
+.payment-debt{background:#ffedd5;color:#b45309}
+.payment-status-badge{font-size:.62rem;padding:3px 8px;border-radius:20px;font-weight:800;text-transform:uppercase;letter-spacing:.4px}
+.status-paid{background:#bbf7d0;color:#14532d}
+.status-partial{background:#fef08a;color:#854d0e}
+.status-unpaid{background:#fee2e2;color:#b91c1c}
+.delete-customer{background:transparent;border:none;color:#e11d48;font-weight:800;cursor:pointer;font-size:1rem;padding:0 6px;border-radius:50%;line-height:1;opacity:.75;transition:.15s}
+.delete-customer:hover{background:#ffe4e8;opacity:1}
+.empty-message{text-align:center;color:#9aa0b8;padding:44px 20px;font-style:italic;background:#fff;border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);border:1px solid var(--border);font-weight:500}
+.edit-input{background:#fefce8!important;border-color:#f59e0b!important}
+.hidden{display:none!important}
+
+/* DEBT / EXPENSE */
+.debt-list,.expense-list{display:flex;flex-direction:column;gap:8px;max-height:240px;overflow-y:auto}
+.debt-item,.expense-item{background:var(--debt-bg);border:1px solid var(--debt-border);border-radius:18px;padding:13px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;box-shadow:0 2px 6px rgba(30,27,75,.04)}
+.debt-info,.expense-info{display:flex;flex-direction:column;gap:3px;flex:1}
+.debt-name,.expense-name{font-weight:800;font-size:.92rem;letter-spacing:-.1px}
+.debt-amount,.expense-amount{font-weight:800;color:#b45309;font-size:1.08rem;letter-spacing:-.3px}
+.debt-date,.expense-date{font-size:.72rem;color:var(--text-muted);font-weight:600}
+.delete-debt-btn,.delete-expense-btn{background:transparent;border:none;color:#e11d48;font-weight:800;cursor:pointer;font-size:1rem;padding:0 6px;opacity:.75;transition:.15s}
+.delete-debt-btn:hover,.delete-expense-btn:hover{opacity:1;transform:scale(1.15)}
+
+/* DEBTORS OVERVIEW */
+.debtors-overview{background:linear-gradient(150deg,#fff7ed 0%,#fef3e6 100%);border-color:#fde4c2}
+.debtor-item{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid rgba(253,228,194,.8)}
+.debtor-item:last-child{border-bottom:none}
+.debtor-name{font-weight:700;font-size:.92rem}
+.debtor-total{font-weight:800;color:#b45309;font-size:1.08rem;letter-spacing:-.3px}
+
+/* ADMIN LOG */
+.admin-log{background:linear-gradient(155deg,#14142b 0%,#1e1b4b 55%,#221c52 100%);border:1px solid rgba(251,191,36,.25);color:#f8fafc;position:relative;overflow:hidden}
+.admin-log::before{content:'';position:absolute;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(251,191,36,.16),transparent 70%);pointer-events:none}
+.admin-log::after{content:'';position:absolute;bottom:-80px;left:-60px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(139,92,246,.22),transparent 70%);pointer-events:none}
+.admin-log .section-title{color:#fbbf24;position:relative;z-index:1;justify-content:space-between;width:100%}
+.admin-log .section-title .left{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.admin-lock-btn{background:rgba(251,191,36,.12);border:1px solid rgba(251,191,36,.35);color:#fbbf24;font-family:var(--font);font-weight:700;font-size:.72rem;padding:6px 14px;border-radius:30px;cursor:pointer;transition:.2s;letter-spacing:.3px}
+.admin-lock-btn:hover{background:rgba(251,191,36,.2)}
+.admin-countdown{display:none;align-items:center;gap:5px;background:rgba(251,191,36,.14);border:1px solid rgba(251,191,36,.35);color:#fbbf24;font-weight:800;font-size:.68rem;padding:4px 10px;border-radius:20px;letter-spacing:.4px;animation:countdownPulse 1.1s ease-in-out infinite;white-space:nowrap}
+.admin-countdown.show{display:inline-flex}
+.admin-countdown.warn{background:rgba(239,68,68,.18);border-color:rgba(239,68,68,.5);color:#fca5a5;animation:countdownUrgent .5s ease-in-out infinite}
+@keyframes countdownPulse{0%,100%{opacity:1}50%{opacity:.55}}
+@keyframes countdownUrgent{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+.admin-locked{position:relative;z-index:1;text-align:center;padding:26px 12px 10px}
+.admin-locked-icon{font-size:2.4rem;margin-bottom:10px;display:inline-block;animation:adminLockFloat 3s ease-in-out infinite;filter:drop-shadow(0 6px 14px rgba(251,191,36,.35))}
+@keyframes adminLockFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.admin-locked-text{font-size:.85rem;color:rgba(248,250,252,.7);font-weight:500;margin-bottom:18px;line-height:1.5;padding:0 10px}
+.admin-locked .btn{background:linear-gradient(135deg,#fbbf24 0%,#f59e0b 100%);color:#1e1b4b;box-shadow:0 10px 22px -8px rgba(251,191,36,.7)}
+.admin-locked .btn:hover{box-shadow:0 14px 28px -8px rgba(251,191,36,.85)}
+.admin-log-content{position:relative;z-index:1}
+.admin-log-list{display:flex;flex-direction:column;gap:8px;max-height:400px;overflow-y:auto;padding-right:4px;scrollbar-width:thin;scrollbar-color:rgba(251,191,36,.3) transparent}
+.admin-log-list::-webkit-scrollbar{width:6px}
+.admin-log-list::-webkit-scrollbar-thumb{background:rgba(251,191,36,.3);border-radius:3px}
+.log-entry{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:11px 14px;display:flex;gap:12px;align-items:flex-start;transition:background .2s,border-color .2s;animation:logFadeIn .3s ease}
+@keyframes logFadeIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+.log-entry:hover{background:rgba(255,255,255,.07);border-color:rgba(251,191,36,.3)}
+.log-icon{flex-shrink:0;width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08)}
+.log-icon.add{background:rgba(34,197,94,.14);border-color:rgba(34,197,94,.3)}
+.log-icon.delete{background:rgba(239,68,68,.14);border-color:rgba(239,68,68,.3)}
+.log-icon.edit{background:rgba(251,191,36,.14);border-color:rgba(251,191,36,.3)}
+.log-icon.purchase{background:rgba(99,102,241,.16);border-color:rgba(99,102,241,.3)}
+.log-body{flex:1;min-width:0}
+.log-title{font-weight:700;font-size:.86rem;color:#f8fafc;line-height:1.35;word-break:break-word}
+.log-title .accent{color:#fbbf24;font-weight:800}
+.log-title .soft{color:rgba(248,250,252,.65);font-weight:500}
+.log-time{font-size:.68rem;color:rgba(248,250,252,.45);font-weight:600;margin-top:4px;display:flex;align-items:center;gap:6px}
+.log-time::before{content:'🕐';font-size:.7rem;opacity:.7}
+.admin-log-empty{text-align:center;padding:30px 14px;color:rgba(248,250,252,.5);font-size:.85rem;font-style:italic}
+.admin-log-footer{margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;position:relative;z-index:1}
+.admin-log-count{font-size:.72rem;font-weight:700;color:rgba(251,191,36,.75);letter-spacing:.4px}
+.admin-clear-btn{background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.35);color:#fca5a5;font-family:var(--font);font-weight:700;font-size:.72rem;padding:6px 14px;border-radius:30px;cursor:pointer;transition:.2s;letter-spacing:.3px}
+.admin-clear-btn:hover{background:rgba(239,68,68,.22)}
+
+/* SALE WINDOW */
+.sale-window{position:fixed;inset:0;z-index:900;background:rgba(20,18,55,.6);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);padding:16px;display:flex;align-items:stretch;justify-content:center;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .3s ease,visibility .3s ease}
+.sale-window.active{opacity:1;visibility:visible;pointer-events:auto}
+.sale-window-inner{width:100%;max-width:620px;background:var(--bg-gradient);border-radius:28px;padding:22px 18px 24px;box-shadow:0 40px 80px -20px rgba(20,18,55,.6);overflow-y:auto;max-height:100%;opacity:0;transform:translateY(28px) scale(.96);transition:transform .45s cubic-bezier(.34,1.4,.64,1),opacity .3s;position:relative;scrollbar-width:thin}
+.sale-window.active .sale-window-inner{opacity:1;transform:translateY(0) scale(1)}
+.sale-window-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;gap:12px;position:sticky;top:-22px;background:linear-gradient(180deg,#fafbff 70%,rgba(250,251,255,0));padding:6px 0 10px;z-index:5;margin-top:-6px}
+.sale-window-title{font-size:1.15rem;font-weight:800;color:var(--text-dark);letter-spacing:-.3px;display:flex;align-items:center;gap:8px;padding-left:4px}
+.category-picker{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;padding:4px 0 6px}
+.category-card{background:#fff;border-radius:20px;padding:22px 14px 18px;text-align:center;border:1.5px solid var(--border);cursor:pointer;transition:all .22s ease;box-shadow:var(--shadow-sm);font-family:var(--font);position:relative;overflow:hidden}
+.category-card::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(99,102,241,0) 60%,rgba(99,102,241,.04));opacity:0;transition:opacity .25s;pointer-events:none}
+.category-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:var(--primary-soft)}
+.category-card:hover::before{opacity:1}
+.category-card:active{transform:scale(.97)}
+.category-card-icon{width:50px;height:50px;border-radius:15px;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;background:linear-gradient(140deg,#eef2ff 0%,#e0e7ff 100%);border:1px solid rgba(99,102,241,.15);position:relative;z-index:1}
+.category-card-name{font-weight:800;font-size:.88rem;color:var(--text-dark);text-transform:capitalize;letter-spacing:-.2px;position:relative;z-index:1;word-break:break-word}
+.category-card-count{font-size:.7rem;color:var(--text-muted);font-weight:700;margin-top:4px;position:relative;z-index:1;text-transform:uppercase;letter-spacing:.5px}
+.sale-back-btn{background:#fff;border:1.5px solid var(--border);color:#4b5069;font-family:var(--font);font-weight:800;font-size:.82rem;padding:9px 16px;border-radius:30px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:.18s;margin-bottom:12px;box-shadow:var(--shadow-sm)}
+.sale-back-btn:hover{background:var(--primary-light);border-color:var(--primary-soft);color:var(--primary-dark)}
+
+/* MODALS */
+.modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(30,27,75,.4);display:flex;align-items:center;justify-content:center;z-index:1000;padding:20px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.modal-content{background:#fff;border-radius:26px;padding:26px;max-width:460px;width:100%;box-shadow:0 30px 60px -20px rgba(30,27,75,.4);animation:modalFadeIn .22s cubic-bezier(.34,1.4,.64,1)}
+@keyframes modalFadeIn{from{opacity:0;transform:translateY(24px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+.modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.modal-title{font-size:1.2rem;font-weight:800;color:var(--text-dark);letter-spacing:-.3px}
+.modal-close{background:#f1f2f8;border:none;width:36px;height:36px;border-radius:50%;font-size:1rem;cursor:pointer;transition:.22s;color:#4b5069;flex-shrink:0}
+.modal-close:hover{background:#e7e9f3;transform:rotate(90deg)}
+.summary-stats{display:flex;gap:10px;margin-bottom:20px}
+.stat-box{flex:1;background:#f7f8fc;padding:14px 8px;border-radius:16px;text-align:center;box-shadow:inset 0 1px 0 #fff,0 1px 3px rgba(30,27,75,.04);border:1px solid #eef0f8}
+.stat-value{font-size:1.35rem;font-weight:800;color:var(--primary-dark);letter-spacing:-.5px}
+.stat-label{font-size:.65rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.8px;font-weight:700;margin-top:3px}
+.summary-list{max-height:280px;overflow-y:auto}
+.summary-item{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid #f1f2f8;font-size:.88rem;gap:10px;flex-wrap:wrap}
+.summary-item:last-child{border-bottom:none}
+.summary-item-left{display:flex;flex-direction:column;gap:3px;min-width:0}
+.summary-item-date{font-size:.7rem;color:var(--text-muted);font-weight:600}
+.summary-qty{font-weight:800;color:#4338ca}
+.modal-hidden{display:none!important}
+
+/* CONFIRM */
+.confirm-overlay{position:fixed;inset:0;z-index:2500;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(30,27,75,.5);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .25s ease,visibility .25s ease}
+.confirm-overlay.active{opacity:1;visibility:visible;pointer-events:auto}
+.confirm-card{background:#fff;border-radius:26px;padding:30px 26px 22px;max-width:380px;width:100%;text-align:center;box-shadow:0 30px 60px -18px rgba(30,27,75,.45);position:relative;overflow:hidden;opacity:0;transform:translateY(20px) scale(.94);transition:transform .4s cubic-bezier(.34,1.56,.64,1),opacity .28s ease}
+.confirm-overlay.active .confirm-card{opacity:1;transform:translateY(0) scale(1)}
+.confirm-card::before{content:'';position:absolute;top:-70px;right:-70px;width:170px;height:170px;border-radius:50%;background:radial-gradient(circle,rgba(239,68,68,.14),transparent 70%);pointer-events:none}
+.confirm-icon{width:66px;height:66px;margin:0 auto 16px;border-radius:22px;display:flex;align-items:center;justify-content:center;font-size:1.9rem;background:linear-gradient(140deg,#fecaca 0%,#fca5a5 100%);box-shadow:0 14px 28px -10px rgba(239,68,68,.5),inset 0 1px 0 rgba(255,255,255,.6);position:relative;z-index:1}
+.confirm-card.info .confirm-icon{background:linear-gradient(140deg,#c7d2fe 0%,#a5b4fc 100%);box-shadow:0 14px 28px -10px rgba(99,102,241,.5),inset 0 1px 0 rgba(255,255,255,.6)}
+.confirm-title{font-size:1.15rem;font-weight:800;color:var(--text-dark);letter-spacing:-.3px;margin-bottom:6px;position:relative;z-index:1}
+.confirm-message{font-size:.9rem;color:var(--text-muted);font-weight:500;line-height:1.5;margin-bottom:4px;position:relative;z-index:1;padding:0 6px;word-break:break-word}
+.confirm-actions{display:flex;gap:10px;margin-top:22px;position:relative;z-index:1}
+.confirm-actions .btn{flex:1;padding:13px 16px}
+.confirm-danger{background:linear-gradient(135deg,#ef4444 0%,#dc2626 100%);color:#fff;box-shadow:0 10px 22px -8px rgba(239,68,68,.7)}
+.confirm-danger:hover{box-shadow:0 14px 28px -8px rgba(239,68,68,.85);transform:translateY(-1px)}
+
+/* AUTH */
+.auth-modal{position:fixed;inset:0;z-index:3000;display:flex;align-items:center;justify-content:center;padding:20px;background:radial-gradient(circle at 30% 20%,rgba(99,102,241,.35),rgba(20,18,55,.65));-webkit-backdrop-filter:blur(14px) saturate(130%);backdrop-filter:blur(14px) saturate(130%);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .34s ease,visibility .34s ease}
+.auth-modal.active{opacity:1;visibility:visible;pointer-events:auto}
+.auth-card{position:relative;width:100%;max-width:400px;padding:40px 30px 28px;border-radius:32px;text-align:center;background:linear-gradient(165deg,#fff 0%,#f8f9ff 100%);box-shadow:0 40px 80px -20px rgba(20,18,55,.55),0 2px 0 rgba(255,255,255,.9) inset,0 0 0 1px rgba(255,255,255,.7);overflow:hidden;opacity:0;transform:translateY(30px) scale(.92);transition:transform .5s cubic-bezier(.34,1.56,.64,1),opacity .32s ease}
+.auth-modal.active .auth-card{opacity:1;transform:translateY(0) scale(1)}
+.auth-card::before{content:'';position:absolute;top:-90px;right:-90px;width:210px;height:210px;border-radius:50%;background:radial-gradient(circle,rgba(99,102,241,.22),transparent 70%);animation:authOrb 7s ease-in-out infinite;pointer-events:none}
+.auth-card::after{content:'';position:absolute;bottom:-100px;left:-90px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(139,92,246,.18),transparent 70%);animation:authOrb 9s ease-in-out infinite reverse;pointer-events:none}
+@keyframes authOrb{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-18px,20px) scale(1.18)}}
+.auth-brand-mark{position:relative;z-index:1;width:62px;height:62px;margin:0 auto 16px;border-radius:20px;display:flex;align-items:center;justify-content:center;background:linear-gradient(140deg,#818cf8 0%,#6366f1 45%,#4338ca 100%);box-shadow:0 14px 28px -8px rgba(99,102,241,.6),inset 0 1px 0 rgba(255,255,255,.3);overflow:hidden;animation:authBrandFloat 3.4s ease-in-out infinite}
+.auth-brand-mark::after{content:'';position:absolute;inset:-6px;border-radius:26px;border:2px solid rgba(99,102,241,.28);animation:authBrandRing 2.6s ease-out infinite;pointer-events:none}
+@keyframes authBrandFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes authBrandRing{0%{transform:scale(.9);opacity:.9}100%{transform:scale(1.28);opacity:0}}
+.auth-title{position:relative;z-index:1;font-size:1.4rem;font-weight:800;letter-spacing:-.4px;color:var(--text-dark);margin-bottom:6px}
+.auth-subtitle{position:relative;z-index:1;font-size:.86rem;font-weight:500;line-height:1.5;color:var(--text-muted);margin-bottom:4px;padding:0 4px}
+.auth-input-wrap{position:relative;z-index:1;margin:22px 0 0}
+#authCodeInput{width:100%;padding:17px 18px;text-align:center;font-size:1.55rem;font-weight:800;letter-spacing:.6em;text-indent:.6em;border-radius:20px;border:1.5px solid var(--border);background:#fff;color:var(--text-dark);transition:border-color .25s ease,box-shadow .25s ease,transform .25s ease}
+#authCodeInput::placeholder{color:#c6cade;letter-spacing:.5em;text-indent:.5em}
+#authCodeInput:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 5px rgba(99,102,241,.15);transform:translateY(-1px)}
+.auth-error{position:relative;z-index:1;min-height:20px;margin-top:8px;font-size:.82rem;font-weight:700;color:#e11d48;opacity:0;transform:translateY(-5px);transition:opacity .25s ease,transform .25s ease,color .25s ease}
+.auth-error.show{opacity:1;transform:translateY(0)}
+.auth-error.ok{color:#059669}
+.auth-actions{position:relative;z-index:1;display:flex;gap:10px;margin-top:16px}
+.auth-actions .btn{flex:1;padding:13px 16px}
+.auth-footnote{position:relative;z-index:1;margin-top:14px;font-size:.7rem;color:#a5aac0;font-weight:600;letter-spacing:.2px}
+@keyframes authShake{0%,100%{transform:translateX(0) scale(1)}12%{transform:translateX(-11px) scale(.99)}28%{transform:translateX(10px) scale(1.005)}44%{transform:translateX(-8px) scale(.995)}60%{transform:translateX(6px) scale(1.005)}76%{transform:translateX(-3px) scale(1)}}
+.auth-card.shake{animation:authShake .55s cubic-bezier(.36,.07,.19,.97)}
+.auth-card.shake .auth-brand-mark{background:linear-gradient(140deg,#fb7185 0%,#ef4444 45%,#b91c1c 100%);box-shadow:0 14px 28px -8px rgba(239,68,68,.6);animation:none}
+.auth-card.shake .auth-brand-mark::after{border-color:rgba(239,68,68,.35)}
+.auth-card.success .auth-brand-mark{background:linear-gradient(140deg,#4ade80 0%,#22c55e 45%,#15803d 100%);box-shadow:0 14px 28px -8px rgba(34,197,94,.6);animation:none}
+.auth-card.success .auth-brand-mark::after{border-color:rgba(34,197,94,.35)}
+.auth-card.success #authCodeInput{border-color:#22c55e;box-shadow:0 0 0 5px rgba(34,197,94,.18)}
+
+@media (max-width:400px){
+  .sold-section{flex-direction:column;align-items:flex-start;border-radius:20px}
+  .logo-text h1{font-size:1.5rem}
+  .logo-icon{width:48px;height:48px;border-radius:15px}
+  .btn-sale-big{padding:20px 50px;font-size:1.2rem;letter-spacing:2px}
+  .hero-stat-value{font-size:1.2rem}
+  .category-picker{grid-template-columns:repeat(auto-fill,minmax(120px,1fr))}
+}
+</style>
+</head>
+<body>
+
+<div class="app-container">
+  <!-- HEADER -->
+  <div class="app-header">
+    <div class="logo-area">
+      <div class="logo-icon">
+        <svg viewBox="0 0 44 44" width="34" height="34" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs><linearGradient id="eGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#dde3ff"/></linearGradient></defs>
+          <path d="M14 11 C14 9.9 14.9 9 16 9 H30 C31.1 9 32 9.9 32 11 V13 C32 14.1 31.1 15 30 15 H19.5 V19.5 H28 C29.1 19.5 30 20.4 30 21.5 V22.5 C30 23.6 29.1 24.5 28 24.5 H19.5 V29 H30 C31.1 29 32 29.9 32 31 V33 C32 34.1 31.1 35 30 35 H16 C14.9 35 14 34.1 14 33 Z" fill="url(#eGrad)"/>
+        </svg>
+      </div>
+      <div class="logo-text"><h1>ELZZMAPS</h1><span>Inventory</span></div>
+    </div>
+    <div class="header-date" id="currentDate"></div>
+  </div>
+
+  <!-- TABS -->
+  <div class="tab-bar" role="tablist">
+    <button class="tab-btn active" data-tab="sale" role="tab">🛒 Sale</button>
+    <button class="tab-btn" data-tab="manage" role="tab">⚙️ Manage</button>
+  </div>
+
+  <!-- SALE TAB -->
+  <div class="tab-panel" id="tab-sale">
+    <div class="hero-card">
+      <div class="hero-icon">🛒</div>
+      <div class="hero-title">Ready to sell?</div>
+      <div class="hero-sub">Tap the button below to open the sale window and pick a product category.</div>
+      <button class="btn-sale-big" id="openSaleBtn">SALE</button>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="hero-stat-value" id="heroStatProducts">0</div><div class="hero-stat-label">Products</div></div>
+        <div class="hero-stat"><div class="hero-stat-value" id="heroStatDebtors">0</div><div class="hero-stat-label">Debtors</div></div>
+        <div class="hero-stat"><div class="hero-stat-value" id="heroStatSold">0</div><div class="hero-stat-label">Sold</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MANAGE TAB -->
+  <div class="tab-panel hidden" id="tab-manage">
+    <div class="card customer-directory">
+      <div class="section-title">👥 Frequent Customers</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <input type="text" id="directoryCustomerName" placeholder="Add customer name" style="flex:1;min-width:150px;">
+        <button class="btn btn-primary" id="addDirectoryCustomerBtn" style="padding:11px 16px;">➕ Add</button>
+      </div>
+      <div id="directoryListContainer" class="directory-list"></div>
+    </div>
+
+    <div class="card">
+      <div class="section-title">🏷️ Add New Category</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <input type="text" id="newCategoryName" placeholder="Category name (e.g. Snacks)" style="flex:1;min-width:150px;">
+        <button class="btn btn-primary" id="addCategoryBtn" style="padding:11px 16px;">➕ Add Category</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="add-product-form">
+        <div class="input-row">
+          <div class="input-field"><label>Product name</label><input type="text" id="productNameInput" placeholder="e.g. Iced Coffee" autocomplete="off"></div>
+          <div class="input-field"><label>Price (₱)</label><input type="number" id="productPriceInput" placeholder="0.00" min="0" step="0.01"></div>
+        </div>
+        <div class="input-row">
+          <div class="input-field"><label>Category</label><select id="productCategoryInput"></select></div>
+          <div class="input-field hidden" id="cigaretteUnitField">
+            <label>Cigarette unit</label>
+            <select id="cigaretteUnitInput"><option value="stick">Per Stick</option><option value="box">Per Box</option></select>
+          </div>
+        </div>
+        <div class="input-row">
+          <div class="input-field"><label>Total stock</label><input type="number" id="totalStockInput" placeholder="e.g. 50" min="0" step="1"></div>
+          <div class="input-field"><label>Stock left</label><input type="number" id="stockLeftInput" placeholder="e.g. 20" min="0" step="1"></div>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <button class="btn btn-primary" id="addProductBtn">➕ Add product</button>
+          <button class="btn btn-light" id="clearFormBtn">Clear</button>
+        </div>
+        <div id="formMessage"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="section-title">📒 Manual Debt Ledger</div>
+      <div class="manual-debt-form">
+        <div class="manual-debt-row">
+          <input type="text" id="debtCustomerName" placeholder="Customer name" autocomplete="off">
+          <input type="text" id="debtProductLabel" placeholder="Product label (e.g. Cigarettes)" autocomplete="off">
+          <input type="number" id="debtAmount" placeholder="Amount" min="0" step="0.01">
+          <input type="text" id="debtDate" placeholder="Date (e.g. Sep 7, 2026)" autocomplete="off">
+          <button class="btn btn-primary" id="addDebtBtn" style="padding:11px 16px;">➕ Add Debt</button>
+        </div>
+      </div>
+      <div id="debtListContainer" class="debt-list" style="margin-top:16px;"></div>
+    </div>
+
+    <div class="card">
+      <div class="section-title">💸 Personal Expense</div>
+      <div class="personal-expense-form">
+        <div class="personal-expense-row">
+          <input type="text" id="expenseName" placeholder="Expense name (e.g. Lunch)" autocomplete="off">
+          <input type="number" id="expenseAmount" placeholder="Amount" min="0" step="0.01">
+          <label style="display:flex;align-items:center;gap:6px;font-size:.85rem;font-weight:600;">
+            <input type="checkbox" id="expenseAutoDate" checked> Auto date
+          </label>
+          <input type="text" id="expenseManualDate" placeholder="Date (e.g. Sep 7, 2026)" autocomplete="off" disabled>
+          <button class="btn btn-primary" id="addExpenseBtn" style="padding:11px 16px;">➕ Add Expense</button>
+        </div>
+      </div>
+      <div id="expenseListContainer" class="expense-list" style="margin-top:16px;"></div>
+    </div>
+
+    <div class="card debtors-overview">
+      <div class="section-title">📊 Debtors Overview</div>
+      <div id="debtorsOverviewContainer"></div>
+    </div>
+
+    <div class="card admin-log" id="adminLogSection">
+      <div class="section-title">
+        <span class="left">🔐 Activity Log <span class="admin-countdown" id="adminCountdown">🔒 5s</span></span>
+        <button class="admin-lock-btn" id="adminLogLockBtn" style="display:none;">🔒 Lock Now</button>
+      </div>
+      <div id="adminLogLocked" class="admin-locked">
+        <div class="admin-locked-icon">🔒</div>
+        <div class="admin-locked-text">Private — enter your admin code to view product &amp; purchase history</div>
+        <button class="btn" id="adminLogUnlockBtn">🔓 Unlock Activity Log</button>
+      </div>
+      <div id="adminLogContent" class="admin-log-content" style="display:none;">
+        <div id="adminLogList" class="admin-log-list"></div>
+        <div class="admin-log-footer">
+          <span class="admin-log-count" id="adminLogCount">0 events</span>
+          <button class="admin-clear-btn" id="adminClearBtn">🗑️ Clear Log</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SALE WINDOW -->
+<div id="saleWindow" class="sale-window">
+  <div class="sale-window-inner">
+    <div class="sale-window-header">
+      <div class="sale-window-title" id="saleWindowTitle">🛒 Select a Category</div>
+      <button class="modal-close" id="closeSaleWindowBtn" type="button">✕</button>
+    </div>
+    <div id="saleStageCategory">
+      <div class="category-picker" id="categoryPickerContainer"></div>
+    </div>
+    <div id="saleStageProducts" class="hidden">
+      <button class="sale-back-btn" id="saleBackBtn" type="button">← All categories</button>
+      <div class="category-filter" id="categoryFilterContainer"></div>
+      <div id="productListContainer" class="product-list"></div>
+    </div>
+  </div>
+</div>
+
+<!-- AUTH MODAL -->
+<div id="authModal" class="auth-modal">
+  <div class="auth-card" id="authCard">
+    <div class="auth-brand-mark">
+      <svg viewBox="0 0 44 44" width="34" height="34" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs><linearGradient id="eGradModal" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#dde3ff"/></linearGradient></defs>
+        <path d="M14 11 C14 9.9 14.9 9 16 9 H30 C31.1 9 32 9.9 32 11 V13 C32 14.1 31.1 15 30 15 H19.5 V19.5 H28 C29.1 19.5 30 20.4 30 21.5 V22.5 C30 23.6 29.1 24.5 28 24.5 H19.5 V29 H30 C31.1 29 32 29.9 32 31 V33 C32 34.1 31.1 35 30 35 H16 C14.9 35 14 34.1 14 33 Z" fill="url(#eGradModal)"/>
+      </svg>
+    </div>
+    <div class="auth-title">Welcome Back</div>
+    <div class="auth-subtitle">Enter your access code to unlock your ELZZMAPS dashboard</div>
+    <div class="auth-input-wrap">
+      <input type="password" id="authCodeInput" inputmode="numeric" maxlength="4" placeholder="••••" autocomplete="off" autocorrect="off" spellcheck="false">
+    </div>
+    <div class="auth-error" id="authError"></div>
+    <div class="auth-actions">
+      <button class="btn btn-light" id="authCancelBtn" type="button">Cancel</button>
+      <button class="btn btn-primary" id="authConfirmBtn" type="button">Unlock</button>
+    </div>
+    <div class="auth-footnote">🔒 Your code stays on this device</div>
+  </div>
+</div>
+
+<!-- CONFIRM MODAL -->
+<div id="confirmModal" class="confirm-overlay">
+  <div class="confirm-card" id="confirmCard">
+    <div class="confirm-icon" id="confirmIcon">🗑️</div>
+    <div class="confirm-title" id="confirmTitle">Are you sure?</div>
+    <div class="confirm-message" id="confirmMessage">This action cannot be undone.</div>
+    <div class="confirm-actions">
+      <button class="btn btn-light" id="confirmCancelBtn" type="button">Cancel</button>
+      <button class="btn confirm-danger" id="confirmOkBtn" type="button">Delete</button>
+    </div>
+  </div>
+</div>
+
+<!-- CUSTOMER SUMMARY MODAL -->
+<div id="customerModal" class="modal-overlay modal-hidden">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="modal-title">👤 Customer Summary</span>
+      <button class="modal-close" id="modalCloseBtn">✕</button>
+    </div>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  // ===== STORAGE KEYS =====
+  const PRODUCTS_KEY = 'pocket_inventory_products_v10';
+  const DEBTS_KEY = 'pocket_inventory_manual_debts_v2';
+  const EXPENSES_KEY = 'pocket_inventory_personal_expenses_v1';
+  const DIRECTORY_KEY = 'pocket_inventory_customer_directory_v1';
+  const CATEGORIES_KEY = 'pocket_inventory_categories_v1';
+  const AUDIT_KEY = 'pocket_inventory_audit_log_v1';
+
+  const AUTH_CODE = '0627';
+  const AUTO_LOCK_SECONDS = 5;
+
+  const defaultCategories = [
+    { name:'other', color:'#f5f5f5' },
+    { name:'cigarettes', color:'#e6f0fa' },
+    { name:'liquor', color:'#f3e8ff' },
+    { name:'soft drinks', color:'#e0f7fa' },
+    { name:'juice', color:'#fff0e0' },
+    { name:'ice', color:'#e0f2fe' }
+  ];
+
+  const defaultProducts = [
+    { id:'prod_'+Date.now()+'_1', name:'Mango Graham Shake', price:120, category:'juice', cigaretteUnit:null, totalStock:50, stockLeft:20,
+      customers:[
+        { name:'Ana', paymentType:'cash', date:new Date().toISOString(), quantity:1, lacksPayment:false, paymentStatus:'paid', note:'', lackAmount:0 },
+        { name:'Marco', paymentType:'cash', date:new Date().toISOString(), quantity:2, lacksPayment:false, paymentStatus:'paid', note:'', lackAmount:0 },
+        { name:'Juls', paymentType:'debt', date:new Date().toISOString(), quantity:1, lacksPayment:false, paymentStatus:'unpaid', note:'', lackAmount:0 }
+      ]
+    },
+    { id:'prod_'+Date.now()+'_2', name:'Marlboro Red', price:150, category:'cigarettes', cigaretteUnit:'stick', totalStock:100, stockLeft:3,
+      customers:[
+        { name:'Tita Linda', paymentType:'cash', date:new Date().toISOString(), quantity:3, lacksPayment:false, paymentStatus:'paid', note:'', lackAmount:0 }
+      ]
+    }
+  ];
+
+  const defaultDebts = [
+    { id:'debt_'+Date.now()+'_1', name:'John', productLabel:'Liquor', amount:250, date:'Sep 7, 2026', paymentStatus:'unpaid', partialPercent:100 },
+    { id:'debt_'+Date.now()+'_2', name:'Mia', productLabel:'Soft Drinks', amount:120, date:'Sep 6, 2026', paymentStatus:'unpaid', partialPercent:100 }
+  ];
+
+  const defaultExpenses = [
+    { id:'exp_'+Date.now()+'_1', name:'Lunch', amount:150, date:new Date().toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'}) }
+  ];
+
+  const defaultDirectory = ['Ana','Tita Linda'];
+
+  // ===== STATE =====
+  let products = [];
+  let manualDebts = [];
+  let personalExpenses = [];
+  let frequentCustomers = [];
+  let categories = [];
+  let currentFilterCategory = 'all';
+  let auditLog = [];
+  let auditLogUnlocked = false;
+  let editingProductId = null;
+
+  // ===== HELPERS =====
+  function escapeHTML(text){
+    if(!text) return '';
+    return String(text).replace(/[&<>"]/g,function(m){
+      if(m==='&') return '&amp;';
+      if(m==='<') return '&lt;';
+      if(m==='>') return '&gt;';
+      if(m==='"') return '&quot;';
+      return m;
+    });
+  }
+  function formatDate(iso){
+    if(!iso) return 'No date';
+    try{ const d=new Date(iso); return d.toLocaleString(undefined,{month:'short',day:'numeric',year:'numeric',hour:'2-digit',minute:'2-digit'}); }
+    catch{ return 'Invalid date'; }
+  }
+  function formatLogTime(ts){
+    try{ const d=new Date(ts); return d.toLocaleString(undefined,{month:'short',day:'numeric',year:'numeric',hour:'2-digit',minute:'2-digit',second:'2-digit'}); }
+    catch{ return 'Unknown time'; }
+  }
+  function getStockStatus(p){
+    if(!p.totalStock||p.totalStock<=0) return 'ok';
+    if(p.stockLeft<=3) return 'critical';
+    if(p.stockLeft<=p.totalStock/2) return 'low';
+    return 'ok';
+  }
+  function buildCustomerQtyMap(){
+    const map={};
+    products.forEach(p=>(p.customers||[]).forEach(c=>{ map[c.name]=(map[c.name]||0)+(c.quantity||1); }));
+    return map;
+  }
+
+  // ===== LOAD/SAVE =====
+  function loadCategories(){
+    const s=localStorage.getItem(CATEGORIES_KEY);
+    if(s){ try{ categories=JSON.parse(s); const n=categories.map(c=>c.name); defaultCategories.forEach(d=>{ if(!n.includes(d.name)) categories.push(d); }); }catch(e){ categories=[...defaultCategories]; } }
+    else { categories=[...defaultCategories]; }
+    saveCategories();
+  }
+  function saveCategories(){ localStorage.setItem(CATEGORIES_KEY,JSON.stringify(categories)); }
+
+  function loadProducts(){
+    const s=localStorage.getItem(PRODUCTS_KEY);
+    if(s){
+      try{
+        products=JSON.parse(s);
+        products=products.map(p=>({
+          ...p,
+          category:p.category||'other',
+          cigaretteUnit:p.cigaretteUnit||null,
+          totalStock:p.totalStock||0,
+          stockLeft:p.stockLeft||0,
+          customers:Array.isArray(p.customers)?p.customers.map(c=>{
+            if(typeof c==='string') return {name:c,paymentType:'cash',date:new Date().toISOString(),quantity:1,lacksPayment:false,paymentStatus:'paid',note:'',lackAmount:0};
+            return { ...c, date:c.date||new Date().toISOString(), quantity:c.quantity||1, lacksPayment:c.lacksPayment||false, paymentStatus:c.paymentStatus||(c.paymentType==='debt'?'unpaid':'paid'), note:c.note||'', partialPercent:c.partialPercent||(c.paymentType==='debt'?100:0), lackAmount:c.lackAmount||0 };
+          }):[]
+        }));
+      }catch(e){ products=[...defaultProducts]; }
+    } else { products=[...defaultProducts]; }
+    saveProducts();
+  }
+  function saveProducts(){ localStorage.setItem(PRODUCTS_KEY,JSON.stringify(products)); }
+
+  function loadDebts(){
+    const s=localStorage.getItem(DEBTS_KEY);
+    if(s){ try{ manualDebts=JSON.parse(s); manualDebts=manualDebts.map(d=>({...d,paymentStatus:d.paymentStatus||'unpaid',partialPercent:d.partialPercent||100})); }catch(e){ manualDebts=[...defaultDebts]; } }
+    else { manualDebts=[...defaultDebts]; }
+    saveDebts();
+  }
+  function saveDebts(){ localStorage.setItem(DEBTS_KEY,JSON.stringify(manualDebts)); }
+
+  function loadExpenses(){
+    const s=localStorage.getItem(EXPENSES_KEY);
+    if(s){ try{ personalExpenses=JSON.parse(s); if(!Array.isArray(personalExpenses)) personalExpenses=defaultExpenses; }catch(e){ personalExpenses=[...defaultExpenses]; } }
+    else { personalExpenses=[...defaultExpenses]; }
+    saveExpenses();
+  }
+  function saveExpenses(){ localStorage.setItem(EXPENSES_KEY,JSON.stringify(personalExpenses)); }
+
+  function loadDirectory(){
+    const s=localStorage.getItem(DIRECTORY_KEY);
+    if(s){ try{ frequentCustomers=JSON.parse(s); if(!Array.isArray(frequentCustomers)) frequentCustomers=defaultDirectory; }catch(e){ frequentCustomers=[...defaultDirectory]; } }
+    else { frequentCustomers=[...defaultDirectory]; }
+    saveDirectory();
+  }
+  function saveDirectory(){ localStorage.setItem(DIRECTORY_KEY,JSON.stringify(frequentCustomers)); }
+
+  function loadAuditLog(){
+    const s=localStorage.getItem(AUDIT_KEY);
+    if(s){ try{ auditLog=JSON.parse(s); if(!Array.isArray(auditLog)) auditLog=[]; }catch(e){ auditLog=[]; } }
+    else { auditLog=[]; }
+  }
+  function saveAuditLog(){ if(auditLog.length>500) auditLog=auditLog.slice(0,500); localStorage.setItem(AUDIT_KEY,JSON.stringify(auditLog)); }
+  function logActivity(action,details){
+    details=details||{};
+    auditLog.unshift({ id:'log_'+Date.now()+'_'+Math.random().toString(36).substring(2,8), timestamp:Date.now(), action:action, details:details });
+    saveAuditLog();
+    if(auditLogUnlocked) renderAuditLog();
+  }
+
+  // ===== TAB SWITCHING =====
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  const tabSale = document.getElementById('tab-sale');
+  const tabManage = document.getElementById('tab-manage');
+
+  function switchTab(name){
+    tabButtons.forEach(b=>b.classList.toggle('active',b.dataset.tab===name));
+    if(name==='sale'){ tabSale.classList.remove('hidden'); tabManage.classList.add('hidden'); }
+    else { tabSale.classList.add('hidden'); tabManage.classList.remove('hidden'); }
+  }
+  tabButtons.forEach(b=>b.addEventListener('click',()=>switchTab(b.dataset.tab)));
+
+  // ===== HERO STATS =====
+  function renderHeroStats(){
+    const debtorsSet=new Set();
+    products.forEach(p=>(p.customers||[]).forEach(c=>{ if(c.paymentType==='debt'&&c.paymentStatus!=='paid') debtorsSet.add(c.name); }));
+    manualDebts.forEach(d=>{ if(d.paymentStatus!=='paid') debtorsSet.add(d.name); });
+    const sold=products.reduce((sum,p)=>sum+(p.customers||[]).reduce((s,c)=>s+(c.quantity||1),0),0);
+    document.getElementById('heroStatProducts').textContent = products.length;
+    document.getElementById('heroStatDebtors').textContent = debtorsSet.size;
+    document.getElementById('heroStatSold').textContent = sold;
+  }
+
+  // ===== SALE WINDOW =====
+  const saleWindow = document.getElementById('saleWindow');
+  const saleStageCategory = document.getElementById('saleStageCategory');
+  const saleStageProducts = document.getElementById('saleStageProducts');
+  const saleWindowTitle = document.getElementById('saleWindowTitle');
+  const categoryPickerContainer = document.getElementById('categoryPickerContainer');
+  const openSaleBtn = document.getElementById('openSaleBtn');
+  const closeSaleWindowBtn = document.getElementById('closeSaleWindowBtn');
+  const saleBackBtn = document.getElementById('saleBackBtn');
+
+  function openSaleWindow(){
+    renderCategoryPicker();
+    saleStageCategory.classList.remove('hidden');
+    saleStageProducts.classList.add('hidden');
+    saleWindowTitle.textContent='🛒 Select a Category';
+    void saleWindow.offsetWidth;
+    saleWindow.classList.add('active');
+  }
+  function closeSaleWindow(){ saleWindow.classList.remove('active'); }
+  function showSaleStageProducts(cat){
+    currentFilterCategory=cat||'all';
+    renderCategoryFilter();
+    renderProductList();
+    saleStageCategory.classList.add('hidden');
+    saleStageProducts.classList.remove('hidden');
+    saleWindowTitle.textContent='🛒 '+(cat==='all'?'All Products':(cat.charAt(0).toUpperCase()+cat.slice(1)));
+  }
+  function backToCategories(){
+    renderCategoryPicker();
+    saleStageCategory.classList.remove('hidden');
+    saleStageProducts.classList.add('hidden');
+    saleWindowTitle.textContent='🛒 Select a Category';
+  }
+
+  function renderCategoryPicker(){
+    if(!categoryPickerContainer) return;
+    const iconMap={cigarettes:'🚬',liquor:'🍾','soft drinks':'🥤',juice:'🧃',ice:'🧊',other:'📦'};
+    let html='';
+    const total=products.length;
+    html+='<button class="category-card" data-category="all"><div class="category-card-icon">✨</div><div class="category-card-name">All Products</div><div class="category-card-count">'+total+' item'+(total===1?'':'s')+'</div></button>';
+    categories.forEach(cat=>{
+      const count=products.filter(p=>p.category===cat.name).length;
+      if(count===0&&cat.name!=='other') return;
+      const icon=iconMap[cat.name]||'🏷️';
+      html+='<button class="category-card" data-category="'+escapeHTML(cat.name)+'"><div class="category-card-icon">'+icon+'</div><div class="category-card-name">'+escapeHTML(cat.name)+'</div><div class="category-card-count">'+count+' item'+(count===1?'':'s')+'</div></button>';
+    });
+    categoryPickerContainer.innerHTML=html;
+  }
+
+  categoryPickerContainer.addEventListener('click',function(e){
+    const card=e.target.closest('.category-card');
+    if(!card) return;
+    showSaleStageProducts(card.getAttribute('data-category'));
+  });
+
+  openSaleBtn.addEventListener('click',openSaleWindow);
+  closeSaleWindowBtn.addEventListener('click',closeSaleWindow);
+  saleBackBtn.addEventListener('click',backToCategories);
+  saleWindow.addEventListener('click',function(e){ if(e.target===saleWindow) closeSaleWindow(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&saleWindow.classList.contains('active')) closeSaleWindow(); });
+
+  // ===== CATEGORY CHIPS =====
+  const categoryFilterContainer = document.getElementById('categoryFilterContainer');
+  function renderCategoryFilter(){
+    if(!categoryFilterContainer) return;
+    categoryFilterContainer.innerHTML='';
+    const allChip=document.createElement('button');
+    allChip.className='category-chip'+(currentFilterCategory==='all'?' active':'');
+    allChip.setAttribute('data-category','all');
+    allChip.textContent='All';
+    categoryFilterContainer.appendChild(allChip);
+    categories.forEach(cat=>{
+      const chip=document.createElement('button');
+      chip.className='category-chip'+(currentFilterCategory===cat.name?' active':'');
+      chip.setAttribute('data-category',cat.name);
+      chip.textContent=cat.name.charAt(0).toUpperCase()+cat.name.slice(1);
+      categoryFilterContainer.appendChild(chip);
+    });
+  }
+  categoryFilterContainer.addEventListener('click',function(e){
+    const chip=e.target.closest('.category-chip');
+    if(!chip) return;
+    currentFilterCategory=chip.getAttribute('data-category');
+    renderCategoryFilter();
+    renderProductList();
+    saleWindowTitle.textContent='🛒 '+(currentFilterCategory==='all'?'All Products':(currentFilterCategory.charAt(0).toUpperCase()+currentFilterCategory.slice(1)));
+  });
+
+  // ===== PRODUCT LIST =====
+  const productListContainer = document.getElementById('productListContainer');
+  function renderProductList(){
+    if(!productListContainer) return;
+    const filtered = currentFilterCategory==='all' ? products : products.filter(p=>p.category===currentFilterCategory);
+    if(filtered.length===0){ productListContainer.innerHTML='<div class="empty-message">✨ No products found in this category.</div>'; return; }
+    const qtyMap=buildCustomerQtyMap();
+    let html='';
+    filtered.forEach(product=>{
+      const customers=product.customers||[];
+      const soldCount=customers.reduce((s,c)=>s+(c.quantity||1),0);
+      const stockStatus=getStockStatus(product);
+      const stockClass=stockStatus==='critical'?'stock-critical':stockStatus==='low'?'stock-low':'';
+      const catColor=categories.find(c=>c.name===product.category)?.color||'#f5f5f5';
+      const custTags=customers.map((cust,idx)=>{
+        const name=cust.name||'Unknown';
+        const pt=cust.paymentType||'cash';
+        const nameCls=pt==='cash'?'customer-name-cash':'customer-name-debt';
+        const badgeCls=pt==='cash'?'payment-cash':'payment-debt';
+        const qty=cust.quantity||1;
+        const totalQty=qtyMap[name]||qty;
+        const lacksCls=cust.lacksPayment?'lacks-payment':'';
+        const pStatus=cust.paymentStatus||'paid';
+        const statusBadge=pt==='debt'?'<span class="payment-status-badge status-'+pStatus+'">'+pStatus+'</span>':'';
+        return '<div class="customer-tag '+lacksCls+'"><div class="customer-info" data-customer-index="'+idx+'" data-product-id="'+product.id+'"><span class="customer-name '+nameCls+' '+lacksCls+'">👤 '+escapeHTML(name)+'</span><span class="customer-count-badge">'+totalQty+' total</span><span class="customer-qty-badge">x'+qty+'</span><span class="customer-date">'+formatDate(cust.date)+'</span><span class="payment-badge '+badgeCls+'">'+(pt==='cash'?'Cash':'Debt')+'</span>'+statusBadge+'</div><button class="delete-customer" data-product-id="'+product.id+'" data-customer-index="'+idx+'">✕</button></div>';
+      }).join('');
+      let stockInfo='';
+      if(product.totalStock>0){
+        stockInfo='<div class="stock-info"><span class="stock-badge">📦 Stock: '+product.stockLeft+' / '+product.totalStock+'</span>'+(stockStatus==='critical'?'<span style="color:#dc2626;font-weight:800;">⚠️ Critical</span>':'')+(stockStatus==='low'?'<span style="color:#d97706;font-weight:800;">🟡 Halfway</span>':'')+'</div>';
+      }
+      html+='<div class="product-item '+stockClass+'" style="background-color:'+catColor+';" data-product-id="'+product.id+'">'+
+        '<div class="product-header"><div class="product-title">'+escapeHTML(product.name)+' <span class="badge">₱'+parseFloat(product.price).toFixed(2)+'</span> <span class="badge category-badge">'+escapeHTML(product.category)+'</span>'+(product.cigaretteUnit?'<span class="badge unit-badge">'+(product.cigaretteUnit==='stick'?'Per Stick':'Per Box')+'</span>':'')+'</div>'+
+        '<div class="product-actions"><button class="btn btn-outline edit-product-btn" data-id="'+product.id+'" style="padding:8px 12px;">✏️</button><button class="btn btn-danger delete-product-btn" data-id="'+product.id+'" style="padding:8px 12px;">🗑️</button></div></div>'+
+        '<div class="sold-section"><span class="sold-label">📊 Sold today</span><span class="sold-count">'+soldCount+'</span></div>'+
+        stockInfo+
+        '<div class="customer-section"><label>👥 Customers ('+customers.length+')</label>'+
+        '<div class="add-customer-row"><input type="text" class="customer-name-input" data-product-id="'+product.id+'" placeholder="Name" autocomplete="off" list="customer-suggestions"><datalist id="customer-suggestions">'+frequentCustomers.map(n=>'<option value="'+escapeHTML(n)+'">').join('')+'</datalist>'+
+        '<input type="number" class="customer-quantity-input" data-product-id="'+product.id+'" placeholder="Qty" min="1" value="1" style="max-width:70px;">'+
+        '<select class="customer-payment-select" data-product-id="'+product.id+'"><option value="cash" selected>💵 Cash</option><option value="debt">📒 Debt</option></select>'+
+        '<button class="btn btn-light add-customer-btn" data-id="'+product.id+'" style="padding:11px 16px;">+ Add</button></div>'+
+        '<div class="customer-list">'+(custTags||'<div style="color:#9aa0b8;font-size:.85rem;">No customers yet</div>')+'</div></div></div>';
+    });
+    productListContainer.innerHTML=html;
+  }
+
+  // ===== DEBT LIST =====
+  const debtListContainer = document.getElementById('debtListContainer');
+  function renderDebtList(){
+    if(!debtListContainer) return;
+    if(manualDebts.length===0){ debtListContainer.innerHTML='<div style="color:#9aa0b8;font-size:.85rem;padding:8px;">No manual debts recorded.</div>'; return; }
+    let html='';
+    manualDebts.forEach(debt=>{
+      const status=debt.paymentStatus||'unpaid';
+      html+='<div class="debt-item" data-debt-id="'+debt.id+'"><div class="debt-info"><span class="debt-name">👤 '+escapeHTML(debt.name)+'</span>'+(debt.productLabel?'<span style="font-size:.8rem;color:var(--text-muted);">📦 '+escapeHTML(debt.productLabel)+'</span>':'')+'<span class="debt-amount">₱'+parseFloat(debt.amount).toFixed(2)+'</span><span class="debt-date">📅 '+escapeHTML(debt.date)+'</span><span class="payment-status-badge status-'+status+'">'+status+'</span>'+(status==='partial'?'<span> ('+debt.partialPercent+'% left)</span>':'')+'</div>'+
+        '<div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;"><button class="btn btn-light debt-paid-btn" data-debt-id="'+debt.id+'">Paid</button><button class="btn btn-light debt-partial-btn" data-debt-id="'+debt.id+'">Partial</button><select class="debt-partial-select" data-debt-id="'+debt.id+'" style="display:'+(status==='partial'?'inline-block':'none')+';width:70px;padding:6px;">'+Array.from({length:100},(_,i)=>i+1).map(n=>'<option value="'+n+'"'+(n===debt.partialPercent?' selected':'')+'>'+n+'%</option>').join('')+'</select><button class="delete-debt-btn" data-debt-id="'+debt.id+'">✕</button></div></div>';
+    });
+    debtListContainer.innerHTML=html;
+  }
+
+  // ===== EXPENSE LIST =====
+  const expenseListContainer = document.getElementById('expenseListContainer');
+  function renderExpenseList(){
+    if(!expenseListContainer) return;
+    if(personalExpenses.length===0){ expenseListContainer.innerHTML='<div style="color:#9aa0b8;font-size:.85rem;padding:8px;">No personal expenses recorded.</div>'; return; }
+    let html='';
+    personalExpenses.forEach(exp=>{
+      html+='<div class="expense-item" data-expense-id="'+exp.id+'"><div class="expense-info"><span class="expense-name">💸 '+escapeHTML(exp.name)+'</span><span class="expense-amount">₱'+parseFloat(exp.amount).toFixed(2)+'</span><span class="expense-date">📅 '+escapeHTML(exp.date)+'</span></div><button class="delete-expense-btn" data-expense-id="'+exp.id+'">✕</button></div>';
+    });
+    expenseListContainer.innerHTML=html;
+  }
+
+  // ===== DEBTORS OVERVIEW =====
+  const debtorsOverviewContainer = document.getElementById('debtorsOverviewContainer');
+  function renderDebtorsOverview(){
+    if(!debtorsOverviewContainer) return;
+    const map={};
+    products.forEach(p=>(p.customers||[]).forEach(c=>{
+      let amt=0;
+      if(c.paymentType==='debt') amt=(parseFloat(p.price)||0)*(c.quantity||1);
+      if(c.lacksPayment&&c.lackAmount>0) amt+=c.lackAmount;
+      if(amt>0) map[c.name]=(map[c.name]||0)+amt;
+    }));
+    manualDebts.forEach(d=>{ if(d.paymentStatus!=='paid') map[d.name]=(map[d.name]||0)+(parseFloat(d.amount)||0); });
+    const entries=Object.entries(map);
+    if(entries.length===0){ debtorsOverviewContainer.innerHTML='<div style="color:#9aa0b8;font-size:.85rem;">No outstanding debts.</div>'; return; }
+    debtorsOverviewContainer.innerHTML=entries.map(([n,a])=>'<div class="debtor-item"><span class="debtor-name">👤 '+escapeHTML(n)+'</span><span class="debtor-total">₱'+a.toFixed(2)+'</span></div>').join('');
+  }
+
+  // ===== AUDIT LOG RENDER =====
+  function renderAuditLog(){
+    const list=document.getElementById('adminLogList');
+    const countEl=document.getElementById('adminLogCount');
+    if(!list) return;
+    if(countEl) countEl.textContent=auditLog.length+(auditLog.length===1?' event':' events');
+    if(auditLog.length===0){ list.innerHTML='<div class="admin-log-empty">No activity recorded yet.</div>'; return; }
+    list.innerHTML=auditLog.map(entry=>{
+      let icon='•', iconClass='', title='';
+      const d=entry.details||{};
+      switch(entry.action){
+        case 'product_added': icon='📦'; iconClass='add'; title='<span class="accent">Added product</span> "'+escapeHTML(d.name||'')+'" <span class="soft">— ₱'+(d.price||0).toFixed(2)+' ('+escapeHTML(d.category||'')+')</span>'; break;
+        case 'product_edited': icon='✏️'; iconClass='edit'; title='<span class="accent">Edited product</span> "'+escapeHTML(d.name||'')+'"'; break;
+        case 'product_deleted': icon='🗑️'; iconClass='delete'; title='<span class="accent">Deleted product</span> "'+escapeHTML(d.name||'')+'" <span class="soft">— ₱'+(d.price||0).toFixed(2)+'</span>'; break;
+        case 'purchase': icon='🛒'; iconClass='purchase'; title='<span class="accent">'+escapeHTML(d.customer||'Customer')+'</span> bought <strong>'+(d.qty||1)+'×</strong> "'+escapeHTML(d.product||'')+'" <span class="soft">— ₱'+(d.amount||0).toFixed(2)+' ('+escapeHTML(d.payment||'cash')+')</span>'; break;
+        case 'customer_deleted': icon='❌'; iconClass='delete'; title='<span class="accent">Removed customer</span> "'+escapeHTML(d.customer||'')+'" <span class="soft">from "'+escapeHTML(d.product||'')+'"</span>'; break;
+        case 'debt_added': icon='📒'; iconClass='edit'; title='<span class="accent">New debt</span> '+escapeHTML(d.customer||'')+' <span class="soft">— ₱'+(d.amount||0).toFixed(2)+(d.productLabel?' ('+escapeHTML(d.productLabel)+')':'')+'</span>'; break;
+        case 'expense_added': icon='💸'; iconClass='delete'; title='<span class="accent">New expense</span> '+escapeHTML(d.name||'')+' <span class="soft">— ₱'+(d.amount||0).toFixed(2)+'</span>'; break;
+        case 'debt_paid': icon='✅'; iconClass='add'; title='<span class="accent">Debt marked paid</span> '+escapeHTML(d.customer||''); break;
+        case 'debt_deleted': icon='🗑️'; iconClass='delete'; title='<span class="accent">Deleted debt</span> '+escapeHTML(d.customer||''); break;
+        case 'expense_deleted': icon='🗑️'; iconClass='delete'; title='<span class="accent">Deleted expense</span> '+escapeHTML(d.name||''); break;
+        case 'category_added': icon='🏷️'; iconClass='add'; title='<span class="accent">New category</span> "'+escapeHTML(d.name||'')+'"'; break;
+        case 'directory_added': icon='👤'; iconClass='add'; title='<span class="accent">Added frequent customer</span> "'+escapeHTML(d.name||'')+'"'; break;
+        case 'directory_removed': icon='👤'; iconClass='delete'; title='<span class="accent">Removed frequent customer</span> "'+escapeHTML(d.name||'')+'"'; break;
+        default: icon='•'; iconClass=''; title='<span class="accent">'+escapeHTML(entry.action)+'</span>';
+      }
+      return '<div class="log-entry"><div class="log-icon '+iconClass+'">'+icon+'</div><div class="log-body"><div class="log-title">'+title+'</div><div class="log-time">'+formatLogTime(entry.timestamp)+'</div></div></div>';
+    }).join('');
+  }
+
+  // ===== AUTH MODAL =====
+  const authModal=document.getElementById('authModal');
+  const authCard=document.getElementById('authCard');
+  const authCodeInput=document.getElementById('authCodeInput');
+  const authError=document.getElementById('authError');
+  const authCancelBtn=document.getElementById('authCancelBtn');
+  const authConfirmBtn=document.getElementById('authConfirmBtn');
+  let authResolve=null, authBusy=false, authShakeTimer=null;
+
+  function openAuthModal(){
+    clearTimeout(authShakeTimer);
+    authBusy=false;
+    authCard.classList.remove('shake','success');
+    authCodeInput.value='';
+    authCodeInput.type='password';
+    authError.textContent='';
+    authError.classList.remove('show','ok');
+    void authModal.offsetWidth;
+    authModal.classList.add('active');
+    setTimeout(()=>{ if(authModal.classList.contains('active')) authCodeInput.focus(); },280);
+  }
+  function closeAuthModal(){ authModal.classList.remove('active'); authCodeInput.blur(); }
+  function settleAuth(result){ const r=authResolve; authResolve=null; if(r) r(result); }
+  function cancelAuth(){ if(authBusy) return; closeAuthModal(); settleAuth(false); }
+  function showAuthError(msg){
+    authError.textContent=msg;
+    authError.classList.remove('ok');
+    authError.classList.add('show');
+    authCard.classList.remove('shake');
+    void authCard.offsetWidth;
+    authCard.classList.add('shake');
+    clearTimeout(authShakeTimer);
+    authShakeTimer=setTimeout(()=>authCard.classList.remove('shake'),900);
+  }
+  function submitAuthCode(){
+    if(authBusy) return;
+    const code=authCodeInput.value.trim();
+    if(!code){ showAuthError('Please enter the code.'); authCodeInput.focus(); return; }
+    if(code===AUTH_CODE){
+      authBusy=true;
+      authCard.classList.remove('shake');
+      authCard.classList.add('success');
+      authError.textContent='✓ Access granted';
+      authError.classList.remove('ok');
+      authError.classList.add('show','ok');
+      setTimeout(()=>{ closeAuthModal(); authBusy=false; settleAuth(true); },520);
+    } else {
+      showAuthError('Incorrect code. Please try again.');
+      authCodeInput.value='';
+      authCodeInput.focus();
+    }
+  }
+  function verifyAuth(){ return new Promise(resolve=>{ if(authResolve) settleAuth(false); authResolve=resolve; openAuthModal(); }); }
+
+  authConfirmBtn.addEventListener('click',submitAuthCode);
+  authCancelBtn.addEventListener('click',cancelAuth);
+  authCodeInput.addEventListener('keydown',e=>{ if(e.key==='Enter'){ e.preventDefault(); submitAuthCode(); } });
+  authModal.addEventListener('click',e=>{ if(e.target===authModal) cancelAuth(); });
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&authModal.classList.contains('active')) cancelAuth(); });
+
+  // ===== CONFIRM MODAL =====
+  const confirmModal=document.getElementById('confirmModal');
+  const confirmCard=document.getElementById('confirmCard');
+  const confirmIcon=document.getElementById('confirmIcon');
+  const confirmTitle=document.getElementById('confirmTitle');
+  const confirmMessage=document.getElementById('confirmMessage');
+  const confirmOkBtn=document.getElementById('confirmOkBtn');
+  const confirmCancelBtn=document.getElementById('confirmCancelBtn');
+  let confirmResolve=null;
+
+  function showConfirm(message,opts){
+    opts=opts||{};
+    return new Promise(resolve=>{
+      confirmResolve=resolve;
+      confirmIcon.textContent=opts.icon||'🗑️';
+      confirmTitle.textContent=opts.title||'Are you sure?';
+      confirmMessage.textContent=message||'';
+      confirmOkBtn.textContent=opts.okText||'Delete';
+      confirmCancelBtn.textContent=opts.cancelText||'Cancel';
+      confirmCard.classList.remove('info');
+      if(opts.variant==='info') confirmCard.classList.add('info');
+      void confirmModal.offsetWidth;
+      confirmModal.classList.add('active');
+      setTimeout(()=>confirmCancelBtn.focus(),250);
+    });
+  }
+  function closeConfirm(result){ confirmModal.classList.remove('active'); const r=confirmResolve; confirmResolve=null; if(r) r(result); }
+  confirmOkBtn.addEventListener('click',()=>closeConfirm(true));
+  confirmCancelBtn.addEventListener('click',()=>closeConfirm(false));
+  confirmModal.addEventListener('click',e=>{ if(e.target===confirmModal) closeConfirm(false); });
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&confirmModal.classList.contains('active')) closeConfirm(false); });
+
+  // ===== ADMIN LOG UI + AUTO-LOCK =====
+  const adminLogLocked=document.getElementById('adminLogLocked');
+  const adminLogContent=document.getElementById('adminLogContent');
+  const adminLogUnlockBtn=document.getElementById('adminLogUnlockBtn');
+  const adminLogLockBtn=document.getElementById('adminLogLockBtn');
+  const adminClearBtn=document.getElementById('adminClearBtn');
+  const adminCountdownEl=document.getElementById('adminCountdown');
+  let adminCountdownInterval=null, adminCountdownValue=AUTO_LOCK_SECONDS;
+
+  function updateAdminCountdownDisplay(){
+    if(!adminCountdownEl) return;
+    adminCountdownEl.textContent='🔒 '+adminCountdownValue+'s';
+    if(adminCountdownValue<=2) adminCountdownEl.classList.add('warn');
+    else adminCountdownEl.classList.remove('warn');
+  }
+  function clearAdminAutoLock(){ if(adminCountdownInterval){ clearInterval(adminCountdownInterval); adminCountdownInterval=null; } }
+  function startAdminAutoLock(){
+    clearAdminAutoLock();
+    adminCountdownValue=AUTO_LOCK_SECONDS;
+    updateAdminCountdownDisplay();
+    adminCountdownEl.classList.add('show');
+    adminCountdownInterval=setInterval(()=>{
+      adminCountdownValue--;
+      updateAdminCountdownDisplay();
+      if(adminCountdownValue<=0) lockAdminLog(true);
+    },1000);
+  }
+  function resetAdminAutoLock(){ if(!auditLogUnlocked) return; startAdminAutoLock(); }
+  function lockAdminLog(fromTimer){
+    clearAdminAutoLock();
+    adminCountdownEl.classList.remove('show','warn');
+    auditLogUnlocked=false;
+    adminLogContent.style.display='none';
+    adminLogLocked.style.display='block';
+    adminLogLockBtn.style.display='none';
+    if(fromTimer){
+      const txt=adminLogLocked.querySelector('.admin-locked-text');
+      if(txt){
+        txt.textContent='🔒 Locked automatically after '+AUTO_LOCK_SECONDS+'s of inactivity. Enter your code again to view.';
+        setTimeout(()=>{ txt.textContent='Private — enter your admin code to view product & purchase history'; },3200);
+      }
+    }
+  }
+
+  adminLogUnlockBtn.addEventListener('click',async()=>{
+    const ok=await verifyAuth();
+    if(!ok) return;
+    auditLogUnlocked=true;
+    adminLogLocked.style.display='none';
+    adminLogContent.style.display='block';
+    adminLogLockBtn.style.display='inline-block';
+    renderAuditLog();
+    startAdminAutoLock();
+  });
+  adminLogLockBtn.addEventListener('click',()=>lockAdminLog(false));
+  ['scroll','click','touchstart','mousemove','keydown'].forEach(evt=>{
+    adminLogContent.addEventListener(evt,resetAdminAutoLock,{passive:true});
+  });
+  adminClearBtn.addEventListener('click',async e=>{
+    e.stopPropagation();
+    const ok=await showConfirm('This will permanently erase all recorded activity. This cannot be undone.',{icon:'🗑️',title:'Clear activity log?',okText:'Clear'});
+    if(!ok) return;
+    auditLog=[]; saveAuditLog(); renderAuditLog();
+  });
+
+  // ===== MANAGED DOM ELEMENTS =====
+  const productNameInput=document.getElementById('productNameInput');
+  const productPriceInput=document.getElementById('productPriceInput');
+  const productCategoryInput=document.getElementById('productCategoryInput');
+  const cigaretteUnitField=document.getElementById('cigaretteUnitField');
+  const cigaretteUnitInput=document.getElementById('cigaretteUnitInput');
+  const totalStockInput=document.getElementById('totalStockInput');
+  const stockLeftInput=document.getElementById('stockLeftInput');
+  const addProductBtn=document.getElementById('addProductBtn');
+  const clearFormBtn=document.getElementById('clearFormBtn');
+  const formMessage=document.getElementById('formMessage');
+  const currentDateEl=document.getElementById('currentDate');
+
+  const directoryCustomerName=document.getElementById('directoryCustomerName');
+  const addDirectoryCustomerBtn=document.getElementById('addDirectoryCustomerBtn');
+  const directoryListContainer=document.getElementById('directoryListContainer');
+
+  const newCategoryNameInput=document.getElementById('newCategoryName');
+  const addCategoryBtn=document.getElementById('addCategoryBtn');
+
+  const debtCustomerNameInput=document.getElementById('debtCustomerName');
+  const debtProductLabelInput=document.getElementById('debtProductLabel');
+  const debtAmountInput=document.getElementById('debtAmount');
+  const debtDateInput=document.getElementById('debtDate');
+  const addDebtBtn=document.getElementById('addDebtBtn');
+
+  const expenseNameInput=document.getElementById('expenseName');
+  const expenseAmountInput=document.getElementById('expenseAmount');
+  const expenseAutoDateCheckbox=document.getElementById('expenseAutoDate');
+  const expenseManualDateInput=document.getElementById('expenseManualDate');
+  const addExpenseBtn=document.getElementById('addExpenseBtn');
+
+  const customerModal=document.getElementById('customerModal');
+  const modalBody=document.getElementById('modalBody');
+  const modalCloseBtn=document.getElementById('modalCloseBtn');
+
+  // Header date
+  const today=new Date();
+  currentDateEl.textContent=today.toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric'});
+
+  expenseAutoDateCheckbox.addEventListener('change',function(){
+    expenseManualDateInput.disabled=this.checked;
+    if(this.checked) expenseManualDateInput.value='';
+  });
+
+  function toggleCigaretteUnit(){
+    if(productCategoryInput.value==='cigarettes') cigaretteUnitField.classList.remove('hidden');
+    else { cigaretteUnitField.classList.add('hidden'); cigaretteUnitInput.value='stick'; }
+  }
+  productCategoryInput.addEventListener('change',toggleCigaretteUnit);
+
+  function populateCategorySelect(){
+    productCategoryInput.innerHTML=categories.map(cat=>'<option value="'+cat.name+'">'+(cat.name.charAt(0).toUpperCase()+cat.name.slice(1))+'</option>').join('');
+    if(!editingProductId) productCategoryInput.value=categories[0]?.name||'other';
+    toggleCigaretteUnit();
+  }
+
+  // ===== DIRECTORY =====
+  function renderDirectory(){
+    if(!directoryListContainer) return;
+    directoryListContainer.innerHTML=frequentCustomers.map((name,idx)=>'<span class="directory-tag">👤 '+escapeHTML(name)+'<button class="delete-directory-btn" data-index="'+idx+'" title="Remove">✕</button></span>').join('');
+  }
+  addDirectoryCustomerBtn.addEventListener('click',function(){
+    const name=directoryCustomerName.value.trim();
+    if(name&&!frequentCustomers.includes(name)){
+      frequentCustomers.push(name);
+      saveDirectory();
+      renderDirectory();
+      directoryCustomerName.value='';
+      logActivity('directory_added',{name:name});
+    }
+  });
+  directoryListContainer.addEventListener('click',function(e){
+    const delBtn=e.target.closest('.delete-directory-btn');
+    if(delBtn){
+      const idx=parseInt(delBtn.getAttribute('data-index'),10);
+      if(!isNaN(idx)&&idx>=0&&idx<frequentCustomers.length){
+        const removed=frequentCustomers[idx];
+        frequentCustomers.splice(idx,1);
+        saveDirectory();
+        renderDirectory();
+        logActivity('directory_removed',{name:removed});
+      }
+    }
+  });
+
+  // ===== ADD CATEGORY =====
+  addCategoryBtn.addEventListener('click',function(){
+    const name=newCategoryNameInput.value.trim().toLowerCase();
+    if(!name){ alert('Please enter a category name.'); return; }
+    if(categories.some(c=>c.name===name)){ alert('Category already exists.'); return; }
+    const hue=Math.floor(Math.random()*360);
+    categories.push({name:name,color:'hsl('+hue+',70%,85%)'});
+    saveCategories();
+    populateCategorySelect();
+    renderCategoryPicker();
+    newCategoryNameInput.value='';
+    logActivity('category_added',{name:name});
+  });
+
+  // ===== PRODUCT ACTIONS =====
+  function handleAddOrUpdateProduct(){
+    const name=productNameInput.value.trim();
+    const price=parseFloat(productPriceInput.value);
+    const category=productCategoryInput.value;
+    const cigaretteUnit=category==='cigarettes'?cigaretteUnitInput.value:null;
+    const totalStock=parseInt(totalStockInput.value)||0;
+    const stockLeft=parseInt(stockLeftInput.value)||0;
+    if(!name){ formMessage.textContent='❗ Please enter a product name.'; return; }
+    if(isNaN(price)||price<0){ formMessage.textContent='❗ Price must be a valid positive number.'; return; }
+
+    if(editingProductId){
+      const idx=products.findIndex(p=>p.id===editingProductId);
+      if(idx!==-1){
+        products[idx]={...products[idx],name:name,price:price,category:category,cigaretteUnit:cigaretteUnit,totalStock:totalStock,stockLeft:stockLeft};
+        logActivity('product_edited',{name:name,price:price,category:category});
+        formMessage.textContent='✅ Product updated.';
+      }
+      editingProductId=null;
+      addProductBtn.innerHTML='➕ Add product';
+    } else {
+      const newProduct={
+        id:'prod_'+Date.now()+'_'+Math.random().toString(36).substring(2,8),
+        name:name,price:price,category:category,cigaretteUnit:cigaretteUnit,
+        totalStock:totalStock,stockLeft:stockLeft,customers:[]
+      };
+      products.push(newProduct);
+      logActivity('product_added',{name:name,price:price,category:category});
+      formMessage.textContent='✅ Product added successfully.';
+    }
+    saveProducts();
+    clearProductForm();
+    renderProductList();
+    renderDebtorsOverview();
+    renderHeroStats();
+    renderCategoryPicker();
+  }
+  function clearProductForm(){
+    productNameInput.value='';
+    productPriceInput.value='';
+    productCategoryInput.value=categories[0]?.name||'other';
+    cigaretteUnitInput.value='stick';
+    totalStockInput.value='';
+    stockLeftInput.value='';
+    editingProductId=null;
+    addProductBtn.innerHTML='➕ Add product';
+    formMessage.textContent='';
+    productNameInput.classList.remove('edit-input');
+    productPriceInput.classList.remove('edit-input');
+    toggleCigaretteUnit();
+  }
+  addProductBtn.addEventListener('click',handleAddOrUpdateProduct);
+  clearFormBtn.addEventListener('click',clearProductForm);
+  productNameInput.addEventListener('keypress',e=>{ if(e.key==='Enter') handleAddOrUpdateProduct(); });
+  productPriceInput.addEventListener('keypress',e=>{ if(e.key==='Enter') handleAddOrUpdateProduct(); });
+
+  // ===== DEBT ACTIONS =====
+  function handleAddDebt(){
+    const name=debtCustomerNameInput.value.trim();
+    const productLabel=debtProductLabelInput.value.trim();
+    const amount=parseFloat(debtAmountInput.value);
+    const dateStr=debtDateInput.value.trim();
+    if(!name){ alert('Please enter customer name.'); return; }
+    if(isNaN(amount)||amount<0){ alert('Please enter a valid amount.'); return; }
+    if(!dateStr){ alert('Please enter a date (e.g., Sep 7, 2026).'); return; }
+    const newDebt={ id:'debt_'+Date.now()+'_'+Math.random().toString(36).substring(2,8), name:name, productLabel:productLabel, amount:amount, date:dateStr, paymentStatus:'unpaid', partialPercent:100 };
+    manualDebts.push(newDebt);
+    saveDebts();
+    renderDebtList();
+    renderDebtorsOverview();
+    renderHeroStats();
+    debtCustomerNameInput.value='';
+    debtProductLabelInput.value='';
+    debtAmountInput.value='';
+    debtDateInput.value='';
+    logActivity('debt_added',{customer:name,productLabel:productLabel,amount:amount});
+  }
+  async function handleDeleteDebt(debtId){
+    const debt=manualDebts.find(d=>d.id===debtId);
+    if(!debt) return;
+    const ok=await showConfirm('Delete this debt for "'+debt.name+'" (₱'+parseFloat(debt.amount).toFixed(2)+')?',{icon:'🗑️',title:'Delete debt?',okText:'Delete'});
+    if(!ok) return;
+    const allowed=await verifyAuth();
+    if(!allowed){ alert('Access denied'); return; }
+    manualDebts=manualDebts.filter(d=>d.id!==debtId);
+    saveDebts();
+    renderDebtList();
+    renderDebtorsOverview();
+    renderHeroStats();
+    logActivity('debt_deleted',{customer:debt.name,amount:debt.amount});
+  }
+  addDebtBtn.addEventListener('click',handleAddDebt);
+
+  debtListContainer.addEventListener('click',function(e){
+    const delBtn=e.target.closest('.delete-debt-btn');
+    if(delBtn){ const id=delBtn.getAttribute('data-debt-id'); if(id) handleDeleteDebt(id); }
+    const paidBtn=e.target.closest('.debt-paid-btn');
+    if(paidBtn){
+      const id=paidBtn.getAttribute('data-debt-id');
+      const debt=manualDebts.find(d=>d.id===id);
+      if(debt){ debt.paymentStatus='paid'; debt.partialPercent=0; saveDebts(); renderDebtList(); renderDebtorsOverview(); renderHeroStats(); logActivity('debt_paid',{customer:debt.name,amount:debt.amount}); }
+    }
+    const partialBtn=e.target.closest('.debt-partial-btn');
+    if(partialBtn){
+      const id=partialBtn.getAttribute('data-debt-id');
+      const debt=manualDebts.find(d=>d.id===id);
+      if(debt){ debt.paymentStatus='partial'; debt.partialPercent=100; saveDebts(); renderDebtList(); renderDebtorsOverview(); }
+    }
+  });
+  debtListContainer.addEventListener('change',function(e){
+    if(e.target.classList.contains('debt-partial-select')){
+      const id=e.target.getAttribute('data-debt-id');
+      const pct=parseInt(e.target.value);
+      const debt=manualDebts.find(d=>d.id===id);
+      if(debt&&debt.paymentStatus==='partial'){ debt.partialPercent=pct; saveDebts(); }
+    }
+  });
+
+  // ===== EXPENSE ACTIONS =====
+  function handleAddExpense(){
+    const name=expenseNameInput.value.trim();
+    const amount=parseFloat(expenseAmountInput.value);
+    let dateStr='';
+    if(expenseAutoDateCheckbox.checked){
+      dateStr=new Date().toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'});
+    } else {
+      dateStr=expenseManualDateInput.value.trim();
+      if(!dateStr){ alert('Please enter a date or check Auto date.'); return; }
+    }
+    if(!name){ alert('Please enter expense name.'); return; }
+    if(isNaN(amount)||amount<0){ alert('Please enter a valid amount.'); return; }
+    const newExp={ id:'exp_'+Date.now()+'_'+Math.random().toString(36).substring(2,8), name:name, amount:amount, date:dateStr };
+    personalExpenses.push(newExp);
+    saveExpenses();
+    renderExpenseList();
+    expenseNameInput.value='';
+    expenseAmountInput.value='';
+    expenseManualDateInput.value='';
+    expenseAutoDateCheckbox.checked=true;
+    expenseManualDateInput.disabled=true;
+    logActivity('expense_added',{name:name,amount:amount});
+  }
+  async function handleDeleteExpense(expId){
+    const exp=personalExpenses.find(e=>e.id===expId);
+    if(!exp) return;
+    const ok=await showConfirm('Delete expense "'+exp.name+'" (₱'+parseFloat(exp.amount).toFixed(2)+')?',{icon:'🗑️',title:'Delete expense?',okText:'Delete'});
+    if(!ok) return;
+    const allowed=await verifyAuth();
+    if(!allowed){ alert('Access denied'); return; }
+    personalExpenses=personalExpenses.filter(e=>e.id!==expId);
+    saveExpenses();
+    renderExpenseList();
+    logActivity('expense_deleted',{name:exp.name,amount:exp.amount});
+  }
+  addExpenseBtn.addEventListener('click',handleAddExpense);
+  expenseListContainer.addEventListener('click',function(e){
+    const delBtn=e.target.closest('.delete-expense-btn');
+    if(delBtn){ const id=delBtn.getAttribute('data-expense-id'); if(id) handleDeleteExpense(id); }
+  });
+
+  // ===== CUSTOMER SUMMARY MODAL =====
+  function showCustomerSummary(productId,customerIndex){
+    const product=products.find(p=>p.id===productId);
+    if(!product) return;
+    const customer=product.customers[customerIndex];
+    if(!customer) return;
+
+    const customerName=customer.name;
+    let totalCash=0, totalDebt=0, totalQuantity=0, summaryItems=[];
+
+    products.forEach(prod=>{
+      (prod.customers||[]).forEach(c=>{
+        if(c.name===customerName){
+          const qty=c.quantity||1;
+          const amt=(parseFloat(prod.price)||0)*qty;
+          totalQuantity+=qty;
+          if(c.paymentType==='cash') totalCash+=amt; else totalDebt+=amt;
+          if(c.lacksPayment&&c.lackAmount>0) totalDebt+=c.lackAmount;
+          summaryItems.push({ productName:prod.name, price:prod.price, paymentType:c.paymentType, unit:prod.cigaretteUnit||null, date:c.date, quantity:qty, amount:amt });
+        }
+      });
+    });
+
+    let listHtml = summaryItems.length===0 ? '<div>No purchases found.</div>' :
+      summaryItems.map(item=>
+        '<div class="summary-item"><div class="summary-item-left"><span><strong>'+escapeHTML(item.productName)+'</strong> '+(item.unit?'('+(item.unit==='stick'?'Per Stick':'Per Box')+')':'')+' (₱'+parseFloat(item.price).toFixed(2)+' x '+item.quantity+')</span><span class="summary-item-date">📅 '+formatDate(item.date)+' · <span class="summary-qty">₱'+item.amount.toFixed(2)+'</span></span></div><span class="payment-badge '+(item.paymentType==='cash'?'payment-cash':'payment-debt')+'">'+(item.paymentType==='cash'?'Cash':'Debt')+'</span></div>'
+      ).join('');
+
+    if(customer.lacksPayment&&customer.lackAmount>0){
+      listHtml+='<div class="summary-item"><div class="summary-item-left"><span><strong>⚠️ Lack Payment</strong></span><span class="summary-item-date">Additional debt from lack</span></div><span class="payment-badge payment-debt">₱'+customer.lackAmount.toFixed(2)+'</span></div>';
+    }
+
+    const noteText=customer.note||'';
+    const lacksPayment=customer.lacksPayment||false;
+    const lackAmount=customer.lackAmount||0;
+    const paymentStatus=customer.paymentStatus||'paid';
+    const partialPercent=customer.partialPercent||100;
+
+    modalBody.innerHTML=
+      '<div class="summary-stats"><div class="stat-box"><div class="stat-value">'+totalQuantity+'</div><div class="stat-label">Items</div></div><div class="stat-box"><div class="stat-value">₱'+totalCash.toFixed(2)+'</div><div class="stat-label">Cash</div></div><div class="stat-box"><div class="stat-value">₱'+totalDebt.toFixed(2)+'</div><div class="stat-label">Debt</div></div></div>'+
+      '<div class="summary-list">'+listHtml+'</div>'+
+      '<hr style="margin:16px 0;border-color:#eef0f8;">'+
+      '<div style="margin-top:12px;">'+
+        '<label style="display:flex;align-items:center;gap:8px;font-size:.9rem;font-weight:600;"><input type="checkbox" id="lacksPaymentCheckbox" '+(lacksPayment?'checked':'')+'> Lacks Payment</label>'+
+        '<div id="lackAmountContainer" style="margin-top:8px;'+(lacksPayment?'':'display:none;')+'"><label style="font-weight:700;">Amount lacking (₱):</label><select id="lackAmountSelect" style="width:100%;margin-top:6px;">'+Array.from({length:100},(_,i)=>i+1).map(n=>'<option value="'+n+'"'+(n===lackAmount?' selected':'')+'>₱'+n+'</option>').join('')+'</select></div>'+
+        '<button class="btn btn-light" id="noteButton" style="margin-top:8px;">📝 Add Note</button>'+
+        '<div id="noteArea" style="margin-top:8px;'+(noteText?'':'display:none;')+'"><textarea id="noteTextarea" rows="2" style="width:100%;padding:10px;border-radius:12px;border:1.5px solid var(--border);font-family:var(--font);">'+escapeHTML(noteText)+'</textarea></div>'+
+        (customer.paymentType==='debt'?
+          '<div style="margin-top:12px;"><label style="font-weight:700;">Payment Status:</label><select id="paymentStatusSelect" style="width:100%;margin-top:6px;"><option value="unpaid" '+(paymentStatus==='unpaid'?'selected':'')+'>Unpaid</option><option value="partial" '+(paymentStatus==='partial'?'selected':'')+'>Partial</option><option value="paid" '+(paymentStatus==='paid'?'selected':'')+'>Paid</option></select><div id="partialPercentContainer" style="margin-top:6px;'+(paymentStatus==='partial'?'':'display:none;')+'"><label>Percent left:</label><select id="partialPercentSelect" style="width:100%;">'+Array.from({length:100},(_,i)=>i+1).map(n=>'<option value="'+n+'"'+(n===partialPercent?' selected':'')+'>'+n+'%</option>').join('')+'</select></div></div>'
+          :'')+
+        '<button class="btn btn-primary" id="saveCustomerDetailsBtn" style="margin-top:16px;width:100%;">💾 Save Details</button>'+
+      '</div>';
+
+    customerModal.classList.remove('modal-hidden');
+
+    document.getElementById('lacksPaymentCheckbox').addEventListener('change',function(){
+      document.getElementById('lackAmountContainer').style.display=this.checked?'block':'none';
+    });
+    document.getElementById('noteButton').addEventListener('click',function(){
+      document.getElementById('noteArea').style.display='block';
+    });
+    const pSel=document.getElementById('paymentStatusSelect');
+    if(pSel) pSel.addEventListener('change',function(){
+      const pc=document.getElementById('partialPercentContainer');
+      if(pc) pc.style.display=this.value==='partial'?'block':'none';
+    });
+    document.getElementById('saveCustomerDetailsBtn').addEventListener('click',function(){
+      const lacks=document.getElementById('lacksPaymentCheckbox').checked;
+      const note=document.getElementById('noteTextarea').value.trim();
+      let lackAmt=customer.lackAmount||0;
+      if(lacks) lackAmt=parseInt(document.getElementById('lackAmountSelect').value)||0;
+      else lackAmt=0;
+      let pStat=customer.paymentStatus||'paid';
+      let pPct=customer.partialPercent||100;
+      if(customer.paymentType==='debt'){
+        pStat=document.getElementById('paymentStatusSelect').value;
+        if(pStat==='partial') pPct=parseInt(document.getElementById('partialPercentSelect').value)||100;
+        else pPct=100;
+      }
+      const prodIdx=products.findIndex(p=>p.id===productId);
+      if(prodIdx!==-1){
+        products[prodIdx].customers[customerIndex].lacksPayment=lacks;
+        products[prodIdx].customers[customerIndex].note=note;
+        products[prodIdx].customers[customerIndex].paymentStatus=pStat;
+        products[prodIdx].customers[customerIndex].partialPercent=pPct;
+        products[prodIdx].customers[customerIndex].lackAmount=lackAmt;
+        saveProducts();
+        renderProductList();
+        renderDebtorsOverview();
+        renderHeroStats();
+      }
+      closeCustomerModal();
+    });
+  }
+  function closeCustomerModal(){ customerModal.classList.add('modal-hidden'); }
+  modalCloseBtn.addEventListener('click',closeCustomerModal);
+  customerModal.addEventListener('click',function(e){ if(e.target===customerModal) closeCustomerModal(); });
+
+  // ===== PRODUCT LIST EVENT DELEGATION =====
+  productListContainer.addEventListener('click',async function(e){
+    const customerInfo=e.target.closest('.customer-info');
+    if(customerInfo){
+      const pid=customerInfo.getAttribute('data-product-id');
+      const ci=parseInt(customerInfo.getAttribute('data-customer-index'),10);
+      if(pid&&!isNaN(ci)){ showCustomerSummary(pid,ci); return; }
+    }
+    const target=e.target.closest('button');
+    if(!target) return;
+
+    // Delete product
+    if(target.classList.contains('delete-product-btn')){
+      const pid=target.getAttribute('data-id');
+      const product=products.find(p=>p.id===pid);
+      if(!product) return;
+      const ok=await showConfirm('Delete "'+product.name+'" (₱'+parseFloat(product.price).toFixed(2)+')? This cannot be undone.',{icon:'🗑️',title:'Delete product?',okText:'Delete'});
+      if(!ok) return;
+      const allowed=await verifyAuth();
+      if(!allowed){ alert('Access denied'); return; }
+      logActivity('product_deleted',{name:product.name,price:product.price,category:product.category});
+      products=products.filter(p=>p.id!==pid);
+      saveProducts();
+      renderProductList();
+      renderDebtorsOverview();
+      renderHeroStats();
+      renderCategoryPicker();
+      if(editingProductId===pid) clearProductForm();
+      return;
+    }
+
+    // Edit product
+    if(target.classList.contains('edit-product-btn')){
+      const allowed=await verifyAuth();
+      if(!allowed){ alert('Access denied'); return; }
+      const pid=target.getAttribute('data-id');
+      const product=products.find(p=>p.id===pid);
+      if(product){
+        productNameInput.value=product.name;
+        productPriceInput.value=product.price;
+        productCategoryInput.value=product.category||'other';
+        if(product.category==='cigarettes'&&product.cigaretteUnit) cigaretteUnitInput.value=product.cigaretteUnit;
+        else cigaretteUnitInput.value='stick';
+        totalStockInput.value=product.totalStock||'';
+        stockLeftInput.value=product.stockLeft||'';
+        toggleCigaretteUnit();
+        editingProductId=pid;
+        addProductBtn.innerHTML='💾 Update product';
+        formMessage.textContent='✏️ Editing "'+product.name+'" — modify and save.';
+        productNameInput.classList.add('edit-input');
+        productPriceInput.classList.add('edit-input');
+        closeSaleWindow();
+        switchTab('manage');
+        setTimeout(()=>window.scrollTo({top:0,behavior:'smooth'}),100);
+      }
+      return;
+    }
+
+    // Add customer (purchase)
+    if(target.classList.contains('add-customer-btn')){
+      const pid=target.getAttribute('data-id');
+      const inputField=document.querySelector('.customer-name-input[data-product-id="'+pid+'"]');
+      const qtyField=document.querySelector('.customer-quantity-input[data-product-id="'+pid+'"]');
+      const selField=document.querySelector('.customer-payment-select[data-product-id="'+pid+'"]');
+      const cName=inputField?inputField.value.trim():'';
+      const pType=selField?selField.value:'cash';
+      const qty=qtyField?parseInt(qtyField.value)||1:1;
+      if(!cName){ alert('Please enter a customer name.'); return; }
+      if(qty<1){ alert('Quantity must be at least 1.'); return; }
+      const product=products.find(p=>p.id===pid);
+      if(product){
+        product.customers.push({ name:cName, paymentType:pType, date:new Date().toISOString(), quantity:qty, lacksPayment:false, paymentStatus:pType==='debt'?'unpaid':'paid', note:'', partialPercent:pType==='debt'?100:0, lackAmount:0 });
+        product.stockLeft=Math.max(0,(product.stockLeft||0)-qty);
+        saveProducts();
+        renderProductList();
+        renderDebtorsOverview();
+        renderHeroStats();
+        logActivity('purchase',{customer:cName,product:product.name,qty:qty,amount:(parseFloat(product.price)||0)*qty,payment:pType});
+      }
+      return;
+    }
+
+    // Delete customer
+    if(target.classList.contains('delete-customer')){
+      const pid=target.getAttribute('data-product-id');
+      const ci=target.getAttribute('data-customer-index');
+      if(pid&&ci!==null){
+        const idx=parseInt(ci,10);
+        const product=products.find(p=>p.id===pid);
+        if(!product||idx<0||idx>=product.customers.length) return;
+        const removed=product.customers[idx];
+        const ok=await showConfirm('Remove "'+removed.name+'" from "'+product.name+'"?',{icon:'❌',title:'Remove customer?',okText:'Remove'});
+        if(!ok) return;
+        const allowed=await verifyAuth();
+        if(!allowed){ alert('Access denied'); return; }
+        product.customers.splice(idx,1);
+        if(removed.quantity&&product.totalStock) product.stockLeft=Math.min(product.totalStock,(product.stockLeft||0)+removed.quantity);
+        else product.stockLeft=Math.min(product.totalStock||Infinity,(product.stockLeft||0)+(removed.quantity||1));
+        saveProducts();
+        renderProductList();
+        renderDebtorsOverview();
+        renderHeroStats();
+        logActivity('customer_deleted',{customer:removed.name,product:product.name});
+      }
+      return;
+    }
+  });
+
+  // ===== KEYDOWN: ENTER on customer name input =====
+  productListContainer.addEventListener('keydown',function(e){
+    if(e.key==='Enter'&&e.target.classList.contains('customer-name-input')){
+      const pid=e.target.getAttribute('data-product-id');
+      const inputField=e.target;
+      const qtyField=document.querySelector('.customer-quantity-input[data-product-id="'+pid+'"]');
+      const selField=document.querySelector('.customer-payment-select[data-product-id="'+pid+'"]');
+      const cName=inputField.value.trim();
+      const pType=selField?selField.value:'cash';
+      const qty=qtyField?parseInt(qtyField.value)||1:1;
+      if(cName&&pid){
+        const product=products.find(p=>p.id===pid);
+        if(product){
+          product.customers.push({ name:cName, paymentType:pType, date:new Date().toISOString(), quantity:qty, lacksPayment:false, paymentStatus:pType==='debt'?'unpaid':'paid', note:'', partialPercent:pType==='debt'?100:0, lackAmount:0 });
+          product.stockLeft=Math.max(0,(product.stockLeft||0)-qty);
+          saveProducts();
+          renderProductList();
+          renderDebtorsOverview();
+          renderHeroStats();
+          logActivity('purchase',{customer:cName,product:product.name,qty:qty,amount:(parseFloat(product.price)||0)*qty,payment:pType});
+        }
+      }
+    }
+  });
+
+  // ===== INIT =====
+  loadCategories();
+  loadProducts();
+  loadDebts();
+  loadExpenses();
+  loadDirectory();
+  loadAuditLog();
+
+  populateCategorySelect();
+  renderCategoryFilter();
+  renderDirectory();
+  renderProductList();
+  renderDebtList();
+  renderExpenseList();
+  renderDebtorsOverview();
+  renderHeroStats();
+  renderCategoryPicker();
+
+  productCategoryInput.value=categories[0]?.name||'other';
+  toggleCigaretteUnit();
+
+})();
+</script>
+</body>
+</html>
