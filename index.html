@@ -332,7 +332,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
 <body>
 
 <div class="app-container">
-  <!-- HEADER -->
   <div class="app-header">
     <div class="logo-area">
       <div class="logo-icon">
@@ -346,14 +345,12 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
     <div class="header-date" id="currentDate"></div>
   </div>
 
-  <!-- TABS -->
   <div class="tab-bar" role="tablist">
     <button class="tab-btn active" data-tab="sale" role="tab">🛒 Sale</button>
     <button class="tab-btn" data-tab="manage" role="tab">⚙️ Manage</button>
     <button class="tab-btn" data-tab="calculator" role="tab">🧮 Calc</button>
   </div>
 
-  <!-- SALE TAB -->
   <div class="tab-panel" id="tab-sale">
     <div class="hero-card">
       <div class="hero-icon">🛒</div>
@@ -368,7 +365,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
     </div>
   </div>
 
-  <!-- MANAGE TAB -->
   <div class="tab-panel hidden" id="tab-manage">
     <div class="card customer-directory">
       <div class="section-title">👥 Frequent Customers</div>
@@ -467,7 +463,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
     </div>
   </div>
 
-  <!-- CALCULATOR TAB -->
   <div class="tab-panel hidden" id="tab-calculator">
     <div class="card">
       <div class="section-title">🧮 Calculator</div>
@@ -498,7 +493,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
   </div>
 </div>
 
-<!-- SALE WINDOW -->
 <div id="saleWindow" class="sale-window">
   <div class="sale-window-inner">
     <div class="sale-window-header">
@@ -516,7 +510,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
   </div>
 </div>
 
-<!-- AUTH MODAL -->
 <div id="authModal" class="auth-modal">
   <div class="auth-card" id="authCard">
     <div class="auth-brand-mark">
@@ -539,7 +532,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
   </div>
 </div>
 
-<!-- CONFIRM MODAL -->
 <div id="confirmModal" class="confirm-overlay">
   <div class="confirm-card" id="confirmCard">
     <div class="confirm-icon" id="confirmIcon">🗑️</div>
@@ -552,7 +544,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
   </div>
 </div>
 
-<!-- CUSTOMER SUMMARY MODAL -->
 <div id="customerModal" class="modal-overlay modal-hidden">
   <div class="modal-content">
     <div class="modal-header">
@@ -567,7 +558,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
 (function(){
   'use strict';
 
-  // ===== STORAGE KEYS =====
   const PRODUCTS_KEY = 'pocket_inventory_products_v10';
   const DEBTS_KEY = 'pocket_inventory_manual_debts_v2';
   const EXPENSES_KEY = 'pocket_inventory_personal_expenses_v1';
@@ -613,7 +603,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
 
   const defaultDirectory = ['Ana','Tita Linda'];
 
-  // ===== STATE =====
   let products = [];
   let manualDebts = [];
   let personalExpenses = [];
@@ -624,7 +613,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
   let auditLogUnlocked = false;
   let editingProductId = null;
 
-  // ===== HELPERS =====
   function escapeHTML(text){
     if(!text) return '';
     return String(text).replace(/[&<>"]/g,function(m){
@@ -659,7 +647,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
   function paymentBadgeClass(pt){ return pt==='cash'?'payment-cash':pt==='debt'?'payment-debt':'payment-unregistered'; }
   function paymentNameClass(pt){ return pt==='cash'?'customer-name-cash':pt==='debt'?'customer-name-debt':'customer-name-unregistered'; }
 
-  // ===== LOAD/SAVE =====
   function loadCategories(){
     const s=localStorage.getItem(CATEGORIES_KEY);
     if(s){ try{ categories=JSON.parse(s); const n=categories.map(c=>c.name); defaultCategories.forEach(d=>{ if(!n.includes(d.name)) categories.push(d); }); }catch(e){ categories=[...defaultCategories]; } }
@@ -727,7 +714,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
     if(auditLogUnlocked) renderAuditLog();
   }
 
-  // ===== TAB SWITCHING =====
   const tabButtons = document.querySelectorAll('.tab-btn');
   const tabSale = document.getElementById('tab-sale');
   const tabManage = document.getElementById('tab-manage');
@@ -741,18 +727,33 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
   }
   tabButtons.forEach(b=>b.addEventListener('click',()=>switchTab(b.dataset.tab)));
 
-  // ===== HERO STATS =====
   function renderHeroStats(){
     const debtorsSet=new Set();
-    products.forEach(p=>(p.customers||[]).forEach(c=>{ if(c.paymentType==='debt'&&c.paymentStatus!=='paid') debtorsSet.add(c.name); }));
-    manualDebts.forEach(d=>{ if(d.paymentStatus!=='paid') debtorsSet.add(d.name); });
+    products.forEach(p=>(p.customers||[]).forEach(c=>{
+      if(c.paymentType!=='debt') return;
+      const status=c.paymentStatus||'unpaid';
+      if(status==='paid') return;
+      // count partial only if there's still remaining balance
+      if(status==='partial'){
+        const pct=(c.partialPercent!=null?c.partialPercent:100);
+        if(pct<=0) return;
+      }
+      debtorsSet.add(c.name);
+    }));
+    manualDebts.forEach(d=>{
+      if(d.paymentStatus==='paid') return;
+      if(d.paymentStatus==='partial'){
+        const pct=(d.partialPercent!=null?d.partialPercent:100);
+        if(pct<=0) return;
+      }
+      debtorsSet.add(d.name);
+    });
     const sold=products.reduce((sum,p)=>sum+(p.customers||[]).reduce((s,c)=>s+(c.quantity||1),0),0);
     document.getElementById('heroStatProducts').textContent = products.length;
     document.getElementById('heroStatDebtors').textContent = debtorsSet.size;
     document.getElementById('heroStatSold').textContent = sold;
   }
 
-  // ===== SALE WINDOW =====
   const saleWindow = document.getElementById('saleWindow');
   const saleStageCategory = document.getElementById('saleStageCategory');
   const saleStageProducts = document.getElementById('saleStageProducts');
@@ -813,7 +814,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
   saleWindow.addEventListener('click',function(e){ if(e.target===saleWindow) closeSaleWindow(); });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&saleWindow.classList.contains('active')) closeSaleWindow(); });
 
-  // ===== CATEGORY CHIPS =====
   const categoryFilterContainer = document.getElementById('categoryFilterContainer');
   function renderCategoryFilter(){
     if(!categoryFilterContainer) return;
@@ -840,7 +840,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
     saleWindowTitle.textContent='🛒 '+(currentFilterCategory==='all'?'All Products':(currentFilterCategory.charAt(0).toUpperCase()+currentFilterCategory.slice(1)));
   });
 
-  // ===== PRODUCT LIST =====
   const productListContainer = document.getElementById('productListContainer');
   function renderProductList(){
     if(!productListContainer) return;
@@ -885,7 +884,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
     productListContainer.innerHTML=html;
   }
 
-  // ===== DEBT LIST =====
   const debtListContainer = document.getElementById('debtListContainer');
   function renderDebtList(){
     if(!debtListContainer) return;
@@ -899,7 +897,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
     debtListContainer.innerHTML=html;
   }
 
-  // ===== EXPENSE LIST =====
   const expenseListContainer = document.getElementById('expenseListContainer');
   function renderExpenseList(){
     if(!expenseListContainer) return;
@@ -911,24 +908,54 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
     expenseListContainer.innerHTML=html;
   }
 
-  // ===== DEBTORS OVERVIEW =====
   const debtorsOverviewContainer = document.getElementById('debtorsOverviewContainer');
+
+  // ===== DEBTORS OVERVIEW — respects payment status & partial % =====
   function renderDebtorsOverview(){
     if(!debtorsOverviewContainer) return;
     const map={};
+
+    // Product-based debts
     products.forEach(p=>(p.customers||[]).forEach(c=>{
-      let amt=0;
-      if(c.paymentType==='debt') amt=(parseFloat(p.price)||0)*(c.quantity||1);
-      if(c.lacksPayment&&c.lackAmount>0) amt+=c.lackAmount;
-      if(amt>0) map[c.name]=(map[c.name]||0)+amt;
+      // Skip non-debts
+      if(c.paymentType!=='debt' && !(c.lacksPayment&&c.lackAmount>0)) return;
+
+      const status=c.paymentStatus||'unpaid';
+      if(status==='paid') return; // fully paid → skip
+
+      let full=0;
+      if(c.paymentType==='debt') full += (parseFloat(p.price)||0)*(c.quantity||1);
+      if(c.lacksPayment && c.lackAmount>0) full += c.lackAmount;
+
+      if(full<=0) return;
+
+      let remaining=full;
+      if(status==='partial'){
+        const pct=(c.partialPercent!=null?c.partialPercent:100);
+        remaining=full*(pct/100);
+      }
+      if(remaining>0) map[c.name]=(map[c.name]||0)+remaining;
     }));
-    manualDebts.forEach(d=>{ if(d.paymentStatus!=='paid') map[d.name]=(map[d.name]||0)+(parseFloat(d.amount)||0); });
+
+    // Manual debts
+    manualDebts.forEach(d=>{
+      const status=d.paymentStatus||'unpaid';
+      if(status==='paid') return;
+      let full=parseFloat(d.amount)||0;
+      if(full<=0) return;
+      let remaining=full;
+      if(status==='partial'){
+        const pct=(d.partialPercent!=null?d.partialPercent:100);
+        remaining=full*(pct/100);
+      }
+      if(remaining>0) map[d.name]=(map[d.name]||0)+remaining;
+    });
+
     const entries=Object.entries(map);
     if(entries.length===0){ debtorsOverviewContainer.innerHTML='<div style="color:#9aa0b8;font-size:.85rem;">No outstanding debts.</div>'; return; }
     debtorsOverviewContainer.innerHTML=entries.map(([n,a])=>'<div class="debtor-item"><span class="debtor-name">👤 '+escapeHTML(n)+'</span><span class="debtor-total">₱'+a.toFixed(2)+'</span></div>').join('');
   }
 
-  // ===== AUDIT LOG RENDER =====
   function renderAuditLog(){
     const list=document.getElementById('adminLogList');
     const countEl=document.getElementById('adminLogCount');
@@ -964,7 +991,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
     }).join('');
   }
 
-  // ===== AUTH MODAL =====
   const authModal=document.getElementById('authModal');
   const authCard=document.getElementById('authCard');
   const authCodeInput=document.getElementById('authCodeInput');
@@ -1024,7 +1050,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
   authModal.addEventListener('click',e=>{ if(e.target===authModal) cancelAuth(); });
   document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&authModal.classList.contains('active')) cancelAuth(); });
 
-  // ===== CONFIRM MODAL =====
   const confirmModal=document.getElementById('confirmModal');
   const confirmCard=document.getElementById('confirmCard');
   const confirmIcon=document.getElementById('confirmIcon');
@@ -1057,7 +1082,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
   confirmModal.addEventListener('click',e=>{ if(e.target===confirmModal) closeConfirm(false); });
   document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&confirmModal.classList.contains('active')) closeConfirm(false); });
 
-  // ===== ADMIN LOG UI + AUTO-LOCK =====
   const adminLogLocked=document.getElementById('adminLogLocked');
   const adminLogContent=document.getElementById('adminLogContent');
   const adminLogUnlockBtn=document.getElementById('adminLogUnlockBtn');
@@ -1122,7 +1146,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
     auditLog=[]; saveAuditLog(); renderAuditLog();
   });
 
-  // ===== MANAGED DOM ELEMENTS =====
   const productNameInput=document.getElementById('productNameInput');
   const productPriceInput=document.getElementById('productPriceInput');
   const productCategoryInput=document.getElementById('productCategoryInput');
@@ -1158,7 +1181,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
   const modalBody=document.getElementById('modalBody');
   const modalCloseBtn=document.getElementById('modalCloseBtn');
 
-  // Header date
   const today=new Date();
   currentDateEl.textContent=today.toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric'});
 
@@ -1179,7 +1201,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
     toggleCigaretteUnit();
   }
 
-  // ===== DIRECTORY =====
   function renderDirectory(){
     if(!directoryListContainer) return;
     directoryListContainer.innerHTML=frequentCustomers.map((name,idx)=>'<span class="directory-tag">👤 '+escapeHTML(name)+'<button class="delete-directory-btn" data-index="'+idx+'" title="Remove">✕</button></span>').join('');
@@ -1208,7 +1229,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
     }
   });
 
-  // ===== ADD CATEGORY =====
   addCategoryBtn.addEventListener('click',function(){
     const name=newCategoryNameInput.value.trim().toLowerCase();
     if(!name){ alert('Please enter a category name.'); return; }
@@ -1222,7 +1242,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
     logActivity('category_added',{name:name});
   });
 
-  // ===== PRODUCT ACTIONS =====
   function handleAddOrUpdateProduct(){
     const name=productNameInput.value.trim();
     const price=parseFloat(productPriceInput.value);
@@ -1278,7 +1297,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
   productNameInput.addEventListener('keypress',e=>{ if(e.key==='Enter') handleAddOrUpdateProduct(); });
   productPriceInput.addEventListener('keypress',e=>{ if(e.key==='Enter') handleAddOrUpdateProduct(); });
 
-  // ===== DEBT ACTIONS =====
   function handleAddDebt(){
     const name=debtCustomerNameInput.value.trim();
     const productLabel=debtProductLabelInput.value.trim();
@@ -1328,7 +1346,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
     if(partialBtn){
       const id=partialBtn.getAttribute('data-debt-id');
       const debt=manualDebts.find(d=>d.id===id);
-      if(debt){ debt.paymentStatus='partial'; debt.partialPercent=100; saveDebts(); renderDebtList(); renderDebtorsOverview(); }
+      if(debt){ debt.paymentStatus='partial'; debt.partialPercent=100; saveDebts(); renderDebtList(); renderDebtorsOverview(); renderHeroStats(); }
     }
   });
   debtListContainer.addEventListener('change',function(e){
@@ -1336,11 +1354,10 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
       const id=e.target.getAttribute('data-debt-id');
       const pct=parseInt(e.target.value);
       const debt=manualDebts.find(d=>d.id===id);
-      if(debt&&debt.paymentStatus==='partial'){ debt.partialPercent=pct; saveDebts(); }
+      if(debt&&debt.paymentStatus==='partial'){ debt.partialPercent=pct; saveDebts(); renderDebtorsOverview(); renderHeroStats(); }
     }
   });
 
-  // ===== EXPENSE ACTIONS =====
   function handleAddExpense(){
     const name=expenseNameInput.value.trim();
     const amount=parseFloat(expenseAmountInput.value);
@@ -1382,7 +1399,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
     if(delBtn){ const id=delBtn.getAttribute('data-expense-id'); if(id) handleDeleteExpense(id); }
   });
 
-  // ===== CUSTOMER SUMMARY MODAL =====
   function showCustomerSummary(productId,customerIndex){
     const product=products.find(p=>p.id===productId);
     if(!product) return;
@@ -1484,23 +1500,16 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
   modalCloseBtn.addEventListener('click',closeCustomerModal);
   customerModal.addEventListener('click',function(e){ if(e.target===customerModal) closeCustomerModal(); });
 
-  // ===== PER BOX WARNING + ADD CUSTOMER HELPER =====
   async function addCustomerToProduct(pid, cName, pType, qty){
-    // Cigarette Per Box warning
-    const productForCheck = products.find(p=>p.id===pid);
-    if(!productForCheck) return;
-    if(productForCheck.category==='cigarettes' && productForCheck.cigaretteUnit==='box'){
+    const product=products.find(p=>p.id===pid);
+    if(!product) return;
+
+    if(product.category==='cigarettes' && product.cigaretteUnit==='box'){
       const confirmed = await showConfirm(
         'Are you sure it is PER BOX? Or meant to say PER STICK?',
-        { icon:'⚠️', title:'Per Box Confirmation', okText:'Yes, Per Box', cancelText:'No, Per Stick', variant:'warning' }
+        { icon:'⚠️', title:'Per Box Confirmation', okText:'Yes, Per Box', cancelText:'No', variant:'warning' }
       );
-      if(!confirmed){
-        // User says it should be per stick — switch the unit and stop this addition
-        productForCheck.cigaretteUnit='stick';
-        saveProducts();
-        renderProductList();
-        return;
-      }
+      if(!confirmed) return;
     }
 
     if(!cName){
@@ -1508,8 +1517,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
       else { alert('Please enter a customer name.'); return; }
     }
     if(qty<1){ alert('Quantity must be at least 1.'); return; }
-    const product=products.find(p=>p.id===pid);
-    if(!product) return;
     const isDebt=pType==='debt';
     product.customers.push({
       name:cName, paymentType:pType, date:new Date().toISOString(), quantity:qty,
@@ -1525,7 +1532,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
     logActivity('purchase',{customer:cName,product:product.name,qty:qty,amount:(parseFloat(product.price)||0)*qty,payment:pType});
   }
 
-  // ===== PRODUCT LIST EVENT DELEGATION =====
   productListContainer.addEventListener('click',async function(e){
     const customerInfo=e.target.closest('.customer-info');
     if(customerInfo){
@@ -1536,7 +1542,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
     const target=e.target.closest('button');
     if(!target) return;
 
-    // Delete product
     if(target.classList.contains('delete-product-btn')){
       const pid=target.getAttribute('data-id');
       const product=products.find(p=>p.id===pid);
@@ -1556,7 +1561,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
       return;
     }
 
-    // Edit product
     if(target.classList.contains('edit-product-btn')){
       const allowed=await verifyAuth();
       if(!allowed){ alert('Access denied'); return; }
@@ -1583,7 +1587,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
       return;
     }
 
-    // Add customer (purchase)
     if(target.classList.contains('add-customer-btn')){
       const pid=target.getAttribute('data-id');
       const inputField=document.querySelector('.customer-name-input[data-product-id="'+pid+'"]');
@@ -1596,7 +1599,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
       return;
     }
 
-    // Delete customer
     if(target.classList.contains('delete-customer')){
       const pid=target.getAttribute('data-product-id');
       const ci=target.getAttribute('data-customer-index');
@@ -1622,7 +1624,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
     }
   });
 
-  // ===== KEYDOWN: ENTER on customer name input =====
   productListContainer.addEventListener('keydown',async function(e){
     if(e.key==='Enter'&&e.target.classList.contains('customer-name-input')){
       const pid=e.target.getAttribute('data-product-id');
@@ -1637,7 +1638,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
     }
   });
 
-  // ===== CALCULATOR =====
   let calcState = { current:'0', previous:null, operator:null, shouldReset:false, error:false };
 
   function calcUpdateDisplay(){
@@ -1756,7 +1756,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
     else if(e.key==='%'){ calcAction('percent'); e.preventDefault(); }
   });
 
-  // ===== INIT =====
   loadCategories();
   loadProducts();
   loadDebts();
