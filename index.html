@@ -66,13 +66,13 @@ body{font-family:var(--font);background:var(--bg-gradient);background-attachment
 .hero-stat-value{font-size:1.4rem;font-weight:800;color:var(--primary-dark);letter-spacing:-.5px;line-height:1.1}
 .hero-stat-label{font-size:.63rem;color:var(--text-muted);font-weight:800;text-transform:uppercase;letter-spacing:.7px;margin-top:4px}
 
-/* KITA (DAILY EARNINGS) */
+/* KITA */
 .kita-card{background:var(--card-bg);border-radius:var(--radius-lg);padding:20px 20px 18px;box-shadow:var(--shadow-md);margin-bottom:20px;border:1px solid var(--border);transition:box-shadow .25s ease}
 .kita-card:hover{box-shadow:var(--shadow-lg)}
 .kita-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap}
 .kita-title{font-size:1.02rem;font-weight:800;letter-spacing:-.2px;display:flex;align-items:center;gap:8px;color:var(--text-dark)}
 .kita-date{font-size:.63rem;font-weight:800;color:var(--text-muted);text-transform:uppercase;letter-spacing:.7px;background:var(--primary-light);padding:5px 11px;border-radius:20px;border:1px solid var(--border)}
-.kita-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.kita-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
 .kita-stat{background:var(--primary-light);border-radius:14px;padding:11px 9px;border:1px solid var(--border);text-align:center;min-width:0}
 .kita-stat-label{font-size:.56rem;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted);margin-bottom:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .kita-stat-value{font-size:.98rem;font-weight:800;letter-spacing:-.4px;word-break:break-all;line-height:1.2}
@@ -83,6 +83,8 @@ body{font-family:var(--font);background:var(--bg-gradient);background-attachment
 .kita-net .kita-stat-label{color:rgba(255,255,255,.85);margin-bottom:0}
 .kita-net .kita-stat-value{color:#fff;font-size:1.3rem}
 .kita-net.negative{background:linear-gradient(135deg,#ef4444 0%,#dc2626 100%)}
+.kita-note{font-size:.68rem;color:var(--text-muted);font-weight:600;text-align:center;padding:0 4px 12px;line-height:1.4}
+.kita-note.warn{color:#b45309}
 .kita-trend{display:flex;align-items:flex-end;gap:6px;height:62px;padding-top:8px;border-top:1px dashed var(--border);margin-top:2px}
 .kita-bar-wrap{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:5px;height:100%;min-width:0}
 .kita-bar{width:100%;max-width:26px;border-radius:6px 6px 3px 3px;background:linear-gradient(180deg,#818cf8,#6366f1);min-height:3px;transition:height .45s cubic-bezier(.34,1.4,.64,1)}
@@ -115,6 +117,11 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
 .btn-outline:hover{background:#f7f8fc;border-color:var(--primary-soft)}
 #formMessage{font-size:.85rem;font-weight:600;min-height:20px;color:#b45309}
 .section-title{font-size:1.15rem;font-weight:800;margin-bottom:16px;display:flex;align-items:center;gap:10px;color:var(--text-dark);letter-spacing:-.2px}
+
+/* BACKUP */
+.backup-actions{display:flex;gap:10px;flex-wrap:wrap}
+.backup-info{font-size:.82rem;color:var(--text-muted);font-weight:600;line-height:1.5;margin-bottom:14px}
+#importFileInput{display:none}
 
 /* RESTOCK */
 .restock-list{display:flex;flex-direction:column;gap:8px}
@@ -170,6 +177,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
 .product-header{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;margin-bottom:18px;position:relative;z-index:1}
 .product-title{font-size:1.35rem;font-weight:800;color:var(--text-dark);display:flex;align-items:center;gap:8px;flex-wrap:wrap;letter-spacing:-.3px}
 .badge{background:rgba(255,255,255,.85);color:#4338ca;padding:5px 14px;border-radius:30px;font-size:.78rem;font-weight:800;letter-spacing:.2px;box-shadow:0 2px 6px rgba(30,27,75,.08);border:1px solid rgba(255,255,255,.9)}
+.badge.cost-badge{background:rgba(254,226,226,.9);color:#9f1239}
 .category-badge{background:rgba(237,233,254,.9);color:#6d28d9}
 .unit-badge{background:rgba(254,243,199,.9);color:#92400e}
 .product-actions{display:flex;gap:6px;flex-wrap:wrap}
@@ -211,12 +219,16 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
 .hidden{display:none!important}
 
 /* DEBT / EXPENSE */
-.debt-list,.expense-list{display:flex;flex-direction:column;gap:8px;max-height:240px;overflow-y:auto}
+.debt-list,.expense-list{display:flex;flex-direction:column;gap:8px;max-height:400px;overflow-y:auto}
 .debt-item,.expense-item{background:var(--debt-bg);border:1px solid var(--debt-border);border-radius:18px;padding:13px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;box-shadow:0 2px 6px rgba(30,27,75,.04)}
 .debt-info,.expense-info{display:flex;flex-direction:column;gap:3px;flex:1;min-width:0}
 .debt-name,.expense-name{font-weight:800;font-size:.92rem;letter-spacing:-.1px}
 .debt-amount,.expense-amount{font-weight:800;color:#b45309;font-size:1.08rem;letter-spacing:-.3px}
 .debt-date,.expense-date{font-size:.72rem;color:var(--text-muted);font-weight:600}
+.debt-pay-summary{font-size:.74rem;font-weight:700;color:var(--text-muted);display:flex;gap:10px;flex-wrap:wrap;margin-top:2px}
+.debt-pay-summary .paid{color:#059669}
+.debt-pay-summary .left{color:#dc2626}
+.debt-actions{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
 .delete-debt-btn,.delete-expense-btn{background:transparent;border:none;color:#e11d48;font-weight:800;cursor:pointer;font-size:1rem;padding:0 6px;opacity:.75;transition:.15s}
 .delete-debt-btn:hover,.delete-expense-btn:hover{opacity:1;transform:scale(1.15)}
 
@@ -316,6 +328,21 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
 .summary-item-date{font-size:.7rem;color:var(--text-muted);font-weight:600}
 .summary-qty{font-weight:800;color:#4338ca}
 .modal-hidden{display:none!important}
+.pay-panel{background:#f7f8fc;border:1px solid #eef0f8;border-radius:18px;padding:16px;margin-bottom:16px}
+.pay-panel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:10px;flex-wrap:wrap}
+.pay-panel-title{font-size:.82rem;font-weight:800;text-transform:uppercase;letter-spacing:.6px;color:var(--text-muted)}
+.pay-row{display:flex;justify-content:space-between;font-size:.88rem;padding:5px 0;border-bottom:1px dashed #eef0f8;gap:10px}
+.pay-row:last-child{border-bottom:none}
+.pay-row span:first-child{color:var(--text-muted);font-weight:600}
+.pay-row span:last-child{font-weight:800}
+.pay-row.owed span:last-child{color:#b45309}
+.pay-row.paid span:last-child{color:#059669}
+.pay-row.left span:last-child{color:#dc2626}
+.pay-history{max-height:150px;overflow-y:auto;margin-top:8px}
+.pay-history-item{display:flex;justify-content:space-between;font-size:.78rem;padding:6px 0;border-bottom:1px dashed #eef0f8;gap:10px}
+.pay-history-item:last-child{border-bottom:none}
+.pay-history-item .amt{font-weight:800;color:#059669}
+.pay-history-item .date{color:var(--text-muted);font-weight:600}
 
 /* CONFIRM */
 .confirm-overlay{position:fixed;inset:0;z-index:2500;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(30,27,75,.5);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .25s ease,visibility .25s ease}
@@ -330,7 +357,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
 .confirm-card.warning #confirmOkBtn{background:linear-gradient(135deg,#f59e0b 0%,#d97706 100%);color:#fff;box-shadow:0 10px 22px -8px rgba(245,158,11,.7)}
 .confirm-card.warning #confirmOkBtn:hover{box-shadow:0 14px 28px -8px rgba(245,158,11,.85);transform:translateY(-1px)}
 .confirm-title{font-size:1.15rem;font-weight:800;color:var(--text-dark);letter-spacing:-.3px;margin-bottom:6px;position:relative;z-index:1}
-.confirm-message{font-size:.9rem;color:var(--text-muted);font-weight:500;line-height:1.5;margin-bottom:4px;position:relative;z-index:1;padding:0 6px;word-break:break-word}
+.confirm-message{font-size:.9rem;color:var(--text-muted);font-weight:500;line-height:1.5;margin-bottom:4px;position:relative;z-index:1;padding:0 6px;word-break:break-word;white-space:pre-line}
 .confirm-actions{display:flex;gap:10px;margin-top:22px;position:relative;z-index:1}
 .confirm-actions .btn{flex:1;padding:13px 16px}
 .confirm-danger{background:linear-gradient(135deg,#ef4444 0%,#dc2626 100%);color:#fff;box-shadow:0 10px 22px -8px rgba(239,68,68,.7)}
@@ -384,7 +411,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
 .calc-btn.calc-equals:hover{transform:translateY(-2px);box-shadow:0 12px 24px -6px rgba(99,102,241,.8)}
 .calc-btn.calc-zero{grid-column:span 2}
 
-/* ===================== DARK MODE ===================== */
+/* DARK MODE */
 html.dark{
   --primary:#818cf8;--primary-light:#22224a;--primary-dark:#c7d2fe;--primary-soft:#3b3b6b;
   --bg-gradient:linear-gradient(160deg,#080812 0%,#0e0e1e 55%,#111128 100%);
@@ -431,6 +458,7 @@ html.dark .product-item{background-image:linear-gradient(rgba(14,14,28,.88),rgba
 html.dark .product-item::after{background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,0) 40%)}
 html.dark .sold-section{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.08)}
 html.dark .badge{background:rgba(255,255,255,.1);color:#c7d2fe;border-color:rgba(255,255,255,.1)}
+html.dark .badge.cost-badge{background:rgba(239,68,68,.22);color:#fecaca}
 html.dark .category-badge{background:rgba(139,92,246,.22);color:#ddd6fe}
 html.dark .unit-badge{background:rgba(251,191,36,.18);color:#fcd34d}
 html.dark .stock-badge{background:rgba(255,255,255,.1);color:#e5e7ff;border-color:rgba(255,255,255,.1)}
@@ -451,6 +479,9 @@ html.dark .debtor-total{color:#fbbf24}
 html.dark .stat-box{background:#101024;border-color:#232342;box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}
 html.dark .summary-item{border-bottom-color:#232342}
 html.dark .summary-qty{color:#c7d2fe}
+html.dark .pay-panel{background:#101024;border-color:#232342}
+html.dark .pay-row{border-bottom-color:#232342}
+html.dark .pay-history-item{border-bottom-color:#232342}
 html.dark .sale-window-header{background:linear-gradient(180deg,#080812 70%,rgba(8,8,18,0))}
 html.dark .calc-btn{background:#22224a;color:#eceafd}
 html.dark .calc-btn:hover{background:#2c2c52}
@@ -538,7 +569,6 @@ html.dark .restock-allgood{color:#34d399}
       </div>
     </div>
 
-    <!-- ===== DAILY KITA SUMMARY ===== -->
     <div class="kita-card" id="kitaCard">
       <div class="kita-head">
         <div class="kita-title">📅 Today's Kita</div>
@@ -546,11 +576,11 @@ html.dark .restock-allgood{color:#34d399}
       </div>
       <div class="kita-grid">
         <div class="kita-stat kita-cash">
-          <div class="kita-stat-label">💵 Cash</div>
+          <div class="kita-stat-label">💵 Cash In</div>
           <div class="kita-stat-value" id="kitaCash">₱0.00</div>
         </div>
         <div class="kita-stat kita-utang">
-          <div class="kita-stat-label">📒 New Utang</div>
+          <div class="kita-stat-label">📒 Utang Added</div>
           <div class="kita-stat-value" id="kitaUtang">₱0.00</div>
         </div>
         <div class="kita-stat kita-expense">
@@ -558,16 +588,31 @@ html.dark .restock-allgood{color:#34d399}
           <div class="kita-stat-value" id="kitaExpenses">₱0.00</div>
         </div>
         <div class="kita-stat kita-net" id="kitaNetBox">
-          <div class="kita-stat-label">✅ Net Today</div>
+          <div class="kita-stat-label">📈 True Profit</div>
           <div class="kita-stat-value" id="kitaNet">₱0.00</div>
         </div>
       </div>
+      <div class="kita-note" id="kitaNote">Cash margin − expenses. Utang counts when collected.</div>
       <div class="kita-trend" id="kitaTrend"></div>
-      <div class="kita-trend-note">Last 7 days · bar height = daily net</div>
+      <div class="kita-trend-note">Last 7 days · bar height = daily profit</div>
     </div>
   </div>
 
   <div class="tab-panel hidden" id="tab-manage">
+    <!-- BACKUP -->
+    <div class="card">
+      <div class="section-title">💾 Backup &amp; Restore</div>
+      <div class="backup-info">
+        Export a backup file with all your data (products, debts, expenses, log, access code). Keep it somewhere safe — you can restore it anytime.
+      </div>
+      <div class="backup-actions">
+        <button class="btn btn-primary" id="exportDataBtn" type="button">⬇️ Export backup</button>
+        <button class="btn btn-outline" id="importDataBtn" type="button">⬆️ Import backup</button>
+        <input type="file" id="importFileInput" accept="application/json,.json">
+      </div>
+      <div id="backupStatus" style="font-size:.78rem;color:var(--text-muted);font-weight:600;margin-top:10px;"></div>
+    </div>
+
     <div class="card customer-directory">
       <div class="section-title">👥 Frequent Customers</div>
       <div style="display:flex;gap:8px;flex-wrap:wrap;">
@@ -589,7 +634,10 @@ html.dark .restock-allgood{color:#34d399}
       <div class="add-product-form">
         <div class="input-row">
           <div class="input-field"><label>Product name</label><input type="text" id="productNameInput" placeholder="e.g. Iced Coffee" autocomplete="off"></div>
-          <div class="input-field"><label>Price (₱)</label><input type="number" id="productPriceInput" placeholder="0.00" min="0" step="0.01"></div>
+        </div>
+        <div class="input-row">
+          <div class="input-field"><label>Cost price (₱)</label><input type="number" id="productCostInput" placeholder="0.00" min="0" step="0.01"></div>
+          <div class="input-field"><label>Selling price (₱)</label><input type="number" id="productPriceInput" placeholder="0.00" min="0" step="0.01"></div>
         </div>
         <div class="input-row">
           <div class="input-field"><label>Category</label><select id="productCategoryInput"></select></div>
@@ -610,7 +658,6 @@ html.dark .restock-allgood{color:#34d399}
       </div>
     </div>
 
-    <!-- ===== RESTOCK NEEDED ===== -->
     <div class="card">
       <div class="section-title">📦 Restock Needed</div>
       <div id="restockListContainer" class="restock-list"></div>
@@ -651,7 +698,6 @@ html.dark .restock-allgood{color:#34d399}
       <div id="debtorsOverviewContainer"></div>
     </div>
 
-    <!-- ===== SECURITY ===== -->
     <div class="card">
       <div class="section-title">🔑 Security</div>
       <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
@@ -718,7 +764,6 @@ html.dark .restock-allgood{color:#34d399}
       <div class="sale-window-title" id="saleWindowTitle">🛒 Select a Category</div>
       <button class="modal-close" id="closeSaleWindowBtn" type="button">✕</button>
     </div>
-    <!-- ===== SEARCH BAR ===== -->
     <div class="sale-search-wrap">
       <span class="sale-search-icon">🔍</span>
       <input type="text" id="saleSearchInput" placeholder="Search products or customers…" autocomplete="off" autocorrect="off" spellcheck="false">
@@ -773,13 +818,22 @@ html.dark .restock-allgood{color:#34d399}
   <div class="modal-content">
     <div class="modal-header">
       <span class="modal-title">👤 Customer Summary</span>
-      <button class="modal-close" id="modalCloseBtn">✕</button>
+      <button class="modal-close" id="modalCloseBtn" type="button">✕</button>
     </div>
     <div id="modalBody"></div>
   </div>
 </div>
 
-<!-- ===== CHANGE PIN MODAL ===== -->
+<div id="paymentModal" class="modal-overlay modal-hidden">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="modal-title" id="paymentModalTitle">💵 Record Payment</span>
+      <button class="modal-close" id="paymentModalCloseBtn" type="button">✕</button>
+    </div>
+    <div id="paymentModalBody"></div>
+  </div>
+</div>
+
 <div id="changePinModal" class="modal-overlay modal-hidden">
   <div class="modal-content">
     <div class="modal-header">
@@ -813,6 +867,7 @@ html.dark .restock-allgood{color:#34d399}
   const AUDIT_KEY = 'pocket_inventory_audit_log_v1';
   const PIN_KEY = 'pocket_inventory_pin_v1';
   const THEME_KEY = 'pocket_inventory_theme_v1';
+  const BACKUP_STAMP_KEY = 'pocket_inventory_last_backup_v1';
 
   const DEFAULT_PIN = '0627';
   const AUTO_LOCK_SECONDS = 5;
@@ -831,14 +886,14 @@ html.dark .restock-allgood{color:#34d399}
   ];
 
   const defaultProducts = [
-    { id:'prod_'+Date.now()+'_1', name:'Mango Graham Shake', price:120, category:'juice', cigaretteUnit:null, totalStock:50, stockLeft:20,
+    { id:'prod_'+Date.now()+'_1', name:'Mango Graham Shake', price:120, cost:60, category:'juice', cigaretteUnit:null, totalStock:50, stockLeft:20,
       customers:[
         { name:'Ana', paymentType:'cash', date:new Date().toISOString(), quantity:1, lacksPayment:false, paymentStatus:'paid', note:'', lackAmount:0 },
         { name:'Marco', paymentType:'cash', date:new Date().toISOString(), quantity:2, lacksPayment:false, paymentStatus:'paid', note:'', lackAmount:0 },
         { name:'Juls', paymentType:'debt', date:new Date().toISOString(), quantity:1, lacksPayment:false, paymentStatus:'unpaid', note:'', lackAmount:0 }
       ]
     },
-    { id:'prod_'+Date.now()+'_2', name:'Marlboro Red', price:150, category:'cigarettes', cigaretteUnit:'stick', totalStock:100, stockLeft:3,
+    { id:'prod_'+Date.now()+'_2', name:'Marlboro Red', price:150, cost:120, category:'cigarettes', cigaretteUnit:'stick', totalStock:100, stockLeft:3,
       customers:[
         { name:'Tita Linda', paymentType:'cash', date:new Date().toISOString(), quantity:3, lacksPayment:false, paymentStatus:'paid', note:'', lackAmount:0 }
       ]
@@ -846,8 +901,8 @@ html.dark .restock-allgood{color:#34d399}
   ];
 
   const defaultDebts = [
-    { id:'debt_'+Date.now()+'_1', name:'John', productLabel:'Liquor', amount:250, date:'Sep 7, 2026', paymentStatus:'unpaid', partialPercent:100 },
-    { id:'debt_'+Date.now()+'_2', name:'Mia', productLabel:'Soft Drinks', amount:120, date:'Sep 6, 2026', paymentStatus:'unpaid', partialPercent:100 }
+    { id:'debt_'+Date.now()+'_1', name:'John', productLabel:'Liquor', amount:250, date:'Sep 7, 2026', paymentStatus:'unpaid', partialPercent:100, payments:[] },
+    { id:'debt_'+Date.now()+'_2', name:'Mia', productLabel:'Soft Drinks', amount:120, date:'Sep 6, 2026', paymentStatus:'unpaid', partialPercent:100, payments:[] }
   ];
 
   const defaultExpenses = [
@@ -890,8 +945,9 @@ html.dark .restock-allgood{color:#34d399}
     catch{ return 'Unknown time'; }
   }
   function money(n){ return '₱'+(Number(n)||0).toFixed(2); }
+  function num(v){ const x = parseFloat(v); return isNaN(x) ? 0 : x; }
+  function hasCost(p){ return p.cost !== null && p.cost !== undefined && p.cost !== '' && !isNaN(parseFloat(p.cost)); }
 
-  /* ---------- date helpers (feature: overdue tracking + daily kita) ---------- */
   function toTimestamp(value){
     if(value===null || value===undefined || value==='') return null;
     if(typeof value==='number') return value;
@@ -942,6 +998,43 @@ html.dark .restock-allgood{color:#34d399}
   function paymentBadgeClass(pt){ return pt==='cash'?'payment-cash':pt==='debt'?'payment-debt':'payment-unregistered'; }
   function paymentNameClass(pt){ return pt==='cash'?'customer-name-cash':pt==='debt'?'customer-name-debt':'customer-name-unregistered'; }
 
+  /* ---------- payment math ---------- */
+  function sumPayments(payments){
+    return (payments || []).reduce((s,p)=>s + num(p && p.amount), 0);
+  }
+  function productCustomerOwed(p, c){
+    const base = (c.paymentType === 'debt') ? num(p.price) * (c.quantity||1) : 0;
+    const lack = (c.lacksPayment && num(c.lackAmount) > 0) ? num(c.lackAmount) : 0;
+    return base + lack;
+  }
+  function productCustomerPaid(c){ return sumPayments(c.payments); }
+  function productCustomerRemaining(p, c){
+    const owed = productCustomerOwed(p, c);
+    const hasPayments = c.payments && c.payments.length > 0;
+    const paid = productCustomerPaid(c);
+    if (hasPayments) return Math.max(0, owed - paid);
+    if (c.paymentStatus === 'paid') return 0;
+    if (c.paymentStatus === 'partial'){
+      const pct = (c.partialPercent != null) ? c.partialPercent : 100;
+      return owed * (pct/100);
+    }
+    return owed;
+  }
+  function manualDebtOwed(d){ return num(d.amount); }
+  function manualDebtPaid(d){ return sumPayments(d.payments); }
+  function manualDebtRemaining(d){
+    const owed = manualDebtOwed(d);
+    const hasPayments = d.payments && d.payments.length > 0;
+    const paid = manualDebtPaid(d);
+    if (hasPayments) return Math.max(0, owed - paid);
+    if (d.paymentStatus === 'paid') return 0;
+    if (d.paymentStatus === 'partial'){
+      const pct = (d.partialPercent != null) ? d.partialPercent : 100;
+      return owed * (pct/100);
+    }
+    return owed;
+  }
+
   /* ---------- storage ---------- */
   function loadCategories(){
     const s=localStorage.getItem(CATEGORIES_KEY);
@@ -958,13 +1051,24 @@ html.dark .restock-allgood{color:#34d399}
         products=JSON.parse(s);
         products=products.map(p=>({
           ...p,
+          cost: (p.cost !== undefined && p.cost !== null && p.cost !== '') ? p.cost : 0,
           category:p.category||'other',
           cigaretteUnit:p.cigaretteUnit||null,
           totalStock:p.totalStock||0,
           stockLeft:p.stockLeft||0,
           customers:Array.isArray(p.customers)?p.customers.map(c=>{
-            if(typeof c==='string') return {name:c,paymentType:'cash',date:new Date().toISOString(),quantity:1,lacksPayment:false,paymentStatus:'paid',note:'',lackAmount:0};
-            return { ...c, date:c.date||new Date().toISOString(), quantity:c.quantity||1, lacksPayment:c.lacksPayment||false, paymentStatus:c.paymentStatus||(c.paymentType==='debt'?'unpaid':'paid'), note:c.note||'', partialPercent:c.partialPercent||(c.paymentType==='debt'?100:0), lackAmount:c.lackAmount||0 };
+            if(typeof c==='string') return {name:c,paymentType:'cash',date:new Date().toISOString(),quantity:1,lacksPayment:false,paymentStatus:'paid',note:'',lackAmount:0,payments:[]};
+            return {
+              ...c,
+              date:c.date||new Date().toISOString(),
+              quantity:c.quantity||1,
+              lacksPayment:c.lacksPayment||false,
+              paymentStatus:c.paymentStatus||(c.paymentType==='debt'?'unpaid':'paid'),
+              note:c.note||'',
+              partialPercent:c.partialPercent||(c.paymentType==='debt'?100:0),
+              lackAmount:c.lackAmount||0,
+              payments: Array.isArray(c.payments) ? c.payments : []
+            };
           }):[]
         }));
       }catch(e){ products=[...defaultProducts]; }
@@ -975,8 +1079,17 @@ html.dark .restock-allgood{color:#34d399}
 
   function loadDebts(){
     const s=localStorage.getItem(DEBTS_KEY);
-    if(s){ try{ manualDebts=JSON.parse(s); manualDebts=manualDebts.map(d=>({...d,paymentStatus:d.paymentStatus||'unpaid',partialPercent:d.partialPercent||100})); }catch(e){ manualDebts=[...defaultDebts]; } }
-    else { manualDebts=[...defaultDebts]; }
+    if(s){
+      try{
+        manualDebts=JSON.parse(s);
+        manualDebts=manualDebts.map(d=>({
+          ...d,
+          paymentStatus:d.paymentStatus||'unpaid',
+          partialPercent:d.partialPercent||100,
+          payments: Array.isArray(d.payments) ? d.payments : []
+        }));
+      }catch(e){ manualDebts=[...defaultDebts]; }
+    } else { manualDebts=[...defaultDebts]; }
     saveDebts();
   }
   function saveDebts(){ localStorage.setItem(DEBTS_KEY,JSON.stringify(manualDebts)); }
@@ -1010,7 +1123,7 @@ html.dark .restock-allgood{color:#34d399}
     if(auditLogUnlocked) renderAuditLog();
   }
 
-  /* ---------- theme (feature: dark mode) ---------- */
+  /* ---------- theme ---------- */
   function applyTheme(dark){
     document.documentElement.classList.toggle('dark', dark);
     const btn = document.getElementById('themeToggleBtn');
@@ -1045,30 +1158,40 @@ html.dark .restock-allgood{color:#34d399}
   }
   tabButtons.forEach(b=>b.addEventListener('click',()=>switchTab(b.dataset.tab)));
 
-  /* ---------- daily kita (feature 1) ---------- */
+  /* ---------- daily kita (with true profit) ---------- */
   function computeDayStats(dayTs){
-    let cash=0, utang=0, expenses=0;
+    let cash=0, utang=0, expenses=0, grossProfit=0, costMissing=false;
     products.forEach(p=>{
       (p.customers||[]).forEach(c=>{
         const ts = toTimestamp(c.date);
         if(ts===null || !isSameDay(ts, dayTs)) return;
-        const amt = (parseFloat(p.price)||0) * (c.quantity||1);
-        if(c.paymentType==='cash') cash += amt;
-        else if(c.paymentType==='debt') utang += amt;
-        if(c.lacksPayment && c.lackAmount>0) utang += (parseFloat(c.lackAmount)||0);
+        const qty = c.quantity||1;
+        const rev = num(p.price) * qty;
+        if(c.paymentType==='cash'){
+          cash += rev;
+          if(hasCost(p)){
+            grossProfit += (num(p.price) - num(p.cost)) * qty;
+          } else {
+            grossProfit += rev;
+            costMissing = true;
+          }
+        } else if(c.paymentType==='debt'){
+          utang += rev;
+        }
+        if(c.lacksPayment && num(c.lackAmount) > 0) utang += num(c.lackAmount);
       });
     });
     manualDebts.forEach(d=>{
       const ts = entryTimestamp(d);
       if(ts===null || !isSameDay(ts, dayTs)) return;
-      utang += parseFloat(d.amount)||0;
+      utang += num(d.amount);
     });
     personalExpenses.forEach(e=>{
       const ts = entryTimestamp(e);
       if(ts===null || !isSameDay(ts, dayTs)) return;
-      expenses += parseFloat(e.amount)||0;
+      expenses += num(e.amount);
     });
-    return { cash:cash, utang:utang, expenses:expenses, net: cash + utang - expenses };
+    return { cash, utang, expenses, profit: grossProfit - expenses, costMissing };
   }
 
   function renderKita(){
@@ -1079,15 +1202,25 @@ html.dark .restock-allgood{color:#34d399}
     const netEl = document.getElementById('kitaNet');
     const netBox = document.getElementById('kitaNetBox');
     const dateEl = document.getElementById('kitaDateLabel');
+    const noteEl = document.getElementById('kitaNote');
     if(!cashEl) return;
 
     cashEl.textContent = money(today.cash);
     utangEl.textContent = money(today.utang);
     expEl.textContent = money(today.expenses);
-    netEl.textContent = money(today.net);
-    netBox.classList.toggle('negative', today.net < 0);
+    netEl.textContent = money(today.profit);
+    netBox.classList.toggle('negative', today.profit < 0);
     if(dateEl){
       dateEl.textContent = new Date().toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric'});
+    }
+    if(noteEl){
+      if(today.costMissing){
+        noteEl.textContent = '⚠️ Some sold items have no cost set — profit may be overstated. Utang counts when collected.';
+        noteEl.classList.add('warn');
+      } else {
+        noteEl.textContent = 'Cash margin − expenses. Utang counts when collected.';
+        noteEl.classList.remove('warn');
+      }
     }
 
     const trendEl = document.getElementById('kitaTrend');
@@ -1098,7 +1231,7 @@ html.dark .restock-allgood{color:#34d399}
       const st = computeDayStats(ts);
       days.push({
         ts: ts,
-        net: st.net,
+        net: st.profit,
         label: new Date(ts).toLocaleDateString(undefined,{weekday:'narrow'}),
         full: new Date(ts).toLocaleDateString(undefined,{month:'short',day:'numeric'})
       });
@@ -1117,21 +1250,15 @@ html.dark .restock-allgood{color:#34d399}
   function renderHeroStats(){
     const debtorsSet=new Set();
     products.forEach(p=>(p.customers||[]).forEach(c=>{
-      if(c.paymentType!=='debt') return;
+      if(c.paymentType!=='debt' && !(c.lacksPayment && num(c.lackAmount)>0)) return;
       const status=c.paymentStatus||'unpaid';
       if(status==='paid') return;
-      if(status==='partial'){
-        const pct=(c.partialPercent!=null?c.partialPercent:100);
-        if(pct<=0) return;
-      }
+      if(productCustomerRemaining(p,c) <= 0) return;
       debtorsSet.add(c.name);
     }));
     manualDebts.forEach(d=>{
       if(d.paymentStatus==='paid') return;
-      if(d.paymentStatus==='partial'){
-        const pct=(d.partialPercent!=null?d.partialPercent:100);
-        if(pct<=0) return;
-      }
+      if(manualDebtRemaining(d) <= 0) return;
       debtorsSet.add(d.name);
     });
     const sold=products.reduce((sum,p)=>sum+(p.customers||[]).reduce((s,c)=>s+(c.quantity||1),0),0);
@@ -1218,7 +1345,6 @@ html.dark .restock-allgood{color:#34d399}
   saleWindow.addEventListener('click',function(e){ if(e.target===saleWindow) closeSaleWindow(); });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&saleWindow.classList.contains('active')) closeSaleWindow(); });
 
-  /* ---------- search (feature 2) ---------- */
   function handleSaleSearch(){
     const val = saleSearchInput.value.trim();
     const wasEmpty = searchQuery.length === 0;
@@ -1250,7 +1376,6 @@ html.dark .restock-allgood{color:#34d399}
     saleSearchInput.focus();
   });
 
-  /* ---------- category filter ---------- */
   function renderCategoryFilter(){
     if(!categoryFilterContainer) return;
     categoryFilterContainer.innerHTML='';
@@ -1276,7 +1401,6 @@ html.dark .restock-allgood{color:#34d399}
     saleWindowTitle.textContent='🛒 '+(currentFilterCategory==='all'?'All Products':(currentFilterCategory.charAt(0).toUpperCase()+currentFilterCategory.slice(1)));
   });
 
-  /* ---------- product list ---------- */
   const productListContainer = document.getElementById('productListContainer');
   function renderProductList(){
     if(!productListContainer) return;
@@ -1304,6 +1428,7 @@ html.dark .restock-allgood{color:#34d399}
       const stockStatus=getStockStatus(product);
       const stockClass=stockStatus==='critical'?'stock-critical':stockStatus==='low'?'stock-low':'';
       const catColor=categories.find(c=>c.name===product.category)?.color||'#f5f5f5';
+      const costBadge = !hasCost(product) ? ' <span class="badge cost-badge">no cost</span>' : '';
 
       const custTags=customers.map((cust,idx)=>{
         const name=cust.name||'Unknown';
@@ -1324,7 +1449,7 @@ html.dark .restock-allgood{color:#34d399}
         stockInfo='<div class="stock-info"><span class="stock-badge">📦 Stock: '+product.stockLeft+' / '+product.totalStock+'</span>'+(stockStatus==='critical'?'<span style="color:#dc2626;font-weight:800;">⚠️ Critical</span>':'')+(stockStatus==='low'?'<span style="color:#d97706;font-weight:800;">🟡 Halfway</span>':'')+'</div>';
       }
       html+='<div class="product-item '+stockClass+'" style="background-color:'+catColor+';" data-product-id="'+product.id+'">'+
-        '<div class="product-header"><div class="product-title">'+escapeHTML(product.name)+' <span class="badge">₱'+parseFloat(product.price).toFixed(2)+'</span> <span class="badge category-badge">'+escapeHTML(product.category)+'</span>'+(product.cigaretteUnit?'<span class="badge unit-badge">'+(product.cigaretteUnit==='stick'?'Per Stick':'Per Box')+'</span>':'')+'</div>'+
+        '<div class="product-header"><div class="product-title">'+escapeHTML(product.name)+' <span class="badge">₱'+parseFloat(product.price).toFixed(2)+'</span> '+costBadge+'<span class="badge category-badge">'+escapeHTML(product.category)+'</span>'+(product.cigaretteUnit?'<span class="badge unit-badge">'+(product.cigaretteUnit==='stick'?'Per Stick':'Per Box')+'</span>':'')+'</div>'+
         '<div class="product-actions"><button class="btn btn-outline edit-product-btn" data-id="'+product.id+'" style="padding:8px 12px;">✏️</button><button class="btn btn-danger delete-product-btn" data-id="'+product.id+'" style="padding:8px 12px;">🗑️</button></div></div>'+
         '<div class="sold-section"><span class="sold-label">📊 Sold today</span><span class="sold-count">'+soldCount+'</span></div>'+
         stockInfo+
@@ -1345,11 +1470,23 @@ html.dark .restock-allgood{color:#34d399}
     if(manualDebts.length===0){ debtListContainer.innerHTML='<div style="color:#9aa0b8;font-size:.85rem;padding:8px;">No manual debts recorded.</div>'; return; }
     let html='';
     manualDebts.forEach(debt=>{
-      const status=debt.paymentStatus||'unpaid';
+      const owed = manualDebtOwed(debt);
+      const paid = manualDebtPaid(debt);
+      const remaining = manualDebtRemaining(debt);
+      const hasPayments = debt.payments && debt.payments.length > 0;
+      let status = debt.paymentStatus || 'unpaid';
+      if (hasPayments){
+        if (remaining <= 0) status = 'paid';
+        else if (paid > 0) status = 'partial';
+        else status = 'unpaid';
+      }
       const ts=entryTimestamp(debt);
       const overdueBadge = (status!=='paid' && ts!==null) ? ageBadge(ts) : '';
-      html+='<div class="debt-item" data-debt-id="'+debt.id+'"><div class="debt-info"><span class="debt-name">👤 '+escapeHTML(debt.name)+'</span>'+(debt.productLabel?'<span style="font-size:.8rem;color:var(--text-muted);">📦 '+escapeHTML(debt.productLabel)+'</span>':'')+'<span class="debt-amount">₱'+parseFloat(debt.amount).toFixed(2)+'</span><span class="debt-date">📅 '+escapeHTML(debt.date)+'</span><span class="payment-status-badge status-'+status+'">'+status+'</span> '+(status==='partial'?'<span style="font-size:.72rem;font-weight:700;">('+debt.partialPercent+'% left)</span>':'')+' '+overdueBadge+'</div>'+
-        '<div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;"><button class="btn btn-light debt-paid-btn" data-debt-id="'+debt.id+'">Paid</button><button class="btn btn-light debt-partial-btn" data-debt-id="'+debt.id+'">Partial</button><select class="debt-partial-select" data-debt-id="'+debt.id+'" style="display:'+(status==='partial'?'inline-block':'none')+';width:70px;padding:6px;">'+Array.from({length:100},(_,i)=>i+1).map(n=>'<option value="'+n+'"'+(n===debt.partialPercent?' selected':'')+'>'+n+'%</option>').join('')+'</select><button class="delete-debt-btn" data-debt-id="'+debt.id+'">✕</button></div></div>';
+      const paidLine = paid > 0
+        ? '<div class="debt-pay-summary"><span class="paid">✔ Paid '+money(paid)+'</span><span class="left">• Left '+money(remaining)+'</span></div>'
+        : '';
+      html+='<div class="debt-item" data-debt-id="'+debt.id+'"><div class="debt-info"><span class="debt-name">👤 '+escapeHTML(debt.name)+'</span>'+(debt.productLabel?'<span style="font-size:.8rem;color:var(--text-muted);">📦 '+escapeHTML(debt.productLabel)+'</span>':'')+'<span class="debt-amount">'+money(owed)+'</span><span class="debt-date">📅 '+escapeHTML(debt.date)+'</span><span class="payment-status-badge status-'+status+'">'+status+'</span> '+overdueBadge+paidLine+'</div>'+
+        '<div class="debt-actions"><button class="btn btn-light debt-pay-btn" data-debt-id="'+debt.id+'" style="padding:8px 12px;font-size:.82rem;">💵 Pay</button>'+(remaining>0?'':'<span style="font-size:.72rem;color:#059669;font-weight:800;">Settled</span>')+'<button class="delete-debt-btn" data-debt-id="'+debt.id+'">✕</button></div></div>';
     });
     debtListContainer.innerHTML=html;
   }
@@ -1366,7 +1503,7 @@ html.dark .restock-allgood{color:#34d399}
     expenseListContainer.innerHTML=html;
   }
 
-  /* ---------- restock list (feature 3) ---------- */
+  /* ---------- restock ---------- */
   const restockListContainer = document.getElementById('restockListContainer');
   function renderRestockList(){
     if(!restockListContainer) return;
@@ -1407,9 +1544,8 @@ html.dark .restock-allgood{color:#34d399}
     logActivity('restock',{ name:product.name, stock:product.totalStock });
   });
 
-  /* ---------- debtors overview (feature 4) ---------- */
+  /* ---------- debtors overview ---------- */
   const debtorsOverviewContainer = document.getElementById('debtorsOverviewContainer');
-
   function renderDebtorsOverview(){
     if(!debtorsOverviewContainer) return;
     const map = {};
@@ -1427,37 +1563,17 @@ html.dark .restock-allgood{color:#34d399}
       else buckets.old += amount;
     }
 
-    // Product-based debts
     products.forEach(p=>(p.customers||[]).forEach(c=>{
-      if(c.paymentType!=='debt' && !(c.lacksPayment && c.lackAmount>0)) return;
-      const status=c.paymentStatus||'unpaid';
-      if(status==='paid') return;
-
-      let full = 0;
-      if(c.paymentType==='debt') full += (parseFloat(p.price)||0)*(c.quantity||1);
-      if(c.lacksPayment && c.lackAmount>0) full += c.lackAmount;
-      if(full<=0) return;
-
-      let remaining = full;
-      if(status==='partial'){
-        const pct = (c.partialPercent!=null?c.partialPercent:100);
-        remaining = full*(pct/100);
-      }
-      addAmount(c.name, remaining, toTimestamp(c.date));
+      if(c.paymentType!=='debt' && !(c.lacksPayment && num(c.lackAmount)>0)) return;
+      const rem = productCustomerRemaining(p, c);
+      if(rem <= 0) return;
+      addAmount(c.name, rem, toTimestamp(c.date));
     }));
 
-    // Manual debts
     manualDebts.forEach(d=>{
-      const status=d.paymentStatus||'unpaid';
-      if(status==='paid') return;
-      const full = parseFloat(d.amount)||0;
-      if(full<=0) return;
-      let remaining = full;
-      if(status==='partial'){
-        const pct = (d.partialPercent!=null?d.partialPercent:100);
-        remaining = full*(pct/100);
-      }
-      addAmount(d.name, remaining, entryTimestamp(d));
+      const rem = manualDebtRemaining(d);
+      if(rem <= 0) return;
+      addAmount(d.name, rem, entryTimestamp(d));
     });
 
     const entries = Object.entries(map);
@@ -1467,14 +1583,14 @@ html.dark .restock-allgood{color:#34d399}
     }
 
     let html = '<div class="age-buckets">'+
-      '<div class="age-bucket fresh"><div class="age-bucket-label">🟢 0-7 days</div><div class="age-bucket-value">₱'+buckets.fresh.toFixed(2)+'</div></div>'+
-      '<div class="age-bucket mid"><div class="age-bucket-label">🟡 8-30 days</div><div class="age-bucket-value">₱'+buckets.mid.toFixed(2)+'</div></div>'+
-      '<div class="age-bucket old"><div class="age-bucket-label">🔴 30+ days</div><div class="age-bucket-value">₱'+buckets.old.toFixed(2)+'</div></div>'+
+      '<div class="age-bucket fresh"><div class="age-bucket-label">🟢 0-7 days</div><div class="age-bucket-value">'+money(buckets.fresh)+'</div></div>'+
+      '<div class="age-bucket mid"><div class="age-bucket-label">🟡 8-30 days</div><div class="age-bucket-value">'+money(buckets.mid)+'</div></div>'+
+      '<div class="age-bucket old"><div class="age-bucket-label">🔴 30+ days</div><div class="age-bucket-value">'+money(buckets.old)+'</div></div>'+
     '</div>';
 
     html += entries.sort((a,b)=>b[1].amount-a[1].amount).map(function(pair){
       const n = pair[0], info = pair[1];
-      return '<div class="debtor-item"><span class="debtor-name">👤 '+escapeHTML(n)+' '+(info.oldestTs!==null?ageBadge(info.oldestTs):'')+'</span><span class="debtor-total">₱'+info.amount.toFixed(2)+'</span></div>';
+      return '<div class="debtor-item"><span class="debtor-name">👤 '+escapeHTML(n)+' '+(info.oldestTs!==null?ageBadge(info.oldestTs):'')+'</span><span class="debtor-total">'+money(info.amount)+'</span></div>';
     }).join('');
 
     debtorsOverviewContainer.innerHTML = html;
@@ -1504,7 +1620,7 @@ html.dark .restock-allgood{color:#34d399}
         case 'customer_deleted': icon='❌'; iconClass='delete'; title='<span class="accent">Removed customer</span> "'+escapeHTML(d.customer||'')+'" <span class="soft">from "'+escapeHTML(d.product||'')+'"</span>'; break;
         case 'debt_added': icon='📒'; iconClass='edit'; title='<span class="accent">New debt</span> '+escapeHTML(d.customer||'')+' <span class="soft">— ₱'+(d.amount||0).toFixed(2)+(d.productLabel?' ('+escapeHTML(d.productLabel)+')':'')+'</span>'; break;
         case 'expense_added': icon='💸'; iconClass='delete'; title='<span class="accent">New expense</span> '+escapeHTML(d.name||'')+' <span class="soft">— ₱'+(d.amount||0).toFixed(2)+'</span>'; break;
-        case 'debt_paid': icon='✅'; iconClass='add'; title='<span class="accent">Debt marked paid</span> '+escapeHTML(d.customer||''); break;
+        case 'debt_paid': icon='✅'; iconClass='add'; title='<span class="accent">Payment recorded</span> '+escapeHTML(d.customer||'')+' <span class="soft">— ₱'+(d.amount||0).toFixed(2)+'</span>'; break;
         case 'debt_deleted': icon='🗑️'; iconClass='delete'; title='<span class="accent">Deleted debt</span> '+escapeHTML(d.customer||''); break;
         case 'expense_deleted': icon='🗑️'; iconClass='delete'; title='<span class="accent">Deleted expense</span> '+escapeHTML(d.name||''); break;
         case 'category_added': icon='🏷️'; iconClass='add'; title='<span class="accent">New category</span> "'+escapeHTML(d.name||'')+'"'; break;
@@ -1512,6 +1628,7 @@ html.dark .restock-allgood{color:#34d399}
         case 'directory_removed': icon='👤'; iconClass='delete'; title='<span class="accent">Removed frequent customer</span> "'+escapeHTML(d.name||'')+'"'; break;
         case 'restock': icon='📦'; iconClass='add'; title='<span class="accent">Restocked</span> "'+escapeHTML(d.name||'')+'" <span class="soft">— '+(d.stock||0)+' in stock</span>'; break;
         case 'pin_changed': icon='🔑'; iconClass='edit'; title='<span class="accent">Access code changed</span>'; break;
+        case 'backup_imported': icon='📥'; iconClass='add'; title='<span class="accent">Backup restored</span> <span class="soft">from '+(d.count||0)+' products</span>'; break;
         default: icon='•'; iconClass=''; title='<span class="accent">'+escapeHTML(entry.action)+'</span>';
       }
       return '<div class="log-entry"><div class="log-icon '+iconClass+'">'+icon+'</div><div class="log-body"><div class="log-title">'+title+'</div><div class="log-time">'+formatLogTime(entry.timestamp)+'</div></div></div>';
@@ -1578,57 +1695,6 @@ html.dark .restock-allgood{color:#34d399}
   authModal.addEventListener('click',e=>{ if(e.target===authModal) cancelAuth(); });
   document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&authModal.classList.contains('active')) cancelAuth(); });
 
-  /* ---------- change PIN (feature 6) ---------- */
-  const changePinBtn=document.getElementById('changePinBtn');
-  const changePinModal=document.getElementById('changePinModal');
-  const changePinCloseBtn=document.getElementById('changePinCloseBtn');
-  const newPinInput=document.getElementById('newPinInput');
-  const confirmPinInput=document.getElementById('confirmPinInput');
-  const changePinMessage=document.getElementById('changePinMessage');
-  const savePinBtn=document.getElementById('savePinBtn');
-
-  function closeChangePin(){ changePinModal.classList.add('modal-hidden'); }
-  changePinBtn.addEventListener('click',async function(){
-    const ok=await verifyAuth();
-    if(!ok) return;
-    newPinInput.value='';
-    confirmPinInput.value='';
-    changePinMessage.textContent='';
-    changePinMessage.style.color='#b45309';
-    changePinModal.classList.remove('modal-hidden');
-    setTimeout(()=>{ newPinInput.focus(); },200);
-  });
-  changePinCloseBtn.addEventListener('click',closeChangePin);
-  changePinModal.addEventListener('click',function(e){ if(e.target===changePinModal) closeChangePin(); });
-  document.addEventListener('keydown',function(e){
-    if(e.key==='Escape' && !changePinModal.classList.contains('modal-hidden')) closeChangePin();
-  });
-  savePinBtn.addEventListener('click',function(){
-    const n1=newPinInput.value.trim();
-    const n2=confirmPinInput.value.trim();
-    if(!/^\d{4}$/.test(n1)){
-      changePinMessage.style.color='#dc2626';
-      changePinMessage.textContent='❗ Code must be exactly 4 digits.';
-      return;
-    }
-    if(n1!==n2){
-      changePinMessage.style.color='#dc2626';
-      changePinMessage.textContent='❗ Codes do not match.';
-      return;
-    }
-    if(n1===authCode){
-      changePinMessage.style.color='#dc2626';
-      changePinMessage.textContent='❗ That is already your current code.';
-      return;
-    }
-    authCode = n1;
-    try { localStorage.setItem(PIN_KEY, n1); } catch(e){}
-    changePinMessage.style.color='#059669';
-    changePinMessage.textContent='✅ Access code updated.';
-    logActivity('pin_changed',{});
-    setTimeout(closeChangePin, 900);
-  });
-
   /* ---------- confirm ---------- */
   const confirmModal=document.getElementById('confirmModal');
   const confirmCard=document.getElementById('confirmCard');
@@ -1661,6 +1727,217 @@ html.dark .restock-allgood{color:#34d399}
   confirmCancelBtn.addEventListener('click',()=>closeConfirm(false));
   confirmModal.addEventListener('click',e=>{ if(e.target===confirmModal) closeConfirm(false); });
   document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&confirmModal.classList.contains('active')) closeConfirm(false); });
+
+  /* ---------- payment modal ---------- */
+  const paymentModal = document.getElementById('paymentModal');
+  const paymentModalTitle = document.getElementById('paymentModalTitle');
+  const paymentModalBody = document.getElementById('paymentModalBody');
+  const paymentModalCloseBtn = document.getElementById('paymentModalCloseBtn');
+  let paymentSaveHandler = null;
+
+  function openPaymentModal(opts){
+    paymentModalTitle.textContent = '💵 Record Payment — ' + opts.name;
+    paymentModalBody.innerHTML =
+      '<div class="pay-panel">'+
+        '<div class="pay-panel-head"><span class="pay-panel-title">'+escapeHTML(opts.subtitle || 'Debt')+'</span></div>'+
+        '<div class="pay-row owed"><span>Total owed</span><span>'+money(opts.owed)+'</span></div>'+
+        '<div class="pay-row paid"><span>Already paid</span><span>'+money(opts.paid)+'</span></div>'+
+        '<div class="pay-row left"><span>Remaining</span><span>'+money(opts.remaining)+'</span></div>'+
+      '</div>'+
+      '<div class="input-field" style="margin-bottom:12px;">'+
+        '<label>Amount to pay (₱)</label>'+
+        '<input type="number" id="paymentAmountInput" min="0.01" step="0.01" placeholder="0.00" value="'+(opts.remaining > 0 ? opts.remaining.toFixed(2) : '')+'">'+
+      '</div>'+
+      '<div class="input-field" style="margin-bottom:16px;">'+
+        '<label>Date</label>'+
+        '<input type="text" id="paymentDateInput" value="'+new Date().toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'})+'">'+
+      '</div>'+
+      '<div style="display:flex;gap:10px;">'+
+        '<button class="btn btn-light" id="paymentCancelBtn" type="button" style="flex:1;">Cancel</button>'+
+        '<button class="btn btn-primary" id="paymentSaveBtn" type="button" style="flex:1;">✓ Record payment</button>'+
+      '</div>';
+
+    paymentSaveHandler = function(){
+      const amount = parseFloat(document.getElementById('paymentAmountInput').value);
+      const date = document.getElementById('paymentDateInput').value.trim();
+      if(isNaN(amount) || amount <= 0){ alert('Enter a valid amount.'); return; }
+      if(!date){ alert('Enter a date.'); return; }
+      closePaymentModal();
+      opts.onSave(amount, date);
+    };
+
+    document.getElementById('paymentCancelBtn').onclick = closePaymentModal;
+    document.getElementById('paymentSaveBtn').onclick = function(){ paymentSaveHandler && paymentSaveHandler(); };
+
+    paymentModal.classList.remove('modal-hidden');
+    setTimeout(()=>{ const i = document.getElementById('paymentAmountInput'); if(i){ i.focus(); i.select(); } }, 200);
+  }
+  function closePaymentModal(){
+    paymentModal.classList.add('modal-hidden');
+    paymentSaveHandler = null;
+  }
+  paymentModalCloseBtn.addEventListener('click', closePaymentModal);
+  paymentModal.addEventListener('click', function(e){ if(e.target===paymentModal) closePaymentModal(); });
+  document.addEventListener('keydown', function(e){
+    if(e.key==='Escape' && !paymentModal.classList.contains('modal-hidden')) closePaymentModal();
+  });
+
+  /* ---------- change PIN ---------- */
+  const changePinBtn=document.getElementById('changePinBtn');
+  const changePinModal=document.getElementById('changePinModal');
+  const changePinCloseBtn=document.getElementById('changePinCloseBtn');
+  const newPinInput=document.getElementById('newPinInput');
+  const confirmPinInput=document.getElementById('confirmPinInput');
+  const changePinMessage=document.getElementById('changePinMessage');
+  const savePinBtn=document.getElementById('savePinBtn');
+
+  function closeChangePin(){ changePinModal.classList.add('modal-hidden'); }
+  changePinBtn.addEventListener('click',async function(){
+    const ok=await verifyAuth();
+    if(!ok) return;
+    newPinInput.value='';
+    confirmPinInput.value='';
+    changePinMessage.textContent='';
+    changePinMessage.style.color='#b45309';
+    changePinModal.classList.remove('modal-hidden');
+    setTimeout(()=>{ newPinInput.focus(); },200);
+  });
+  changePinCloseBtn.addEventListener('click',closeChangePin);
+  changePinModal.addEventListener('click',function(e){ if(e.target===changePinModal) closeChangePin(); });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape' && !changePinModal.classList.contains('modal-hidden')) closeChangePin();
+  });
+  savePinBtn.addEventListener('click',function(){
+    const n1=newPinInput.value.trim();
+    const n2=confirmPinInput.value.trim();
+    if(!/^\d{4}$/.test(n1)){ changePinMessage.style.color='#dc2626'; changePinMessage.textContent='❗ Code must be exactly 4 digits.'; return; }
+    if(n1!==n2){ changePinMessage.style.color='#dc2626'; changePinMessage.textContent='❗ Codes do not match.'; return; }
+    if(n1===authCode){ changePinMessage.style.color='#dc2626'; changePinMessage.textContent='❗ That is already your current code.'; return; }
+    authCode = n1;
+    try { localStorage.setItem(PIN_KEY, n1); } catch(e){}
+    changePinMessage.style.color='#059669';
+    changePinMessage.textContent='✅ Access code updated.';
+    logActivity('pin_changed',{});
+    setTimeout(closeChangePin, 900);
+  });
+
+  /* ---------- backup / restore ---------- */
+  const exportDataBtn = document.getElementById('exportDataBtn');
+  const importDataBtn = document.getElementById('importDataBtn');
+  const importFileInput = document.getElementById('importFileInput');
+  const backupStatus = document.getElementById('backupStatus');
+
+  function renderBackupStatus(){
+    if(!backupStatus) return;
+    let stamp = '';
+    try { stamp = localStorage.getItem(BACKUP_STAMP_KEY) || ''; } catch(e){}
+    if(!stamp){ backupStatus.textContent = '⚠️ No backup exported yet. Do it now to keep your data safe.'; return; }
+    const d = new Date(stamp);
+    const days = Math.floor((Date.now() - d.getTime()) / DAY_MS);
+    const ago = days <= 0 ? 'today' : (days===1 ? 'yesterday' : days + ' days ago');
+    backupStatus.textContent = 'Last backup exported: ' + d.toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'}) + ' (' + ago + ')';
+  }
+
+  exportDataBtn.addEventListener('click', function(){
+    const data = {
+      app: 'ELZZMAPS',
+      version: 2,
+      exportedAt: new Date().toISOString(),
+      products: products,
+      manualDebts: manualDebts,
+      personalExpenses: personalExpenses,
+      frequentCustomers: frequentCustomers,
+      categories: categories,
+      auditLog: auditLog,
+      pin: authCode
+    };
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    const stamp = new Date().toISOString().slice(0,10);
+    a.download = 'elzzmaps-backup-' + stamp + '.json';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(()=>URL.revokeObjectURL(url), 500);
+    try { localStorage.setItem(BACKUP_STAMP_KEY, String(Date.now())); } catch(e){}
+    renderBackupStatus();
+  });
+
+  importDataBtn.addEventListener('click', function(){
+    importFileInput.value = '';
+    importFileInput.click();
+  });
+
+  importFileInput.addEventListener('change', function(e){
+    const file = e.target.files && e.target.files[0];
+    if(!file) return;
+    const reader = new FileReader();
+    reader.onload = function(ev){
+      let data;
+      try { data = JSON.parse(ev.target.result); }
+      catch(err){ alert('Invalid file — could not read as JSON.'); return; }
+
+      if(!data || data.app !== 'ELZZMAPS'){
+        alert('This file is not an ELZZMAPS backup.');
+        return;
+      }
+      if(!Array.isArray(data.products)){
+        alert('Backup is missing product data.');
+        return;
+      }
+
+      const when = data.exportedAt ? new Date(data.exportedAt).toLocaleString() : 'unknown date';
+      const productCount = data.products.length;
+      const msg = 'Restore backup from ' + when + '?\n\nThis backup has ' + productCount + ' product' + (productCount===1?'':'s') + '.\n\n⚠️ ALL current data will be REPLACED.';
+      showConfirm(msg, { icon:'📥', title:'Restore backup?', okText:'Restore', variant:'warning' }).then(ok=>{
+        if(!ok) return;
+        try {
+          localStorage.setItem(PRODUCTS_KEY, JSON.stringify(data.products || []));
+          localStorage.setItem(DEBTS_KEY, JSON.stringify(data.manualDebts || []));
+          localStorage.setItem(EXPENSES_KEY, JSON.stringify(data.personalExpenses || []));
+          localStorage.setItem(DIRECTORY_KEY, JSON.stringify(data.frequentCustomers || []));
+          localStorage.setItem(CATEGORIES_KEY, JSON.stringify(data.categories && data.categories.length ? data.categories : defaultCategories));
+          localStorage.setItem(AUDIT_KEY, JSON.stringify(data.auditLog || []));
+          if(data.pin && /^\d{4}$/.test(data.pin)){
+            authCode = data.pin;
+            localStorage.setItem(PIN_KEY, data.pin);
+          }
+        } catch(err){
+          alert('Could not write backup — storage may be full.');
+          return;
+        }
+
+        // Reload everything from storage with migrations
+        loadCategories();
+        loadProducts();
+        loadDebts();
+        loadExpenses();
+        loadDirectory();
+        loadAuditLog();
+
+        // Re-render every visible section
+        populateCategorySelect();
+        renderCategoryFilter();
+        renderDirectory();
+        renderProductList();
+        renderDebtList();
+        renderExpenseList();
+        renderDebtorsOverview();
+        renderRestockList();
+        renderHeroStats();
+        renderCategoryPicker();
+        renderKita();
+        clearProductForm();
+
+        logActivity('backup_imported', { count: data.products.length });
+        renderBackupStatus();
+        alert('✓ Backup restored successfully.');
+      });
+    };
+    reader.readAsText(file);
+  });
 
   /* ---------- admin log ---------- */
   const adminLogLocked=document.getElementById('adminLogLocked');
@@ -1729,6 +2006,7 @@ html.dark .restock-allgood{color:#34d399}
 
   /* ---------- element refs ---------- */
   const productNameInput=document.getElementById('productNameInput');
+  const productCostInput=document.getElementById('productCostInput');
   const productPriceInput=document.getElementById('productPriceInput');
   const productCategoryInput=document.getElementById('productCategoryInput');
   const cigaretteUnitField=document.getElementById('cigaretteUnitField');
@@ -1827,17 +2105,21 @@ html.dark .restock-allgood{color:#34d399}
   function handleAddOrUpdateProduct(){
     const name=productNameInput.value.trim();
     const price=parseFloat(productPriceInput.value);
+    const costRaw = productCostInput.value;
+    const cost = (costRaw === '' || costRaw === null) ? 0 : parseFloat(costRaw);
     const category=productCategoryInput.value;
     const cigaretteUnit=category==='cigarettes'?cigaretteUnitInput.value:null;
     const totalStock=parseInt(totalStockInput.value)||0;
     const stockLeft=parseInt(stockLeftInput.value)||0;
     if(!name){ formMessage.textContent='❗ Please enter a product name.'; return; }
-    if(isNaN(price)||price<0){ formMessage.textContent='❗ Price must be a valid positive number.'; return; }
+    if(isNaN(price)||price<0){ formMessage.textContent='❗ Selling price must be a valid positive number.'; return; }
+    if(isNaN(cost)||cost<0){ formMessage.textContent='❗ Cost price must be a valid positive number.'; return; }
+    if(cost > price){ formMessage.textContent='⚠️ Cost is higher than selling price — you\'d lose money on each sale.'; /* continue anyway */ }
 
     if(editingProductId){
       const idx=products.findIndex(p=>p.id===editingProductId);
       if(idx!==-1){
-        products[idx]={...products[idx],name:name,price:price,category:category,cigaretteUnit:cigaretteUnit,totalStock:totalStock,stockLeft:stockLeft};
+        products[idx]={...products[idx],name:name,price:price,cost:cost,category:category,cigaretteUnit:cigaretteUnit,totalStock:totalStock,stockLeft:stockLeft};
         logActivity('product_edited',{name:name,price:price,category:category});
         formMessage.textContent='✅ Product updated.';
       }
@@ -1846,7 +2128,7 @@ html.dark .restock-allgood{color:#34d399}
     } else {
       const newProduct={
         id:'prod_'+Date.now()+'_'+Math.random().toString(36).substring(2,8),
-        name:name,price:price,category:category,cigaretteUnit:cigaretteUnit,
+        name:name,price:price,cost:cost,category:category,cigaretteUnit:cigaretteUnit,
         totalStock:totalStock,stockLeft:stockLeft,customers:[]
       };
       products.push(newProduct);
@@ -1863,6 +2145,7 @@ html.dark .restock-allgood{color:#34d399}
   function clearProductForm(){
     productNameInput.value='';
     productPriceInput.value='';
+    if(productCostInput) productCostInput.value='';
     productCategoryInput.value=categories[0]?.name||'other';
     cigaretteUnitInput.value='stick';
     totalStockInput.value='';
@@ -1872,12 +2155,14 @@ html.dark .restock-allgood{color:#34d399}
     formMessage.textContent='';
     productNameInput.classList.remove('edit-input');
     productPriceInput.classList.remove('edit-input');
+    if(productCostInput) productCostInput.classList.remove('edit-input');
     toggleCigaretteUnit();
   }
   addProductBtn.addEventListener('click',handleAddOrUpdateProduct);
   clearFormBtn.addEventListener('click',clearProductForm);
   productNameInput.addEventListener('keypress',e=>{ if(e.key==='Enter') handleAddOrUpdateProduct(); });
   productPriceInput.addEventListener('keypress',e=>{ if(e.key==='Enter') handleAddOrUpdateProduct(); });
+  if(productCostInput) productCostInput.addEventListener('keypress',e=>{ if(e.key==='Enter') handleAddOrUpdateProduct(); });
 
   function handleAddDebt(){
     const name=debtCustomerNameInput.value.trim();
@@ -1887,7 +2172,7 @@ html.dark .restock-allgood{color:#34d399}
     if(!name){ alert('Please enter customer name.'); return; }
     if(isNaN(amount)||amount<0){ alert('Please enter a valid amount.'); return; }
     if(!dateStr){ alert('Please enter a date (e.g., Sep 7, 2026).'); return; }
-    const newDebt={ id:'debt_'+Date.now()+'_'+Math.random().toString(36).substring(2,8), name:name, productLabel:productLabel, amount:amount, date:dateStr, createdAt:Date.now(), paymentStatus:'unpaid', partialPercent:100 };
+    const newDebt={ id:'debt_'+Date.now()+'_'+Math.random().toString(36).substring(2,8), name:name, productLabel:productLabel, amount:amount, date:dateStr, createdAt:Date.now(), paymentStatus:'unpaid', partialPercent:100, payments:[] };
     manualDebts.push(newDebt);
     saveDebts();
     renderDebtList();
@@ -1902,7 +2187,7 @@ html.dark .restock-allgood{color:#34d399}
   async function handleDeleteDebt(debtId){
     const debt=manualDebts.find(d=>d.id===debtId);
     if(!debt) return;
-    const ok=await showConfirm('Delete this debt for "'+debt.name+'" (₱'+parseFloat(debt.amount).toFixed(2)+')?',{icon:'🗑️',title:'Delete debt?',okText:'Delete'});
+    const ok=await showConfirm('Delete this debt for "'+debt.name+'" (₱'+num(debt.amount).toFixed(2)+')?',{icon:'🗑️',title:'Delete debt?',okText:'Delete'});
     if(!ok) return;
     const allowed=await verifyAuth();
     if(!allowed){ alert('Access denied'); return; }
@@ -1917,26 +2202,38 @@ html.dark .restock-allgood{color:#34d399}
 
   debtListContainer.addEventListener('click',function(e){
     const delBtn=e.target.closest('.delete-debt-btn');
-    if(delBtn){ const id=delBtn.getAttribute('data-debt-id'); if(id) handleDeleteDebt(id); }
-    const paidBtn=e.target.closest('.debt-paid-btn');
-    if(paidBtn){
-      const id=paidBtn.getAttribute('data-debt-id');
+    if(delBtn){ const id=delBtn.getAttribute('data-debt-id'); if(id) handleDeleteDebt(id); return; }
+
+    const payBtn=e.target.closest('.debt-pay-btn');
+    if(payBtn){
+      const id=payBtn.getAttribute('data-debt-id');
       const debt=manualDebts.find(d=>d.id===id);
-      if(debt){ debt.paymentStatus='paid'; debt.partialPercent=0; saveDebts(); renderDebtList(); renderDebtorsOverview(); renderHeroStats(); logActivity('debt_paid',{customer:debt.name,amount:debt.amount}); }
-    }
-    const partialBtn=e.target.closest('.debt-partial-btn');
-    if(partialBtn){
-      const id=partialBtn.getAttribute('data-debt-id');
-      const debt=manualDebts.find(d=>d.id===id);
-      if(debt){ debt.paymentStatus='partial'; debt.partialPercent=100; saveDebts(); renderDebtList(); renderDebtorsOverview(); renderHeroStats(); }
-    }
-  });
-  debtListContainer.addEventListener('change',function(e){
-    if(e.target.classList.contains('debt-partial-select')){
-      const id=e.target.getAttribute('data-debt-id');
-      const pct=parseInt(e.target.value);
-      const debt=manualDebts.find(d=>d.id===id);
-      if(debt&&debt.paymentStatus==='partial'){ debt.partialPercent=pct; saveDebts(); renderDebtorsOverview(); renderHeroStats(); }
+      if(!debt) return;
+      const owed = manualDebtOwed(debt);
+      const paid = manualDebtPaid(debt);
+      const remaining = manualDebtRemaining(debt);
+      if(remaining <= 0){ alert('This debt is already fully paid.'); return; }
+      openPaymentModal({
+        name: debt.name,
+        subtitle: debt.productLabel || 'Manual debt',
+        owed: owed,
+        paid: paid,
+        remaining: remaining,
+        onSave: function(amount, date){
+          debt.payments = debt.payments || [];
+          debt.payments.push({ amount: amount, date: date, ts: Date.now() });
+          const newPaid = manualDebtPaid(debt);
+          const newRemaining = Math.max(0, owed - newPaid);
+          if(newRemaining <= 0){ debt.paymentStatus = 'paid'; debt.partialPercent = 0; }
+          else { debt.paymentStatus = 'partial'; debt.partialPercent = Math.round((newRemaining / owed) * 100); }
+          saveDebts();
+          renderDebtList();
+          renderDebtorsOverview();
+          renderHeroStats();
+          logActivity('debt_paid',{ customer:debt.name, amount:amount });
+        }
+      });
+      return;
     }
   });
 
@@ -1983,64 +2280,107 @@ html.dark .restock-allgood{color:#34d399}
     if(delBtn){ const id=delBtn.getAttribute('data-expense-id'); if(id) handleDeleteExpense(id); }
   });
 
-  function showCustomerSummary(productId,customerIndex){
+  /* ---------- customer summary modal (with payment history) ---------- */
+  function showCustomerSummary(productId, customerIndex){
     const product=products.find(p=>p.id===productId);
     if(!product) return;
     const customer=product.customers[customerIndex];
     if(!customer) return;
 
     const customerName=customer.name;
-    let totalCash=0, totalDebt=0, totalUnreg=0, totalQuantity=0, summaryItems=[];
+    let totalCash=0, totalDebt=0, totalUnreg=0, totalQuantity=0, totalPaid=0, summaryItems=[];
 
     products.forEach(prod=>{
       (prod.customers||[]).forEach(c=>{
         if(c.name===customerName){
           const qty=c.quantity||1;
-          const amt=(parseFloat(prod.price)||0)*qty;
+          const amt=num(prod.price)*qty;
           totalQuantity+=qty;
           if(c.paymentType==='cash') totalCash+=amt;
           else if(c.paymentType==='debt') totalDebt+=amt;
           else totalUnreg+=amt;
-          if(c.lacksPayment&&c.lackAmount>0) totalDebt+=c.lackAmount;
-          summaryItems.push({ productName:prod.name, price:prod.price, paymentType:c.paymentType, unit:prod.cigaretteUnit||null, date:c.date, quantity:qty, amount:amt });
+          if(c.lacksPayment&&num(c.lackAmount)>0) totalDebt+=num(c.lackAmount);
+          if(c.paymentType==='debt') totalPaid += productCustomerPaid(c);
+          summaryItems.push({ productName:prod.name, price:prod.price, paymentType:c.paymentType, unit:prod.cigaretteUnit||null, date:c.date, quantity:qty, amount:amt, entry:c, prodRef:prod });
         }
       });
     });
 
-    let listHtml = summaryItems.length===0 ? '<div>No purchases found.</div>' :
+    // manual debts for this customer
+    let manualOwed = 0, manualPaid = 0, manualRemaining = 0;
+    const manualItems = [];
+    manualDebts.forEach(d=>{
+      if(d.name !== customerName) return;
+      const owed = manualDebtOwed(d);
+      const paid = manualDebtPaid(d);
+      const rem = manualDebtRemaining(d);
+      if (owed > 0){
+        manualOwed += owed; manualPaid += paid; manualRemaining += rem;
+        manualItems.push(d);
+      }
+    });
+
+    let listHtml = summaryItems.length===0 ? '<div style="padding:8px 0;color:var(--text-muted);font-size:.85rem;">No product purchases found.</div>' :
       summaryItems.map(item=>{
         const pt=item.paymentType||'cash';
         return '<div class="summary-item"><div class="summary-item-left"><span><strong>'+escapeHTML(item.productName)+'</strong> '+(item.unit?'('+(item.unit==='stick'?'Per Stick':'Per Box')+')':'')+' (₱'+parseFloat(item.price).toFixed(2)+' x '+item.quantity+')</span><span class="summary-item-date">📅 '+formatDate(item.date)+' · <span class="summary-qty">₱'+item.amount.toFixed(2)+'</span></span></div><span class="payment-badge '+paymentBadgeClass(pt)+'">'+paymentLabel(pt)+'</span></div>';
       }).join('');
 
-    if(customer.lacksPayment&&customer.lackAmount>0){
-      listHtml+='<div class="summary-item"><div class="summary-item-left"><span><strong>⚠️ Lack Payment</strong></span><span class="summary-item-date">Additional debt from lack</span></div><span class="payment-badge payment-debt">₱'+customer.lackAmount.toFixed(2)+'</span></div>';
+    if(customer.lacksPayment&&num(customer.lackAmount)>0){
+      listHtml+='<div class="summary-item"><div class="summary-item-left"><span><strong>⚠️ Lack Payment</strong></span><span class="summary-item-date">Additional debt from lack</span></div><span class="payment-badge payment-debt">₱'+num(customer.lackAmount).toFixed(2)+'</span></div>';
     }
 
-    const noteText=customer.note||'';
-    const lacksPayment=customer.lacksPayment||false;
-    const lackAmount=customer.lackAmount||0;
-    const paymentStatus=customer.paymentStatus||'paid';
-    const partialPercent=customer.partialPercent||100;
+    // Payments history
+    const allPayments = [];
+    products.forEach(prod => (prod.customers||[]).forEach(c => {
+      if(c.name !== customerName) return;
+      (c.payments||[]).forEach(p => allPayments.push({ amount:p.amount, date:p.date, ts:p.ts||0, source: prod.name }));
+    }));
+    manualDebts.forEach(d => {
+      if(d.name !== customerName) return;
+      (d.payments||[]).forEach(p => allPayments.push({ amount:p.amount, date:p.date, ts:p.ts||0, source: d.productLabel || 'Manual debt' }));
+    });
+    allPayments.sort((a,b)=>b.ts - a.ts);
+    totalPaid = sumPayments(allPayments);
+
+    const totalOwed = totalDebt + manualOwed;
+    const totalRemaining = Math.max(0, totalOwed - totalPaid);
+
+    const paymentsHtml = allPayments.length === 0
+      ? ''
+      : '<div class="pay-panel" style="margin-top:14px;"><div class="pay-panel-head"><span class="pay-panel-title">Payment history</span><span style="font-size:.74rem;color:var(--text-muted);font-weight:700;">'+allPayments.length+' entr'+(allPayments.length===1?'y':'ies')+'</span></div><div class="pay-history">'+
+        allPayments.map(p=>'<div class="pay-history-item"><span><span class="amt">'+money(p.amount)+'</span> · '+escapeHTML(p.source)+'</span><span class="date">'+escapeHTML(p.date)+'</span></div>').join('')+
+      '</div></div>';
+
+    const customerDebtHtml = (totalOwed > 0)
+      ? '<div class="pay-panel"><div class="pay-panel-head"><span class="pay-panel-title">Debt summary</span><button class="btn btn-primary" id="summaryPayBtn" style="padding:8px 14px;font-size:.78rem;">💵 Record payment</button></div>'+
+        '<div class="pay-row owed"><span>Total owed</span><span>'+money(totalOwed)+'</span></div>'+
+        '<div class="pay-row paid"><span>Total paid</span><span>'+money(totalPaid)+'</span></div>'+
+        '<div class="pay-row left"><span>Remaining</span><span>'+money(totalRemaining)+'</span></div>'+
+      '</div>'
+      : '';
 
     modalBody.innerHTML=
       '<div class="summary-stats"><div class="stat-box"><div class="stat-value">'+totalQuantity+'</div><div class="stat-label">Items</div></div><div class="stat-box"><div class="stat-value">₱'+totalCash.toFixed(2)+'</div><div class="stat-label">Cash</div></div><div class="stat-box"><div class="stat-value">₱'+totalDebt.toFixed(2)+'</div><div class="stat-label">Debt</div></div></div>'+
       (totalUnreg>0?'<div class="summary-stats" style="margin-top:-10px;"><div class="stat-box" style="background:#7f1d1d;border-color:#7f1d1d;"><div class="stat-value" style="color:#fecaca;">₱'+totalUnreg.toFixed(2)+'</div><div class="stat-label" style="color:#fca5a5;">Unregistered</div></div></div>':'')+
-      '<div class="summary-list">'+listHtml+'</div>'+
+      customerDebtHtml+
+      paymentsHtml+
+      '<div class="summary-list" style="margin-top:10px;">'+listHtml+'</div>'+
       '<hr style="margin:16px 0;border-color:#eef0f8;">'+
       '<div style="margin-top:12px;">'+
-        '<label style="display:flex;align-items:center;gap:8px;font-size:.9rem;font-weight:600;"><input type="checkbox" id="lacksPaymentCheckbox" '+(lacksPayment?'checked':'')+'> Lacks Payment</label>'+
-        '<div id="lackAmountContainer" style="margin-top:8px;'+(lacksPayment?'':'display:none;')+'"><label style="font-weight:700;">Amount lacking (₱):</label><select id="lackAmountSelect" style="width:100%;margin-top:6px;">'+Array.from({length:100},(_,i)=>i+1).map(n=>'<option value="'+n+'"'+(n===lackAmount?' selected':'')+'>₱'+n+'</option>').join('')+'</select></div>'+
+        '<label style="display:flex;align-items:center;gap:8px;font-size:.9rem;font-weight:600;"><input type="checkbox" id="lacksPaymentCheckbox" '+(customer.lacksPayment?'checked':'')+'> Lacks Payment (this entry)</label>'+
+        '<div id="lackAmountContainer" style="margin-top:8px;'+(customer.lacksPayment?'':'display:none;')+'"><label style="font-weight:700;">Amount lacking (₱):</label><select id="lackAmountSelect" style="width:100%;margin-top:6px;">'+Array.from({length:100},(_,i)=>i+1).map(n=>'<option value="'+n+'"'+(n===num(customer.lackAmount)?' selected':'')+'>₱'+n+'</option>').join('')+'</select></div>'+
         '<button class="btn btn-light" id="noteButton" style="margin-top:8px;">📝 Add Note</button>'+
-        '<div id="noteArea" style="margin-top:8px;'+(noteText?'':'display:none;')+'"><textarea id="noteTextarea" rows="2" style="width:100%;padding:10px;border-radius:12px;border:1.5px solid var(--border);font-family:var(--font);">'+escapeHTML(noteText)+'</textarea></div>'+
+        '<div id="noteArea" style="margin-top:8px;'+((customer.note)?'':'display:none;')+'"><textarea id="noteTextarea" rows="2" style="width:100%;padding:10px;border-radius:12px;border:1.5px solid var(--border);font-family:var(--font);">'+escapeHTML(customer.note||'')+'</textarea></div>'+
         (customer.paymentType==='debt'?
-          '<div style="margin-top:12px;"><label style="font-weight:700;">Payment Status:</label><select id="paymentStatusSelect" style="width:100%;margin-top:6px;"><option value="unpaid" '+(paymentStatus==='unpaid'?'selected':'')+'>Unpaid</option><option value="partial" '+(paymentStatus==='partial'?'selected':'')+'>Partial</option><option value="paid" '+(paymentStatus==='paid'?'selected':'')+'>Paid</option></select><div id="partialPercentContainer" style="margin-top:6px;'+(paymentStatus==='partial'?'':'display:none;')+'"><label>Percent left:</label><select id="partialPercentSelect" style="width:100%;">'+Array.from({length:100},(_,i)=>i+1).map(n=>'<option value="'+n+'"'+(n===partialPercent?' selected':'')+'>'+n+'%</option>').join('')+'</select></div></div>'
+          '<div style="margin-top:12px;"><label style="font-weight:700;">Payment Status:</label><select id="paymentStatusSelect" style="width:100%;margin-top:6px;"><option value="unpaid" '+(customer.paymentStatus==='unpaid'?'selected':'')+'>Unpaid</option><option value="partial" '+(customer.paymentStatus==='partial'?'selected':'')+'>Partial</option><option value="paid" '+(customer.paymentStatus==='paid'?'selected':'')+'>Paid</option></select><div id="partialPercentContainer" style="margin-top:6px;'+(customer.paymentStatus==='partial'?'':'display:none;')+'"><label>Percent left:</label><select id="partialPercentSelect" style="width:100%;">'+Array.from({length:100},(_,i)=>i+1).map(n=>'<option value="'+n+'"'+(n===customer.partialPercent?' selected':'')+'>'+n+'%</option>').join('')+'</select></div></div>'
           :'')+
-        '<button class="btn btn-primary" id="saveCustomerDetailsBtn" style="margin-top:16px;width:100%;">💾 Save Details</button>'+
+        '<button class="btn btn-primary" id="saveCustomerDetailsBtn" style="margin-top:16px;width:100%;">💾 Save details</button>'+
       '</div>';
 
     customerModal.classList.remove('modal-hidden');
 
+    // Wire up events
     document.getElementById('lacksPaymentCheckbox').addEventListener('change',function(){
       document.getElementById('lackAmountContainer').style.display=this.checked?'block':'none';
     });
@@ -2052,10 +2392,78 @@ html.dark .restock-allgood{color:#34d399}
       const pc=document.getElementById('partialPercentContainer');
       if(pc) pc.style.display=this.value==='partial'?'block':'none';
     });
+
+    const summaryPayBtn = document.getElementById('summaryPayBtn');
+    if(summaryPayBtn){
+      summaryPayBtn.addEventListener('click', function(){
+        if(totalRemaining <= 0){ alert('Nothing to pay — already settled.'); return; }
+        openPaymentModal({
+          name: customerName,
+          subtitle: 'Across all debts',
+          owed: totalOwed,
+          paid: totalPaid,
+          remaining: totalRemaining,
+          onSave: function(amount, date){
+            // Apply to oldest debts first (product customer debts, then manual)
+            let left = amount;
+            // Gather all open debt entries for this customer with timestamps
+            const openEntries = [];
+            products.forEach(prod => {
+              (prod.customers||[]).forEach(c => {
+                if(c.name !== customerName) return;
+                if(c.paymentType !== 'debt' && !(c.lacksPayment && num(c.lackAmount)>0)) return;
+                const rem = productCustomerRemaining(prod, c);
+                if(rem > 0) openEntries.push({ kind:'product', prod, c, rem, ts: toTimestamp(c.date)||0 });
+              });
+            });
+            manualDebts.forEach(d => {
+              if(d.name !== customerName) return;
+              const rem = manualDebtRemaining(d);
+              if(rem > 0) openEntries.push({ kind:'manual', d, rem, ts: entryTimestamp(d)||0 });
+            });
+            openEntries.sort((a,b)=>a.ts - b.ts);
+
+            openEntries.forEach(entry => {
+              if(left <= 0) return;
+              const apply = Math.min(left, entry.rem);
+              if(apply <= 0) return;
+              if(entry.kind === 'product'){
+                entry.c.payments = entry.c.payments || [];
+                entry.c.payments.push({ amount: apply, date: date, ts: Date.now() });
+                const owedC = productCustomerOwed(entry.prod, entry.c);
+                const paidC = productCustomerPaid(entry.c);
+                const remC = Math.max(0, owedC - paidC);
+                if(remC <= 0){ entry.c.paymentStatus = 'paid'; entry.c.partialPercent = 0; }
+                else { entry.c.paymentStatus = 'partial'; entry.c.partialPercent = Math.round((remC/owedC)*100); }
+              } else {
+                entry.d.payments = entry.d.payments || [];
+                entry.d.payments.push({ amount: apply, date: date, ts: Date.now() });
+                const owedD = manualDebtOwed(entry.d);
+                const paidD = manualDebtPaid(entry.d);
+                const remD = Math.max(0, owedD - paidD);
+                if(remD <= 0){ entry.d.paymentStatus = 'paid'; entry.d.partialPercent = 0; }
+                else { entry.d.paymentStatus = 'partial'; entry.d.partialPercent = Math.round((remD/owedD)*100); }
+              }
+              left -= apply;
+            });
+
+            saveProducts();
+            saveDebts();
+            renderProductList();
+            renderDebtList();
+            renderDebtorsOverview();
+            renderHeroStats();
+            logActivity('debt_paid',{ customer: customerName, amount: amount });
+            closeCustomerModal();
+          }
+        });
+      });
+    }
+
     document.getElementById('saveCustomerDetailsBtn').addEventListener('click',function(){
       const lacks=document.getElementById('lacksPaymentCheckbox').checked;
       const note=document.getElementById('noteTextarea').value.trim();
-      let lackAmt=customer.lackAmount||0;
+      let lackAmt=num(customer.lackAmount);
       if(lacks) lackAmt=parseInt(document.getElementById('lackAmountSelect').value)||0;
       else lackAmt=0;
       let pStat=customer.paymentStatus||'paid';
@@ -2106,14 +2514,15 @@ html.dark .restock-allgood{color:#34d399}
       name:cName, paymentType:pType, date:new Date().toISOString(), quantity:qty,
       lacksPayment:false,
       paymentStatus:isDebt?'unpaid':'paid',
-      note:'', partialPercent:isDebt?100:0, lackAmount:0
+      note:'', partialPercent:isDebt?100:0, lackAmount:0,
+      payments:[]
     });
     product.stockLeft=Math.max(0,(product.stockLeft||0)-qty);
     saveProducts();
     renderProductList();
     renderDebtorsOverview();
     renderHeroStats();
-    logActivity('purchase',{customer:cName,product:product.name,qty:qty,amount:(parseFloat(product.price)||0)*qty,payment:pType});
+    logActivity('purchase',{customer:cName,product:product.name,qty:qty,amount:num(product.price)*qty,payment:pType});
   }
 
   productListContainer.addEventListener('click',async function(e){
@@ -2130,7 +2539,7 @@ html.dark .restock-allgood{color:#34d399}
       const pid=target.getAttribute('data-id');
       const product=products.find(p=>p.id===pid);
       if(!product) return;
-      const ok=await showConfirm('Delete "'+product.name+'" (₱'+parseFloat(product.price).toFixed(2)+')? This cannot be undone.',{icon:'🗑️',title:'Delete product?',okText:'Delete'});
+      const ok=await showConfirm('Delete "'+product.name+'" (₱'+num(product.price).toFixed(2)+')? This cannot be undone.',{icon:'🗑️',title:'Delete product?',okText:'Delete'});
       if(!ok) return;
       const allowed=await verifyAuth();
       if(!allowed){ alert('Access denied'); return; }
@@ -2153,6 +2562,7 @@ html.dark .restock-allgood{color:#34d399}
       if(product){
         productNameInput.value=product.name;
         productPriceInput.value=product.price;
+        if(productCostInput) productCostInput.value = hasCost(product) ? product.cost : '';
         productCategoryInput.value=product.category||'other';
         if(product.category==='cigarettes'&&product.cigaretteUnit) cigaretteUnitInput.value=product.cigaretteUnit;
         else cigaretteUnitInput.value='stick';
@@ -2164,6 +2574,7 @@ html.dark .restock-allgood{color:#34d399}
         formMessage.textContent='✏️ Editing "'+product.name+'" — modify and save.';
         productNameInput.classList.add('edit-input');
         productPriceInput.classList.add('edit-input');
+        if(productCostInput) productCostInput.classList.add('edit-input');
         closeSaleWindow();
         switchTab('manage');
         setTimeout(()=>window.scrollTo({top:0,behavior:'smooth'}),100);
@@ -2240,25 +2651,22 @@ html.dark .restock-allgood{color:#34d399}
       }
     }
   }
-
   function calcReset(){ calcState={current:'0',previous:null,operator:null,shouldReset:false,error:false}; }
-
-  function calcInputNumber(num){
+  function calcInputNumber(numStr){
     if(calcState.error) calcReset();
     if(calcState.shouldReset){
-      calcState.current=num;
+      calcState.current=numStr;
       calcState.shouldReset=false;
     } else {
-      if(calcState.current==='0'&&num!=='.') calcState.current=num;
-      else if(num==='.'&&calcState.current.includes('.')) return;
-      else calcState.current+=num;
+      if(calcState.current==='0'&&numStr!=='.') calcState.current=numStr;
+      else if(numStr==='.'&&calcState.current.includes('.')) return;
+      else calcState.current+=numStr;
     }
     if(calcState.current.replace('-','').replace('.','').length>12){
       calcState.current=calcState.current.slice(0,-1);
     }
     calcUpdateDisplay();
   }
-
   function calcChooseOperator(op){
     if(calcState.error) return;
     if(calcState.operator&&!calcState.shouldReset&&calcState.previous!==null){
@@ -2269,7 +2677,6 @@ html.dark .restock-allgood{color:#34d399}
     calcState.shouldReset=true;
     calcUpdateDisplay();
   }
-
   function calcCompute(final){
     if(calcState.previous===null||calcState.operator===null) return;
     const a=calcState.previous;
@@ -2290,7 +2697,6 @@ html.dark .restock-allgood{color:#34d399}
     calcState.shouldReset=true;
     if(final!==false) calcUpdateDisplay();
   }
-
   function calcAction(action){
     if(action==='clear'){ calcReset(); }
     else if(action==='backspace'){
@@ -2320,9 +2726,9 @@ html.dark .restock-allgood{color:#34d399}
     calcGrid.addEventListener('click',function(e){
       const btn=e.target.closest('.calc-btn');
       if(!btn) return;
-      const num=btn.getAttribute('data-num');
+      const numAttr=btn.getAttribute('data-num');
       const act=btn.getAttribute('data-action');
-      if(num!==null) calcInputNumber(num);
+      if(numAttr!==null) calcInputNumber(numAttr);
       else if(act) calcAction(act);
     });
   }
@@ -2360,6 +2766,7 @@ html.dark .restock-allgood{color:#34d399}
   renderHeroStats();
   renderCategoryPicker();
   renderKita();
+  renderBackupStatus();
   calcUpdateDisplay();
 
   productCategoryInput.value=categories[0]?.name||'other';
