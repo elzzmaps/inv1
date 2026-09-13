@@ -27,7 +27,6 @@
 body{font-family:var(--font);background:var(--bg-gradient);background-attachment:fixed;min-height:100vh;padding:24px 14px 48px;display:flex;justify-content:center;color:var(--text-dark);-webkit-font-smoothing:antialiased}
 .app-container{max-width:620px;width:100%}
 
-/* HEADER */
 .app-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;padding:0 6px;gap:12px}
 .logo-area{display:flex;align-items:center;gap:14px;min-width:0}
 .logo-icon{position:relative;background:linear-gradient(140deg,#818cf8 0%,#6366f1 45%,#4338ca 100%);width:56px;height:56px;border-radius:18px;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 24px -8px rgba(99,102,241,.55),inset 0 1px 0 rgba(255,255,255,.3);flex-shrink:0;overflow:hidden;transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
@@ -42,7 +41,6 @@ body{font-family:var(--font);background:var(--bg-gradient);background-attachment
 .theme-toggle:hover{transform:rotate(-18deg) scale(1.08)}
 .theme-toggle:active{transform:scale(.92)}
 
-/* TABS */
 .tab-bar{display:flex;gap:6px;background:#fff;padding:6px;border-radius:20px;box-shadow:var(--shadow-sm);margin-bottom:20px;border:1px solid var(--border)}
 .tab-btn{flex:1;padding:13px 10px;border-radius:15px;background:transparent;border:none;font-family:var(--font);font-weight:800;font-size:.86rem;color:var(--text-muted);cursor:pointer;transition:all .22s ease;display:flex;align-items:center;justify-content:center;gap:6px;letter-spacing:.1px}
 .tab-btn.active{background:linear-gradient(135deg,#6366f1 0%,#4f46e5 100%);color:#fff;box-shadow:0 10px 22px -8px rgba(99,102,241,.65),inset 0 1px 0 rgba(255,255,255,.2)}
@@ -50,7 +48,6 @@ body{font-family:var(--font);background:var(--bg-gradient);background-attachment
 .tab-panel{animation:panelIn .28s ease}
 @keyframes panelIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
-/* HERO */
 .hero-card{background:linear-gradient(155deg,#eef2ff 0%,#e0e7ff 55%,#c7d2fe 100%);border-radius:var(--radius-lg);padding:42px 24px 28px;text-align:center;position:relative;overflow:hidden;border:1px solid rgba(99,102,241,.15);box-shadow:var(--shadow-md)}
 .hero-card::before{content:'';position:absolute;top:-70px;right:-70px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(99,102,241,.25),transparent 70%);pointer-events:none}
 .hero-card::after{content:'';position:absolute;bottom:-90px;left:-70px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(139,92,246,.18),transparent 70%);pointer-events:none}
@@ -66,7 +63,6 @@ body{font-family:var(--font);background:var(--bg-gradient);background-attachment
 .hero-stat-value{font-size:1.4rem;font-weight:800;color:var(--primary-dark);letter-spacing:-.5px;line-height:1.1}
 .hero-stat-label{font-size:.63rem;color:var(--text-muted);font-weight:800;text-transform:uppercase;letter-spacing:.7px;margin-top:4px}
 
-/* KITA */
 .kita-card{background:var(--card-bg);border-radius:var(--radius-lg);padding:20px 20px 18px;box-shadow:var(--shadow-md);margin-bottom:20px;border:1px solid var(--border);transition:box-shadow .25s ease}
 .kita-card:hover{box-shadow:var(--shadow-lg)}
 .kita-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap}
@@ -93,7 +89,6 @@ body{font-family:var(--font);background:var(--bg-gradient);background-attachment
 .kita-bar-label{font-size:.58rem;font-weight:800;color:var(--text-muted);letter-spacing:.2px;white-space:nowrap}
 .kita-trend-note{font-size:.66rem;color:var(--text-muted);font-weight:700;text-align:center;margin-top:6px;letter-spacing:.2px}
 
-/* CARDS */
 .card{background:var(--card-bg);border-radius:var(--radius-lg);padding:24px 22px;box-shadow:var(--shadow-md);margin-bottom:20px;border:1px solid var(--border);transition:transform .18s ease,box-shadow .25s ease}
 .card:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px)}
 .add-product-form,.manual-debt-form,.personal-expense-form{display:flex;flex-direction:column;gap:16px}
@@ -104,7 +99,6 @@ input,select,textarea{width:100%;padding:14px 16px;border:1.5px solid var(--bord
 input::placeholder,textarea::placeholder{color:#a5aac0;font-weight:500}
 input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#fff;box-shadow:0 0 0 4px rgba(99,102,241,.13)}
 
-/* BUTTONS */
 .btn{border:none;font-weight:700;padding:13px 22px;border-radius:var(--radius-md);font-size:.92rem;cursor:pointer;transition:transform .15s ease,box-shadow .22s ease,background .22s ease;display:inline-flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap;font-family:var(--font);letter-spacing:.1px}
 .btn:active{transform:scale(.97)}
 .btn-primary{background:linear-gradient(135deg,#6366f1 0%,#4f46e5 100%);color:#fff;box-shadow:0 10px 22px -8px rgba(99,102,241,.65),inset 0 1px 0 rgba(255,255,255,.2)}
@@ -118,12 +112,10 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
 #formMessage{font-size:.85rem;font-weight:600;min-height:20px;color:#b45309}
 .section-title{font-size:1.15rem;font-weight:800;margin-bottom:16px;display:flex;align-items:center;gap:10px;color:var(--text-dark);letter-spacing:-.2px}
 
-/* BACKUP */
 .backup-actions{display:flex;gap:10px;flex-wrap:wrap}
 .backup-info{font-size:.82rem;color:var(--text-muted);font-weight:600;line-height:1.5;margin-bottom:14px}
 #importFileInput{display:none}
 
-/* RESTOCK */
 .restock-list{display:flex;flex-direction:column;gap:8px}
 .restock-item{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--debt-bg);border:1px solid var(--debt-border);border-radius:16px;padding:12px 14px;flex-wrap:wrap}
 .restock-info{display:flex;flex-direction:column;gap:3px;flex:1;min-width:130px}
@@ -133,7 +125,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
 .restock-bar-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,#f59e0b,#ef4444);transition:width .35s ease}
 .restock-allgood{color:#059669;font-size:.88rem;font-weight:700;padding:6px 0;display:flex;align-items:center;gap:8px}
 
-/* AGE BADGES */
 .age-badge{font-size:.6rem;font-weight:800;padding:3px 8px;border-radius:20px;letter-spacing:.3px;white-space:nowrap;display:inline-block;vertical-align:middle}
 .age-fresh{background:#dcfce7;color:#166534}
 .age-mid{background:#fef3c7;color:#92400e}
@@ -152,14 +143,12 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
 .age-bucket.mid .age-bucket-value{color:#92400e}
 .age-bucket.old .age-bucket-value{color:#991b1b}
 
-/* DIRECTORY */
 .customer-directory{margin-bottom:20px}
 .directory-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
 .directory-tag{background:var(--primary-light);color:var(--primary-dark);padding:8px 16px;border-radius:30px;font-size:.88rem;font-weight:700;display:inline-flex;align-items:center;gap:8px;box-shadow:0 2px 6px rgba(99,102,241,.10);border:1px solid rgba(99,102,241,.12)}
 .delete-directory-btn{background:transparent;border:none;color:#e11d48;cursor:pointer;font-size:.95rem;padding:0 2px;line-height:1;opacity:.75;transition:.15s}
 .delete-directory-btn:hover{opacity:1;transform:scale(1.2)}
 
-/* CHIPS */
 .category-filter{display:flex;gap:8px;overflow-x:auto;padding:6px 2px 12px;margin-bottom:14px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .category-filter::-webkit-scrollbar{display:none}
 .category-chip{flex:0 0 auto;padding:9px 18px;border-radius:30px;background:#fff;border:1.5px solid var(--border);color:#4b5069;font-weight:700;font-size:.84rem;cursor:pointer;transition:all .2s ease;white-space:nowrap;box-shadow:var(--shadow-sm);font-family:var(--font)}
@@ -168,7 +157,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
 .category-chip.active:hover{background:linear-gradient(135deg,#6366f1 0%,#4f46e5 100%);color:#fff}
 .product-list{display:flex;flex-direction:column;gap:20px}
 
-/* PRODUCT ITEM */
 .product-item{border-radius:var(--radius-lg);padding:22px 20px;box-shadow:var(--shadow-md);border:1px solid var(--border);transition:transform .15s ease,box-shadow .25s ease;position:relative;overflow:hidden}
 .product-item::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.35),rgba(255,255,255,0) 40%);pointer-events:none}
 .product-item:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px)}
@@ -178,6 +166,8 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
 .product-title{font-size:1.35rem;font-weight:800;color:var(--text-dark);display:flex;align-items:center;gap:8px;flex-wrap:wrap;letter-spacing:-.3px}
 .badge{background:rgba(255,255,255,.85);color:#4338ca;padding:5px 14px;border-radius:30px;font-size:.78rem;font-weight:800;letter-spacing:.2px;box-shadow:0 2px 6px rgba(30,27,75,.08);border:1px solid rgba(255,255,255,.9)}
 .badge.cost-badge{background:rgba(254,226,226,.9);color:#9f1239}
+.badge.stick-badge{background:rgba(219,234,254,.95);color:#1d4ed8}
+.badge.box-badge{background:rgba(233,213,255,.95);color:#6b21a8}
 .category-badge{background:rgba(237,233,254,.9);color:#6d28d9}
 .unit-badge{background:rgba(254,243,199,.9);color:#92400e}
 .product-actions{display:flex;gap:6px;flex-wrap:wrap}
@@ -203,6 +193,8 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
 .customer-name-unregistered{color:#7f1d1d}
 .customer-count-badge{background:#e0e7ff;color:#3730a3;border-radius:30px;padding:3px 10px;font-size:.72rem;font-weight:800;white-space:nowrap}
 .customer-qty-badge{background:#fef3c7;color:#854d0e;border-radius:30px;padding:3px 10px;font-size:.72rem;font-weight:800;white-space:nowrap}
+.customer-unit-badge{background:#e0e7ff;color:#3730a3;border-radius:30px;padding:3px 10px;font-size:.68rem;font-weight:800;white-space:nowrap;text-transform:uppercase;letter-spacing:.3px}
+.customer-unit-badge.box{background:#f3e8ff;color:#6b21a8}
 .customer-date{font-size:.68rem;color:var(--text-muted);white-space:nowrap;font-weight:600}
 .payment-badge{font-size:.68rem;font-weight:800;padding:4px 10px;border-radius:30px;letter-spacing:.3px}
 .payment-cash{background:#d1fae5;color:#065f46}
@@ -218,7 +210,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
 .edit-input{background:#fefce8!important;border-color:#f59e0b!important}
 .hidden{display:none!important}
 
-/* DEBT / EXPENSE */
 .debt-list,.expense-list{display:flex;flex-direction:column;gap:8px;max-height:400px;overflow-y:auto}
 .debt-item,.expense-item{background:var(--debt-bg);border:1px solid var(--debt-border);border-radius:18px;padding:13px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;box-shadow:0 2px 6px rgba(30,27,75,.04)}
 .debt-info,.expense-info{display:flex;flex-direction:column;gap:3px;flex:1;min-width:0}
@@ -232,14 +223,12 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
 .delete-debt-btn,.delete-expense-btn{background:transparent;border:none;color:#e11d48;font-weight:800;cursor:pointer;font-size:1rem;padding:0 6px;opacity:.75;transition:.15s}
 .delete-debt-btn:hover,.delete-expense-btn:hover{opacity:1;transform:scale(1.15)}
 
-/* DEBTORS OVERVIEW */
 .debtors-overview{background:linear-gradient(150deg,#fff7ed 0%,#fef3e6 100%);border-color:#fde4c2}
 .debtor-item{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid rgba(253,228,194,.8);gap:10px;flex-wrap:wrap}
 .debtor-item:last-child{border-bottom:none}
 .debtor-name{font-weight:700;font-size:.92rem;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
 .debtor-total{font-weight:800;color:#b45309;font-size:1.08rem;letter-spacing:-.3px}
 
-/* ADMIN LOG */
 .admin-log{background:linear-gradient(155deg,#14142b 0%,#1e1b4b 55%,#221c52 100%);border:1px solid rgba(251,191,36,.25);color:#f8fafc;position:relative;overflow:hidden}
 .admin-log::before{content:'';position:absolute;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(251,191,36,.16),transparent 70%);pointer-events:none}
 .admin-log::after{content:'';position:absolute;bottom:-80px;left:-60px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(139,92,246,.22),transparent 70%);pointer-events:none}
@@ -283,7 +272,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
 .admin-clear-btn{background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.35);color:#fca5a5;font-family:var(--font);font-weight:700;font-size:.72rem;padding:6px 14px;border-radius:30px;cursor:pointer;transition:.2s;letter-spacing:.3px}
 .admin-clear-btn:hover{background:rgba(239,68,68,.22)}
 
-/* SALE WINDOW */
 .sale-window{position:fixed;inset:0;z-index:900;background:rgba(20,18,55,.6);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);padding:16px;display:flex;align-items:stretch;justify-content:center;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .3s ease,visibility .3s ease}
 .sale-window.active{opacity:1;visibility:visible;pointer-events:auto}
 .sale-window-inner{width:100%;max-width:620px;background:var(--bg-gradient);border-radius:28px;padding:22px 18px 24px;box-shadow:0 40px 80px -20px rgba(20,18,55,.6);overflow-y:auto;max-height:100%;opacity:0;transform:translateY(28px) scale(.96);transition:transform .45s cubic-bezier(.34,1.4,.64,1),opacity .3s;position:relative;scrollbar-width:thin}
@@ -309,7 +297,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
 .sale-back-btn{background:#fff;border:1.5px solid var(--border);color:#4b5069;font-family:var(--font);font-weight:800;font-size:.82rem;padding:9px 16px;border-radius:30px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:.18s;margin-bottom:12px;box-shadow:var(--shadow-sm)}
 .sale-back-btn:hover{background:var(--primary-light);border-color:var(--primary-soft);color:var(--primary-dark)}
 
-/* MODALS */
 .modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(30,27,75,.4);display:flex;align-items:center;justify-content:center;z-index:1000;padding:20px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 .modal-content{background:#fff;border-radius:26px;padding:26px;max-width:460px;width:100%;box-shadow:0 30px 60px -20px rgba(30,27,75,.4);animation:modalFadeIn .22s cubic-bezier(.34,1.4,.64,1);max-height:92vh;overflow-y:auto}
 @keyframes modalFadeIn{from{opacity:0;transform:translateY(24px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
@@ -344,7 +331,34 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
 .pay-history-item .amt{font-weight:800;color:#059669}
 .pay-history-item .date{color:var(--text-muted);font-weight:600}
 
-/* CONFIRM */
+/* Unit choice modal (cigarettes) */
+.unit-choice-modal{position:fixed;inset:0;z-index:1500;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(20,18,55,.55);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .28s ease,visibility .28s ease}
+.unit-choice-modal.active{opacity:1;visibility:visible;pointer-events:auto}
+.unit-choice-card{background:#fff;border-radius:28px;padding:28px 24px 22px;max-width:400px;width:100%;box-shadow:0 40px 80px -22px rgba(20,18,55,.6);text-align:center;position:relative;overflow:hidden;opacity:0;transform:translateY(24px) scale(.94);transition:transform .45s cubic-bezier(.34,1.56,.64,1),opacity .3s}
+.unit-choice-modal.active .unit-choice-card{opacity:1;transform:translateY(0) scale(1)}
+.unit-choice-card::before{content:'';position:absolute;top:-70px;right:-70px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(99,102,241,.18),transparent 70%);pointer-events:none}
+.unit-choice-card::after{content:'';position:absolute;bottom:-80px;left:-70px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(139,92,246,.14),transparent 70%);pointer-events:none}
+.unit-choice-icon{font-size:2.4rem;margin-bottom:8px;position:relative;z-index:1;filter:drop-shadow(0 8px 16px rgba(99,102,241,.3))}
+.unit-choice-title{font-size:1.2rem;font-weight:800;color:var(--text-dark);letter-spacing:-.3px;margin-bottom:6px;position:relative;z-index:1}
+.unit-choice-sub{font-size:.85rem;color:var(--text-muted);font-weight:500;margin-bottom:20px;position:relative;z-index:1;line-height:1.45;padding:0 8px}
+.unit-choice-buttons{display:flex;flex-direction:column;gap:10px;position:relative;z-index:1;margin-bottom:12px}
+.unit-choice-btn{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 20px;border-radius:20px;border:1.5px solid var(--border);background:#fff;cursor:pointer;font-family:var(--font);transition:transform .18s ease,box-shadow .22s ease,border-color .22s ease;text-align:left;width:100%;box-shadow:var(--shadow-sm)}
+.unit-choice-btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);border-color:var(--primary-soft)}
+.unit-choice-btn:active{transform:scale(.98)}
+.unit-choice-btn .left{display:flex;align-items:center;gap:12px;min-width:0}
+.unit-choice-btn .icon{width:42px;height:42px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex-shrink:0;background:linear-gradient(140deg,#eef2ff 0%,#e0e7ff 100%);border:1px solid rgba(99,102,241,.15)}
+.unit-choice-btn.box .icon{background:linear-gradient(140deg,#f3e8ff 0%,#e9d5ff 100%);border-color:rgba(139,92,246,.2)}
+.unit-choice-btn .label{font-weight:800;font-size:.94rem;color:var(--text-dark);letter-spacing:-.1px;display:block}
+.unit-choice-btn .sub{font-size:.7rem;color:var(--text-muted);font-weight:600;margin-top:2px}
+.unit-choice-btn .price{font-weight:800;font-size:1.15rem;color:#4338ca;letter-spacing:-.4px;white-space:nowrap}
+.unit-choice-btn.box .price{color:#6b21a8}
+.unit-choice-cancel{background:transparent;border:none;color:var(--text-muted);font-family:var(--font);font-weight:700;font-size:.85rem;padding:10px;cursor:pointer;width:100%;border-radius:12px;transition:background .18s}
+.unit-choice-cancel:hover{background:#f1f2f8}
+
+/* FORMULA/note for cigarette section in form */
+.cig-fields{background:var(--primary-light);border:1px dashed var(--primary-soft);border-radius:16px;padding:14px 14px 4px;margin-top:-4px}
+.cig-fields .field-note{font-size:.72rem;color:var(--text-muted);font-weight:600;margin:-2px 0 10px;line-height:1.45}
+
 .confirm-overlay{position:fixed;inset:0;z-index:2500;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(30,27,75,.5);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .25s ease,visibility .25s ease}
 .confirm-overlay.active{opacity:1;visibility:visible;pointer-events:auto}
 .confirm-card{background:#fff;border-radius:26px;padding:30px 26px 22px;max-width:380px;width:100%;text-align:center;box-shadow:0 30px 60px -18px rgba(30,27,75,.45);position:relative;overflow:hidden;opacity:0;transform:translateY(20px) scale(.94);transition:transform .4s cubic-bezier(.34,1.56,.64,1),opacity .28s ease}
@@ -363,7 +377,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
 .confirm-danger{background:linear-gradient(135deg,#ef4444 0%,#dc2626 100%);color:#fff;box-shadow:0 10px 22px -8px rgba(239,68,68,.7)}
 .confirm-danger:hover{box-shadow:0 14px 28px -8px rgba(239,68,68,.85);transform:translateY(-1px)}
 
-/* AUTH */
 .auth-modal{position:fixed;inset:0;z-index:3000;display:flex;align-items:center;justify-content:center;padding:20px;background:radial-gradient(circle at 30% 20%,rgba(99,102,241,.35),rgba(20,18,55,.65));-webkit-backdrop-filter:blur(14px) saturate(130%);backdrop-filter:blur(14px) saturate(130%);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .34s ease,visibility .34s ease}
 .auth-modal.active{opacity:1;visibility:visible;pointer-events:auto}
 .auth-card{position:relative;width:100%;max-width:400px;padding:40px 30px 28px;border-radius:32px;text-align:center;background:linear-gradient(165deg,#fff 0%,#f8f9ff 100%);box-shadow:0 40px 80px -20px rgba(20,18,55,.55),0 2px 0 rgba(255,255,255,.9) inset,0 0 0 1px rgba(255,255,255,.7);overflow:hidden;opacity:0;transform:translateY(30px) scale(.92);transition:transform .5s cubic-bezier(.34,1.56,.64,1),opacity .32s ease}
@@ -395,7 +408,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
 .auth-card.success .auth-brand-mark::after{border-color:rgba(34,197,94,.35)}
 .auth-card.success #authCodeInput{border-color:#22c55e;box-shadow:0 0 0 5px rgba(34,197,94,.18)}
 
-/* CALCULATOR */
 .calc-display{background:linear-gradient(155deg,#14142b 0%,#1e1b4b 100%);color:#fff;padding:34px 24px 22px;border-radius:22px;text-align:right;font-size:2.5rem;font-weight:800;letter-spacing:-.8px;min-height:96px;word-break:break-all;box-shadow:inset 0 2px 10px rgba(0,0,0,.35),0 8px 20px -8px rgba(20,18,55,.4);margin-bottom:8px;overflow:hidden;line-height:1.15;transition:background .3s}
 .calc-display.error{background:linear-gradient(155deg,#450a0a 0%,#7f1d1d 100%)}
 .calc-history{text-align:right;font-size:.85rem;color:var(--text-muted);font-weight:700;min-height:22px;margin-bottom:16px;padding-right:8px;letter-spacing:.3px}
@@ -411,7 +423,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);background:#
 .calc-btn.calc-equals:hover{transform:translateY(-2px);box-shadow:0 12px 24px -6px rgba(99,102,241,.8)}
 .calc-btn.calc-zero{grid-column:span 2}
 
-/* DARK MODE */
 html.dark{
   --primary:#818cf8;--primary-light:#22224a;--primary-dark:#c7d2fe;--primary-soft:#3b3b6b;
   --bg-gradient:linear-gradient(160deg,#080812 0%,#0e0e1e 55%,#111128 100%);
@@ -430,7 +441,9 @@ html.dark .category-chip,
 html.dark .btn-outline,
 html.dark .sale-back-btn,
 html.dark .category-card,
-html.dark .sale-search-wrap{background:#16162b;color:var(--text-dark);border-color:var(--border)}
+html.dark .sale-search-wrap,
+html.dark .unit-choice-card,
+html.dark .unit-choice-btn{background:#16162b;color:var(--text-dark);border-color:var(--border)}
 html.dark .category-chip:hover,
 html.dark .btn-outline:hover,
 html.dark .sale-back-btn:hover{background:#22224a;color:#c7d2fe}
@@ -459,6 +472,8 @@ html.dark .product-item::after{background:linear-gradient(180deg,rgba(255,255,25
 html.dark .sold-section{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.08)}
 html.dark .badge{background:rgba(255,255,255,.1);color:#c7d2fe;border-color:rgba(255,255,255,.1)}
 html.dark .badge.cost-badge{background:rgba(239,68,68,.22);color:#fecaca}
+html.dark .badge.stick-badge{background:rgba(59,130,246,.22);color:#bfdbfe}
+html.dark .badge.box-badge{background:rgba(139,92,246,.25);color:#ddd6fe}
 html.dark .category-badge{background:rgba(139,92,246,.22);color:#ddd6fe}
 html.dark .unit-badge{background:rgba(251,191,36,.18);color:#fcd34d}
 html.dark .stock-badge{background:rgba(255,255,255,.1);color:#e5e7ff;border-color:rgba(255,255,255,.1)}
@@ -467,6 +482,8 @@ html.dark .customer-tag:hover{background:rgba(255,255,255,.1)}
 html.dark .customer-tag.lacks-payment{background:var(--dark-green-bg);border-color:var(--dark-green)}
 html.dark .customer-count-badge{background:#2b2b55;color:#c7d2fe}
 html.dark .customer-qty-badge{background:#3a2f10;color:#fcd34d}
+html.dark .customer-unit-badge{background:#2b2b55;color:#c7d2fe}
+html.dark .customer-unit-badge.box{background:#3a1f5c;color:#e9d5ff}
 html.dark .category-card-icon{background:linear-gradient(140deg,#22224a,#2c2c55);border-color:rgba(255,255,255,.08)}
 html.dark .category-card:hover{border-color:var(--primary-soft)}
 html.dark .customer-name-cash{color:#34d399}
@@ -506,6 +523,8 @@ html.dark .age-bucket.fresh .age-bucket-value{color:#a7f3d0}
 html.dark .age-bucket.mid .age-bucket-value{color:#fde68a}
 html.dark .age-bucket.old .age-bucket-value{color:#fecaca}
 html.dark .restock-allgood{color:#34d399}
+html.dark .cig-fields{background:#1c1c3a;border-color:#3b3b6b}
+html.dark .unit-choice-cancel:hover{background:#22224a}
 
 @media (max-width:400px){
   .sold-section{flex-direction:column;align-items:flex-start;border-radius:20px}
@@ -528,6 +547,9 @@ html.dark .restock-allgood{color:#34d399}
   .age-bucket-label{font-size:.5rem;letter-spacing:0}
   .header-date{font-size:.7rem;padding:9px 12px}
   .theme-toggle{width:38px;height:38px;font-size:.95rem}
+  .unit-choice-btn{padding:14px 16px}
+  .unit-choice-btn .icon{width:36px;height:36px;font-size:1.05rem}
+  .unit-choice-btn .price{font-size:1rem}
 }
 </style>
 </head>
@@ -599,7 +621,6 @@ html.dark .restock-allgood{color:#34d399}
   </div>
 
   <div class="tab-panel hidden" id="tab-manage">
-    <!-- BACKUP -->
     <div class="card">
       <div class="section-title">💾 Backup &amp; Restore</div>
       <div class="backup-info">
@@ -636,18 +657,33 @@ html.dark .restock-allgood{color:#34d399}
           <div class="input-field"><label>Product name</label><input type="text" id="productNameInput" placeholder="e.g. Iced Coffee" autocomplete="off"></div>
         </div>
         <div class="input-row">
-          <div class="input-field"><label>Cost price (₱)</label><input type="number" id="productCostInput" placeholder="0.00" min="0" step="0.01"></div>
-          <div class="input-field"><label>Selling price (₱)</label><input type="number" id="productPriceInput" placeholder="0.00" min="0" step="0.01"></div>
-        </div>
-        <div class="input-row">
           <div class="input-field"><label>Category</label><select id="productCategoryInput"></select></div>
-          <div class="input-field hidden" id="cigaretteUnitField">
-            <label>Cigarette unit</label>
-            <select id="cigaretteUnitInput"><option value="stick">Per Stick</option><option value="box">Per Box</option></select>
+        </div>
+
+        <!-- Cigarette-specific fields -->
+        <div id="cigaretteFields" class="cig-fields hidden">
+          <div class="field-note">🚬 Cigarettes are tracked in <strong>sticks</strong>. Enter prices for both units so you can sell either way.</div>
+          <div class="input-row">
+            <div class="input-field"><label>Sticks per box</label><input type="number" id="sticksPerBoxInput" placeholder="20" min="1" step="1" value="20"></div>
+          </div>
+          <div class="input-row">
+            <div class="input-field"><label>Price per stick (₱)</label><input type="number" id="productPriceInput" placeholder="0.00" min="0" step="0.01"></div>
+            <div class="input-field"><label>Cost per stick (₱)</label><input type="number" id="productCostInput" placeholder="0.00" min="0" step="0.01"></div>
+          </div>
+          <div class="input-row">
+            <div class="input-field"><label>Price per box (₱)</label><input type="number" id="productBoxPriceInput" placeholder="0.00" min="0" step="0.01"></div>
+            <div class="input-field"><label>Cost per box (₱)</label><input type="number" id="productBoxCostInput" placeholder="0.00" min="0" step="0.01"></div>
           </div>
         </div>
+
+        <!-- Non-cigarette fields -->
+        <div id="normalPriceFields" class="input-row">
+          <div class="input-field"><label>Cost price (₱)</label><input type="number" id="productCostInputNormal" placeholder="0.00" min="0" step="0.01"></div>
+          <div class="input-field"><label>Selling price (₱)</label><input type="number" id="productPriceInputNormal" placeholder="0.00" min="0" step="0.01"></div>
+        </div>
+
         <div class="input-row">
-          <div class="input-field"><label>Total stock</label><input type="number" id="totalStockInput" placeholder="e.g. 50" min="0" step="1"></div>
+          <div class="input-field"><label>Total stock <span id="stockUnitLabel">(units)</span></label><input type="number" id="totalStockInput" placeholder="e.g. 50" min="0" step="1"></div>
           <div class="input-field"><label>Stock left</label><input type="number" id="stockLeftInput" placeholder="e.g. 20" min="0" step="1"></div>
         </div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;">
@@ -780,6 +816,17 @@ html.dark .restock-allgood{color:#34d399}
   </div>
 </div>
 
+<!-- ===== UNIT CHOICE MODAL (CIGARETTES) ===== -->
+<div id="unitChoiceModal" class="unit-choice-modal">
+  <div class="unit-choice-card" id="unitChoiceCard">
+    <div class="unit-choice-icon">🚬</div>
+    <div class="unit-choice-title" id="unitChoiceTitle">Sell as…</div>
+    <div class="unit-choice-sub" id="unitChoiceSub">Pick the unit for this sale.</div>
+    <div class="unit-choice-buttons" id="unitChoiceButtons"></div>
+    <button class="unit-choice-cancel" id="unitChoiceCancelBtn" type="button">Cancel</button>
+  </div>
+</div>
+
 <div id="authModal" class="auth-modal">
   <div class="auth-card" id="authCard">
     <div class="auth-brand-mark">
@@ -872,6 +919,7 @@ html.dark .restock-allgood{color:#34d399}
   const DEFAULT_PIN = '0627';
   const AUTO_LOCK_SECONDS = 5;
   const DAY_MS = 86400000;
+  const DEFAULT_STICKS_PER_BOX = 20;
 
   let authCode = DEFAULT_PIN;
   try { authCode = localStorage.getItem(PIN_KEY) || DEFAULT_PIN; } catch(e){ authCode = DEFAULT_PIN; }
@@ -886,16 +934,16 @@ html.dark .restock-allgood{color:#34d399}
   ];
 
   const defaultProducts = [
-    { id:'prod_'+Date.now()+'_1', name:'Mango Graham Shake', price:120, cost:60, category:'juice', cigaretteUnit:null, totalStock:50, stockLeft:20,
+    { id:'prod_'+Date.now()+'_1', name:'Mango Graham Shake', price:120, cost:60, boxPrice:0, boxCost:0, sticksPerBox:20, category:'juice', cigaretteUnit:null, totalStock:50, stockLeft:20,
       customers:[
-        { name:'Ana', paymentType:'cash', date:new Date().toISOString(), quantity:1, lacksPayment:false, paymentStatus:'paid', note:'', lackAmount:0 },
-        { name:'Marco', paymentType:'cash', date:new Date().toISOString(), quantity:2, lacksPayment:false, paymentStatus:'paid', note:'', lackAmount:0 },
-        { name:'Juls', paymentType:'debt', date:new Date().toISOString(), quantity:1, lacksPayment:false, paymentStatus:'unpaid', note:'', lackAmount:0 }
+        { name:'Ana', paymentType:'cash', date:new Date().toISOString(), quantity:1, unit:'unit', lacksPayment:false, paymentStatus:'paid', note:'', lackAmount:0 },
+        { name:'Juls', paymentType:'debt', date:new Date().toISOString(), quantity:1, unit:'unit', lacksPayment:false, paymentStatus:'unpaid', note:'', lackAmount:0 }
       ]
     },
-    { id:'prod_'+Date.now()+'_2', name:'Marlboro Red', price:150, cost:120, category:'cigarettes', cigaretteUnit:'stick', totalStock:100, stockLeft:3,
+    { id:'prod_'+Date.now()+'_2', name:'Marlboro Red', price:8, cost:6, boxPrice:150, boxCost:120, sticksPerBox:20, category:'cigarettes', cigaretteUnit:'stick', totalStock:100, stockLeft:40,
       customers:[
-        { name:'Tita Linda', paymentType:'cash', date:new Date().toISOString(), quantity:3, lacksPayment:false, paymentStatus:'paid', note:'', lackAmount:0 }
+        { name:'Tita Linda', paymentType:'cash', date:new Date().toISOString(), quantity:3, unit:'stick', lacksPayment:false, paymentStatus:'paid', note:'', lackAmount:0 },
+        { name:'Marco', paymentType:'cash', date:new Date().toISOString(), quantity:1, unit:'box', lacksPayment:false, paymentStatus:'paid', note:'', lackAmount:0 }
       ]
     }
   ];
@@ -946,7 +994,27 @@ html.dark .restock-allgood{color:#34d399}
   }
   function money(n){ return '₱'+(Number(n)||0).toFixed(2); }
   function num(v){ const x = parseFloat(v); return isNaN(x) ? 0 : x; }
-  function hasCost(p){ return p.cost !== null && p.cost !== undefined && p.cost !== '' && !isNaN(parseFloat(p.cost)); }
+  function hasCost(p){ return p.cost !== null && p.cost !== undefined && p.cost !== '' && !isNaN(parseFloat(p.cost)) && parseFloat(p.cost) > 0; }
+  function isCigarette(p){ return p && p.category === 'cigarettes'; }
+  function getSticksPerBox(p){ return Math.max(1, parseInt(p.sticksPerBox,10) || DEFAULT_STICKS_PER_BOX); }
+  function hasBoxPricing(p){ return isCigarette(p) && num(p.boxPrice) > 0; }
+
+  function getUnitPrice(p, unit){
+    if(unit === 'box' && isCigarette(p)) return num(p.boxPrice) || (num(p.price) * getSticksPerBox(p));
+    return num(p.price);
+  }
+  function getUnitCost(p, unit){
+    if(unit === 'box' && isCigarette(p)) return num(p.boxCost) || (num(p.cost) * getSticksPerBox(p));
+    return num(p.cost);
+  }
+  function unitSticks(p, unit){
+    if(unit === 'box' && isCigarette(p)) return getSticksPerBox(p);
+    return 1;
+  }
+  function unitLabel(p, unit){
+    if(!isCigarette(p)) return 'unit';
+    return unit === 'box' ? 'box' : 'stick';
+  }
 
   function toTimestamp(value){
     if(value===null || value===undefined || value==='') return null;
@@ -991,7 +1059,11 @@ html.dark .restock-allgood{color:#34d399}
   }
   function buildCustomerQtyMap(){
     const map={};
-    products.forEach(p=>(p.customers||[]).forEach(c=>{ map[c.name]=(map[c.name]||0)+(c.quantity||1); }));
+    products.forEach(p=>(p.customers||[]).forEach(c=>{
+      const name = c.name;
+      const units = c.quantity || 1;
+      map[name] = (map[name] || 0) + units;
+    }));
     return map;
   }
   function paymentLabel(pt){ return pt==='cash'?'Cash':pt==='debt'?'Debt':'Unregistered'; }
@@ -1003,7 +1075,8 @@ html.dark .restock-allgood{color:#34d399}
     return (payments || []).reduce((s,p)=>s + num(p && p.amount), 0);
   }
   function productCustomerOwed(p, c){
-    const base = (c.paymentType === 'debt') ? num(p.price) * (c.quantity||1) : 0;
+    const unit = c.unit || (isCigarette(p) ? (p.cigaretteUnit || 'stick') : 'unit');
+    const base = (c.paymentType === 'debt') ? getUnitPrice(p, unit) * (c.quantity||1) : 0;
     const lack = (c.lacksPayment && num(c.lackAmount) > 0) ? num(c.lackAmount) : 0;
     return base + lack;
   }
@@ -1052,14 +1125,22 @@ html.dark .restock-allgood{color:#34d399}
         products=products.map(p=>({
           ...p,
           cost: (p.cost !== undefined && p.cost !== null && p.cost !== '') ? p.cost : 0,
+          boxPrice: (p.boxPrice !== undefined && p.boxPrice !== null && p.boxPrice !== '') ? p.boxPrice : 0,
+          boxCost: (p.boxCost !== undefined && p.boxCost !== null && p.boxCost !== '') ? p.boxCost : 0,
+          sticksPerBox: (p.sticksPerBox !== undefined && p.sticksPerBox !== null && p.sticksPerBox !== '') ? p.sticksPerBox : DEFAULT_STICKS_PER_BOX,
           category:p.category||'other',
           cigaretteUnit:p.cigaretteUnit||null,
           totalStock:p.totalStock||0,
           stockLeft:p.stockLeft||0,
           customers:Array.isArray(p.customers)?p.customers.map(c=>{
-            if(typeof c==='string') return {name:c,paymentType:'cash',date:new Date().toISOString(),quantity:1,lacksPayment:false,paymentStatus:'paid',note:'',lackAmount:0,payments:[]};
+            if(typeof c==='string') return {name:c,paymentType:'cash',date:new Date().toISOString(),quantity:1,unit:(p.category==='cigarettes'?(p.cigaretteUnit||'stick'):'unit'),lacksPayment:false,paymentStatus:'paid',note:'',lackAmount:0,payments:[]};
+            let unit = c.unit;
+            if(!unit){
+              unit = (p.category === 'cigarettes') ? (p.cigaretteUnit || 'stick') : 'unit';
+            }
             return {
               ...c,
+              unit: unit,
               date:c.date||new Date().toISOString(),
               quantity:c.quantity||1,
               lacksPayment:c.lacksPayment||false,
@@ -1158,19 +1239,22 @@ html.dark .restock-allgood{color:#34d399}
   }
   tabButtons.forEach(b=>b.addEventListener('click',()=>switchTab(b.dataset.tab)));
 
-  /* ---------- daily kita (with true profit) ---------- */
+  /* ---------- daily kita ---------- */
   function computeDayStats(dayTs){
     let cash=0, utang=0, expenses=0, grossProfit=0, costMissing=false;
     products.forEach(p=>{
       (p.customers||[]).forEach(c=>{
         const ts = toTimestamp(c.date);
         if(ts===null || !isSameDay(ts, dayTs)) return;
+        const unit = c.unit || (isCigarette(p) ? (p.cigaretteUnit || 'stick') : 'unit');
         const qty = c.quantity||1;
-        const rev = num(p.price) * qty;
+        const unitPrice = getUnitPrice(p, unit);
+        const unitCost = getUnitCost(p, unit);
+        const rev = unitPrice * qty;
         if(c.paymentType==='cash'){
           cash += rev;
-          if(hasCost(p)){
-            grossProfit += (num(p.price) - num(p.cost)) * qty;
+          if(unitCost > 0){
+            grossProfit += (unitPrice - unitCost) * qty;
           } else {
             grossProfit += rev;
             costMissing = true;
@@ -1428,7 +1512,27 @@ html.dark .restock-allgood{color:#34d399}
       const stockStatus=getStockStatus(product);
       const stockClass=stockStatus==='critical'?'stock-critical':stockStatus==='low'?'stock-low':'';
       const catColor=categories.find(c=>c.name===product.category)?.color||'#f5f5f5';
-      const costBadge = !hasCost(product) ? ' <span class="badge cost-badge">no cost</span>' : '';
+      const isCig = isCigarette(product);
+
+      // Price badges
+      let priceBadges = '';
+      if(isCig){
+        const stickP = num(product.price);
+        const boxP = num(product.boxPrice);
+        const spb = getSticksPerBox(product);
+        priceBadges = '<span class="badge stick-badge">🚬 '+money(stickP)+' / stick</span>';
+        if(boxP > 0){
+          priceBadges += ' <span class="badge box-badge">📦 '+money(boxP)+' / box</span>';
+        } else {
+          priceBadges += ' <span class="badge box-badge" style="opacity:.6;">📦 box: —</span>';
+        }
+        if(!hasCost(product) && !(num(product.boxCost)>0)){
+          priceBadges += ' <span class="badge cost-badge">no cost</span>';
+        }
+      } else {
+        priceBadges = '<span class="badge">₱'+num(product.price).toFixed(2)+'</span>';
+        if(!hasCost(product)) priceBadges += ' <span class="badge cost-badge">no cost</span>';
+      }
 
       const custTags=customers.map((cust,idx)=>{
         const name=cust.name||'Unknown';
@@ -1441,15 +1545,27 @@ html.dark .restock-allgood{color:#34d399}
         const pStatus=cust.paymentStatus||'paid';
         const statusBadge=pt==='debt'?'<span class="payment-status-badge status-'+pStatus+'">'+pStatus+'</span>':'';
         const ageHtml=(pt==='debt' && pStatus!=='paid') ? ageBadge(toTimestamp(cust.date)) : '';
-        return '<div class="customer-tag '+lacksCls+'"><div class="customer-info" data-customer-index="'+idx+'" data-product-id="'+product.id+'"><span class="customer-name '+nameCls+' '+lacksCls+'">👤 '+escapeHTML(name)+'</span><span class="customer-count-badge">'+totalQty+' total</span><span class="customer-qty-badge">x'+qty+'</span><span class="customer-date">'+formatDate(cust.date)+'</span><span class="payment-badge '+badgeCls+'">'+paymentLabel(pt)+'</span>'+statusBadge+ageHtml+'</div><button class="delete-customer" data-product-id="'+product.id+'" data-customer-index="'+idx+'">✕</button></div>';
+
+        // Unit badge for cigarettes
+        let unitBadge = '';
+        if(isCig){
+          const u = cust.unit === 'box' ? 'box' : 'stick';
+          unitBadge = '<span class="customer-unit-badge '+(u==='box'?'box':'')+'">'+(u==='box'?'📦 Box':'🚬 Stick')+'</span>';
+        }
+
+        return '<div class="customer-tag '+lacksCls+'"><div class="customer-info" data-customer-index="'+idx+'" data-product-id="'+product.id+'"><span class="customer-name '+nameCls+' '+lacksCls+'">👤 '+escapeHTML(name)+'</span>'+unitBadge+'<span class="customer-qty-badge">x'+qty+'</span><span class="customer-date">'+formatDate(cust.date)+'</span><span class="payment-badge '+badgeCls+'">'+paymentLabel(pt)+'</span>'+statusBadge+ageHtml+'</div><button class="delete-customer" data-product-id="'+product.id+'" data-customer-index="'+idx+'">✕</button></div>';
       }).join('');
 
       let stockInfo='';
       if(product.totalStock>0){
-        stockInfo='<div class="stock-info"><span class="stock-badge">📦 Stock: '+product.stockLeft+' / '+product.totalStock+'</span>'+(stockStatus==='critical'?'<span style="color:#dc2626;font-weight:800;">⚠️ Critical</span>':'')+(stockStatus==='low'?'<span style="color:#d97706;font-weight:800;">🟡 Halfway</span>':'')+'</div>';
+        const unitName = isCig ? 'sticks' : 'units';
+        stockInfo='<div class="stock-info"><span class="stock-badge">📦 Stock: '+product.stockLeft+' / '+product.totalStock+' '+unitName+'</span>'+(stockStatus==='critical'?'<span style="color:#dc2626;font-weight:800;">⚠️ Critical</span>':'')+(stockStatus==='low'?'<span style="color:#d97706;font-weight:800;">🟡 Halfway</span>':'')+'</div>';
       }
+
+      const addBtnLabel = isCig ? '+ Sell' : '+ Add';
+
       html+='<div class="product-item '+stockClass+'" style="background-color:'+catColor+';" data-product-id="'+product.id+'">'+
-        '<div class="product-header"><div class="product-title">'+escapeHTML(product.name)+' <span class="badge">₱'+parseFloat(product.price).toFixed(2)+'</span> '+costBadge+'<span class="badge category-badge">'+escapeHTML(product.category)+'</span>'+(product.cigaretteUnit?'<span class="badge unit-badge">'+(product.cigaretteUnit==='stick'?'Per Stick':'Per Box')+'</span>':'')+'</div>'+
+        '<div class="product-header"><div class="product-title">'+escapeHTML(product.name)+' '+priceBadges+'<span class="badge category-badge">'+escapeHTML(product.category)+'</span></div>'+
         '<div class="product-actions"><button class="btn btn-outline edit-product-btn" data-id="'+product.id+'" style="padding:8px 12px;">✏️</button><button class="btn btn-danger delete-product-btn" data-id="'+product.id+'" style="padding:8px 12px;">🗑️</button></div></div>'+
         '<div class="sold-section"><span class="sold-label">📊 Sold today</span><span class="sold-count">'+soldCount+'</span></div>'+
         stockInfo+
@@ -1457,11 +1573,76 @@ html.dark .restock-allgood{color:#34d399}
         '<div class="add-customer-row"><input type="text" class="customer-name-input" data-product-id="'+product.id+'" placeholder="Name" autocomplete="off" list="customer-suggestions"><datalist id="customer-suggestions">'+frequentCustomers.map(n=>'<option value="'+escapeHTML(n)+'">').join('')+'</datalist>'+
         '<input type="number" class="customer-quantity-input" data-product-id="'+product.id+'" placeholder="Qty" min="1" value="1" style="max-width:70px;">'+
         '<select class="customer-payment-select" data-product-id="'+product.id+'"><option value="cash" selected>💵 Cash</option><option value="debt">📒 Debt</option><option value="unregistered">📋 Unregistered</option></select>'+
-        '<button class="btn btn-light add-customer-btn" data-id="'+product.id+'" style="padding:11px 16px;">+ Add</button></div>'+
+        '<button class="btn btn-light add-customer-btn" data-id="'+product.id+'" style="padding:11px 16px;">'+addBtnLabel+'</button></div>'+
         '<div class="customer-list">'+(custTags||'<div style="color:#9aa0b8;font-size:.85rem;">No customers yet</div>')+'</div></div></div>';
     });
     productListContainer.innerHTML=html;
   }
+
+  /* ---------- unit choice modal ---------- */
+  const unitChoiceModal = document.getElementById('unitChoiceModal');
+  const unitChoiceCard = document.getElementById('unitChoiceCard');
+  const unitChoiceTitle = document.getElementById('unitChoiceTitle');
+  const unitChoiceSub = document.getElementById('unitChoiceSub');
+  const unitChoiceButtons = document.getElementById('unitChoiceButtons');
+  const unitChoiceCancelBtn = document.getElementById('unitChoiceCancelBtn');
+  let unitChoiceResolve = null;
+
+  function showUnitChoiceModal(product){
+    return new Promise(resolve=>{
+      if(unitChoiceResolve) unitChoiceResolve(null);
+      unitChoiceResolve = resolve;
+
+      const stickP = num(product.price);
+      const boxP = num(product.boxPrice);
+      const spb = getSticksPerBox(product);
+      const stock = num(product.stockLeft);
+
+      unitChoiceTitle.textContent = 'Sell ' + product.name + ' as…';
+      unitChoiceSub.textContent = 'In stock: ' + stock + ' stick' + (stock===1?'':'s') + ' · ' + spb + ' sticks per box';
+
+      let btns = '';
+      btns += '<button class="unit-choice-btn stick" data-unit="stick">'+
+                '<span class="left"><span class="icon">🚬</span><span><span class="label">Per Stick</span><span class="sub">1 stick each</span></span></span>'+
+                '<span class="price">'+money(stickP)+'</span>'+
+              '</button>';
+      if(boxP > 0){
+        btns += '<button class="unit-choice-btn box" data-unit="box">'+
+                  '<span class="left"><span class="icon">📦</span><span><span class="label">Per Box</span><span class="sub">'+spb+' sticks each</span></span></span>'+
+                  '<span class="price">'+money(boxP)+'</span>'+
+                '</button>';
+      } else {
+        btns += '<button class="unit-choice-btn box" data-unit="box" disabled style="opacity:.55;cursor:not-allowed;">'+
+                  '<span class="left"><span class="icon">📦</span><span><span class="label">Per Box</span><span class="sub">Set a box price in Manage first</span></span></span>'+
+                  '<span class="price">—</span>'+
+                '</button>';
+      }
+      unitChoiceButtons.innerHTML = btns;
+
+      void unitChoiceModal.offsetWidth;
+      unitChoiceModal.classList.add('active');
+    });
+  }
+
+  function closeUnitChoiceModal(unit){
+    unitChoiceModal.classList.remove('active');
+    const r = unitChoiceResolve;
+    unitChoiceResolve = null;
+    if(r) r(unit || null);
+  }
+
+  unitChoiceButtons.addEventListener('click', function(e){
+    const btn = e.target.closest('.unit-choice-btn');
+    if(!btn) return;
+    if(btn.hasAttribute('disabled')) return;
+    const unit = btn.getAttribute('data-unit');
+    closeUnitChoiceModal(unit);
+  });
+  unitChoiceCancelBtn.addEventListener('click', function(){ closeUnitChoiceModal(null); });
+  unitChoiceModal.addEventListener('click', function(e){ if(e.target===unitChoiceModal) closeUnitChoiceModal(null); });
+  document.addEventListener('keydown', function(e){
+    if(e.key==='Escape' && unitChoiceModal.classList.contains('active')) closeUnitChoiceModal(null);
+  });
 
   /* ---------- manual debts ---------- */
   const debtListContainer = document.getElementById('debtListContainer');
@@ -1518,13 +1699,15 @@ html.dark .restock-allgood{color:#34d399}
     restockListContainer.innerHTML = low.map(p=>{
       const pct = Math.max(0, Math.min(100, Math.round((p.stockLeft / p.totalStock) * 100)));
       const critical = p.stockLeft <= 3;
+      const isCig = isCigarette(p);
+      const unitName = isCig ? 'sticks' : 'units';
       const flag = critical
         ? '<span style="color:#dc2626;font-weight:800;">⚠️ Critical</span>'
         : '<span style="color:#d97706;font-weight:800;">🟡 Halfway</span>';
       return '<div class="restock-item">'+
         '<div class="restock-info">'+
           '<span class="restock-name">'+escapeHTML(p.name)+' '+flag+'</span>'+
-          '<span class="restock-meta">📦 '+p.stockLeft+' / '+p.totalStock+' left · ₱'+parseFloat(p.price).toFixed(2)+'</span>'+
+          '<span class="restock-meta">📦 '+p.stockLeft+' / '+p.totalStock+' '+unitName+' left · ₱'+num(p.price).toFixed(2)+(isCig?'/stick':'')+'</span>'+
           '<div class="restock-bar"><div class="restock-bar-fill" style="width:'+pct+'%"></div></div>'+
         '</div>'+
         '<button class="btn btn-primary restock-btn" data-id="'+p.id+'" style="padding:10px 14px;font-size:.82rem;">✅ Mark restocked</button>'+
@@ -1614,7 +1797,8 @@ html.dark .restock-allgood{color:#34d399}
           const isUnreg = (d.payment==='unregistered');
           icon = isUnreg ? '📋' : '🛒';
           iconClass = isUnreg ? 'unregistered' : 'purchase';
-          title = '<span class="accent">'+escapeHTML(d.customer||'Customer')+'</span> bought <strong>'+(d.qty||1)+'×</strong> "'+escapeHTML(d.product||'')+'" <span class="soft">— ₱'+(d.amount||0).toFixed(2)+' ('+escapeHTML(paymentLabel(d.payment||'cash'))+')</span>';
+          const unitTxt = d.unit && d.unit !== 'unit' ? ' (' + d.unit + ')' : '';
+          title = '<span class="accent">'+escapeHTML(d.customer||'Customer')+'</span> bought <strong>'+(d.qty||1)+'×</strong> "'+escapeHTML(d.product||'')+'"'+unitTxt+' <span class="soft">— ₱'+(d.amount||0).toFixed(2)+' ('+escapeHTML(paymentLabel(d.payment||'cash'))+')</span>';
           break;
         }
         case 'customer_deleted': icon='❌'; iconClass='delete'; title='<span class="accent">Removed customer</span> "'+escapeHTML(d.customer||'')+'" <span class="soft">from "'+escapeHTML(d.product||'')+'"</span>'; break;
@@ -1841,7 +2025,7 @@ html.dark .restock-allgood{color:#34d399}
   exportDataBtn.addEventListener('click', function(){
     const data = {
       app: 'ELZZMAPS',
-      version: 2,
+      version: 3,
       exportedAt: new Date().toISOString(),
       products: products,
       manualDebts: manualDebts,
@@ -1909,7 +2093,6 @@ html.dark .restock-allgood{color:#34d399}
           return;
         }
 
-        // Reload everything from storage with migrations
         loadCategories();
         loadProducts();
         loadDebts();
@@ -1917,7 +2100,6 @@ html.dark .restock-allgood{color:#34d399}
         loadDirectory();
         loadAuditLog();
 
-        // Re-render every visible section
         populateCategorySelect();
         renderCategoryFilter();
         renderDirectory();
@@ -2008,9 +2190,16 @@ html.dark .restock-allgood{color:#34d399}
   const productNameInput=document.getElementById('productNameInput');
   const productCostInput=document.getElementById('productCostInput');
   const productPriceInput=document.getElementById('productPriceInput');
+  const productCostInputNormal=document.getElementById('productCostInputNormal');
+  const productPriceInputNormal=document.getElementById('productPriceInputNormal');
+  const productBoxPriceInput=document.getElementById('productBoxPriceInput');
+  const productBoxCostInput=document.getElementById('productBoxCostInput');
+  const sticksPerBoxInput=document.getElementById('sticksPerBoxInput');
+  const cigaretteFields=document.getElementById('cigaretteFields');
+  const normalPriceFields=document.getElementById('normalPriceFields');
+  const stockUnitLabel=document.getElementById('stockUnitLabel');
+
   const productCategoryInput=document.getElementById('productCategoryInput');
-  const cigaretteUnitField=document.getElementById('cigaretteUnitField');
-  const cigaretteUnitInput=document.getElementById('cigaretteUnitInput');
   const totalStockInput=document.getElementById('totalStockInput');
   const stockLeftInput=document.getElementById('stockLeftInput');
   const addProductBtn=document.getElementById('addProductBtn');
@@ -2050,8 +2239,15 @@ html.dark .restock-allgood{color:#34d399}
   });
 
   function toggleCigaretteUnit(){
-    if(productCategoryInput.value==='cigarettes') cigaretteUnitField.classList.remove('hidden');
-    else { cigaretteUnitField.classList.add('hidden'); cigaretteUnitInput.value='stick'; }
+    if(productCategoryInput.value==='cigarettes'){
+      cigaretteFields.classList.remove('hidden');
+      normalPriceFields.classList.add('hidden');
+      stockUnitLabel.textContent='(sticks)';
+    } else {
+      cigaretteFields.classList.add('hidden');
+      normalPriceFields.classList.remove('hidden');
+      stockUnitLabel.textContent='(units)';
+    }
   }
   productCategoryInput.addEventListener('change',toggleCigaretteUnit);
 
@@ -2104,33 +2300,52 @@ html.dark .restock-allgood{color:#34d399}
 
   function handleAddOrUpdateProduct(){
     const name=productNameInput.value.trim();
-    const price=parseFloat(productPriceInput.value);
-    const costRaw = productCostInput.value;
-    const cost = (costRaw === '' || costRaw === null) ? 0 : parseFloat(costRaw);
     const category=productCategoryInput.value;
-    const cigaretteUnit=category==='cigarettes'?cigaretteUnitInput.value:null;
+    const isCig = category === 'cigarettes';
     const totalStock=parseInt(totalStockInput.value)||0;
     const stockLeft=parseInt(stockLeftInput.value)||0;
+
     if(!name){ formMessage.textContent='❗ Please enter a product name.'; return; }
-    if(isNaN(price)||price<0){ formMessage.textContent='❗ Selling price must be a valid positive number.'; return; }
-    if(isNaN(cost)||cost<0){ formMessage.textContent='❗ Cost price must be a valid positive number.'; return; }
-    if(cost > price){ formMessage.textContent='⚠️ Cost is higher than selling price — you\'d lose money on each sale.'; /* continue anyway */ }
+
+    let price, cost, boxPrice, boxCost, sticksPerBox, cigaretteUnit;
+    if(isCig){
+      price = parseFloat(productPriceInput.value) || 0;
+      cost = parseFloat(productCostInput.value) || 0;
+      boxPrice = parseFloat(productBoxPriceInput.value) || 0;
+      boxCost = parseFloat(productBoxCostInput.value) || 0;
+      sticksPerBox = Math.max(1, parseInt(sticksPerBoxInput.value,10) || DEFAULT_STICKS_PER_BOX);
+      cigaretteUnit = 'stick';
+      if(price <= 0){ formMessage.textContent='❗ Enter a valid price per stick.'; return; }
+      if(boxPrice > 0 && boxPrice < price){ formMessage.textContent='⚠️ Box price is lower than stick price — check your numbers.'; /* allow */ }
+    } else {
+      price = parseFloat(productPriceInputNormal.value);
+      cost = parseFloat(productCostInputNormal.value);
+      if(isNaN(price)||price<0){ formMessage.textContent='❗ Selling price must be a valid number.'; return; }
+      if(isNaN(cost)||cost<0){ formMessage.textContent='❗ Cost price must be a valid number.'; return; }
+      boxPrice = 0; boxCost = 0; sticksPerBox = DEFAULT_STICKS_PER_BOX; cigaretteUnit = null;
+      if(cost > price){ formMessage.textContent='⚠️ Cost is higher than selling price.'; /* continue */ }
+    }
+
+    const payload = {
+      name:name, price:price, cost:cost, boxPrice:boxPrice, boxCost:boxCost,
+      sticksPerBox:sticksPerBox, category:category, cigaretteUnit:cigaretteUnit,
+      totalStock:totalStock, stockLeft:stockLeft
+    };
 
     if(editingProductId){
       const idx=products.findIndex(p=>p.id===editingProductId);
       if(idx!==-1){
-        products[idx]={...products[idx],name:name,price:price,cost:cost,category:category,cigaretteUnit:cigaretteUnit,totalStock:totalStock,stockLeft:stockLeft};
+        products[idx]={...products[idx],...payload};
         logActivity('product_edited',{name:name,price:price,category:category});
         formMessage.textContent='✅ Product updated.';
       }
       editingProductId=null;
       addProductBtn.innerHTML='➕ Add product';
     } else {
-      const newProduct={
+      const newProduct = Object.assign({
         id:'prod_'+Date.now()+'_'+Math.random().toString(36).substring(2,8),
-        name:name,price:price,cost:cost,category:category,cigaretteUnit:cigaretteUnit,
-        totalStock:totalStock,stockLeft:stockLeft,customers:[]
-      };
+        customers:[]
+      }, payload);
       products.push(newProduct);
       logActivity('product_added',{name:name,price:price,category:category});
       formMessage.textContent='✅ Product added successfully.';
@@ -2144,25 +2359,28 @@ html.dark .restock-allgood{color:#34d399}
   }
   function clearProductForm(){
     productNameInput.value='';
-    productPriceInput.value='';
+    if(productPriceInput) productPriceInput.value='';
     if(productCostInput) productCostInput.value='';
+    if(productBoxPriceInput) productBoxPriceInput.value='';
+    if(productBoxCostInput) productBoxCostInput.value='';
+    if(sticksPerBoxInput) sticksPerBoxInput.value = DEFAULT_STICKS_PER_BOX;
+    if(productPriceInputNormal) productPriceInputNormal.value='';
+    if(productCostInputNormal) productCostInputNormal.value='';
     productCategoryInput.value=categories[0]?.name||'other';
-    cigaretteUnitInput.value='stick';
     totalStockInput.value='';
     stockLeftInput.value='';
     editingProductId=null;
     addProductBtn.innerHTML='➕ Add product';
     formMessage.textContent='';
     productNameInput.classList.remove('edit-input');
-    productPriceInput.classList.remove('edit-input');
-    if(productCostInput) productCostInput.classList.remove('edit-input');
+    [productPriceInput, productCostInput, productPriceInputNormal, productCostInputNormal, productBoxPriceInput, productBoxCostInput].forEach(el=>{
+      if(el) el.classList.remove('edit-input');
+    });
     toggleCigaretteUnit();
   }
   addProductBtn.addEventListener('click',handleAddOrUpdateProduct);
   clearFormBtn.addEventListener('click',clearProductForm);
   productNameInput.addEventListener('keypress',e=>{ if(e.key==='Enter') handleAddOrUpdateProduct(); });
-  productPriceInput.addEventListener('keypress',e=>{ if(e.key==='Enter') handleAddOrUpdateProduct(); });
-  if(productCostInput) productCostInput.addEventListener('keypress',e=>{ if(e.key==='Enter') handleAddOrUpdateProduct(); });
 
   function handleAddDebt(){
     const name=debtCustomerNameInput.value.trim();
@@ -2280,7 +2498,7 @@ html.dark .restock-allgood{color:#34d399}
     if(delBtn){ const id=delBtn.getAttribute('data-expense-id'); if(id) handleDeleteExpense(id); }
   });
 
-  /* ---------- customer summary modal (with payment history) ---------- */
+  /* ---------- customer summary ---------- */
   function showCustomerSummary(productId, customerIndex){
     const product=products.find(p=>p.id===productId);
     if(!product) return;
@@ -2294,21 +2512,21 @@ html.dark .restock-allgood{color:#34d399}
       (prod.customers||[]).forEach(c=>{
         if(c.name===customerName){
           const qty=c.quantity||1;
-          const amt=num(prod.price)*qty;
+          const unit = c.unit || (isCigarette(prod) ? (prod.cigaretteUnit || 'stick') : 'unit');
+          const unitPrice = getUnitPrice(prod, unit);
+          const amt=unitPrice*qty;
           totalQuantity+=qty;
           if(c.paymentType==='cash') totalCash+=amt;
           else if(c.paymentType==='debt') totalDebt+=amt;
           else totalUnreg+=amt;
           if(c.lacksPayment&&num(c.lackAmount)>0) totalDebt+=num(c.lackAmount);
           if(c.paymentType==='debt') totalPaid += productCustomerPaid(c);
-          summaryItems.push({ productName:prod.name, price:prod.price, paymentType:c.paymentType, unit:prod.cigaretteUnit||null, date:c.date, quantity:qty, amount:amt, entry:c, prodRef:prod });
+          summaryItems.push({ productName:prod.name, price:unitPrice, paymentType:c.paymentType, unit:unit, date:c.date, quantity:qty, amount:amt, entry:c, prodRef:prod, isCig:isCigarette(prod) });
         }
       });
     });
 
-    // manual debts for this customer
     let manualOwed = 0, manualPaid = 0, manualRemaining = 0;
-    const manualItems = [];
     manualDebts.forEach(d=>{
       if(d.name !== customerName) return;
       const owed = manualDebtOwed(d);
@@ -2316,21 +2534,24 @@ html.dark .restock-allgood{color:#34d399}
       const rem = manualDebtRemaining(d);
       if (owed > 0){
         manualOwed += owed; manualPaid += paid; manualRemaining += rem;
-        manualItems.push(d);
       }
     });
 
     let listHtml = summaryItems.length===0 ? '<div style="padding:8px 0;color:var(--text-muted);font-size:.85rem;">No product purchases found.</div>' :
       summaryItems.map(item=>{
         const pt=item.paymentType||'cash';
-        return '<div class="summary-item"><div class="summary-item-left"><span><strong>'+escapeHTML(item.productName)+'</strong> '+(item.unit?'('+(item.unit==='stick'?'Per Stick':'Per Box')+')':'')+' (₱'+parseFloat(item.price).toFixed(2)+' x '+item.quantity+')</span><span class="summary-item-date">📅 '+formatDate(item.date)+' · <span class="summary-qty">₱'+item.amount.toFixed(2)+'</span></span></div><span class="payment-badge '+paymentBadgeClass(pt)+'">'+paymentLabel(pt)+'</span></div>';
+        let unitTxt = '';
+        if(item.isCig){
+          const u = item.unit === 'box' ? 'Per Box' : 'Per Stick';
+          unitTxt = ' (' + u + ')';
+        }
+        return '<div class="summary-item"><div class="summary-item-left"><span><strong>'+escapeHTML(item.productName)+'</strong>'+unitTxt+' (₱'+parseFloat(item.price).toFixed(2)+' x '+item.quantity+')</span><span class="summary-item-date">📅 '+formatDate(item.date)+' · <span class="summary-qty">₱'+item.amount.toFixed(2)+'</span></span></div><span class="payment-badge '+paymentBadgeClass(pt)+'">'+paymentLabel(pt)+'</span></div>';
       }).join('');
 
     if(customer.lacksPayment&&num(customer.lackAmount)>0){
       listHtml+='<div class="summary-item"><div class="summary-item-left"><span><strong>⚠️ Lack Payment</strong></span><span class="summary-item-date">Additional debt from lack</span></div><span class="payment-badge payment-debt">₱'+num(customer.lackAmount).toFixed(2)+'</span></div>';
     }
 
-    // Payments history
     const allPayments = [];
     products.forEach(prod => (prod.customers||[]).forEach(c => {
       if(c.name !== customerName) return;
@@ -2380,7 +2601,6 @@ html.dark .restock-allgood{color:#34d399}
 
     customerModal.classList.remove('modal-hidden');
 
-    // Wire up events
     document.getElementById('lacksPaymentCheckbox').addEventListener('change',function(){
       document.getElementById('lackAmountContainer').style.display=this.checked?'block':'none';
     });
@@ -2404,9 +2624,7 @@ html.dark .restock-allgood{color:#34d399}
           paid: totalPaid,
           remaining: totalRemaining,
           onSave: function(amount, date){
-            // Apply to oldest debts first (product customer debts, then manual)
             let left = amount;
-            // Gather all open debt entries for this customer with timestamps
             const openEntries = [];
             products.forEach(prod => {
               (prod.customers||[]).forEach(c => {
@@ -2492,37 +2710,46 @@ html.dark .restock-allgood{color:#34d399}
   modalCloseBtn.addEventListener('click',closeCustomerModal);
   customerModal.addEventListener('click',function(e){ if(e.target===customerModal) closeCustomerModal(); });
 
-  async function addCustomerToProduct(pid, cName, pType, qty){
+  /* ---------- add customer (with unit choice for cigarettes) ---------- */
+  async function addCustomerToProduct(pid, cName, pType, qty, unit){
     const product=products.find(p=>p.id===pid);
     if(!product) return;
-
-    if(product.category==='cigarettes' && product.cigaretteUnit==='box'){
-      const confirmed = await showConfirm(
-        'Are you sure it is PER BOX? Or meant to say PER STICK?',
-        { icon:'⚠️', title:'Per Box Confirmation', okText:'Yes, Per Box', cancelText:'No', variant:'warning' }
-      );
-      if(!confirmed) return;
-    }
 
     if(!cName){
       if(pType==='unregistered') cName='Unregistered';
       else { alert('Please enter a customer name.'); return; }
     }
     if(qty<1){ alert('Quantity must be at least 1.'); return; }
+
+    const isCig = isCigarette(product);
+    const finalUnit = isCig ? (unit === 'box' ? 'box' : 'stick') : 'unit';
+    const sticks = unitSticks(product, finalUnit) * qty;
+    const unitPrice = getUnitPrice(product, finalUnit);
+
     const isDebt=pType==='debt';
     product.customers.push({
       name:cName, paymentType:pType, date:new Date().toISOString(), quantity:qty,
+      unit: finalUnit,
       lacksPayment:false,
       paymentStatus:isDebt?'unpaid':'paid',
       note:'', partialPercent:isDebt?100:0, lackAmount:0,
       payments:[]
     });
-    product.stockLeft=Math.max(0,(product.stockLeft||0)-qty);
+    product.stockLeft = Math.max(0, (product.stockLeft||0) - sticks);
     saveProducts();
     renderProductList();
     renderDebtorsOverview();
     renderHeroStats();
-    logActivity('purchase',{customer:cName,product:product.name,qty:qty,amount:num(product.price)*qty,payment:pType});
+
+    const amount = unitPrice * qty;
+    logActivity('purchase',{
+      customer:cName,
+      product:product.name,
+      qty:qty,
+      unit: finalUnit,
+      amount:amount,
+      payment:pType
+    });
   }
 
   productListContainer.addEventListener('click',async function(e){
@@ -2561,20 +2788,24 @@ html.dark .restock-allgood{color:#34d399}
       const product=products.find(p=>p.id===pid);
       if(product){
         productNameInput.value=product.name;
-        productPriceInput.value=product.price;
-        if(productCostInput) productCostInput.value = hasCost(product) ? product.cost : '';
         productCategoryInput.value=product.category||'other';
-        if(product.category==='cigarettes'&&product.cigaretteUnit) cigaretteUnitInput.value=product.cigaretteUnit;
-        else cigaretteUnitInput.value='stick';
+        toggleCigaretteUnit();
+        if(isCigarette(product)){
+          if(productPriceInput) productPriceInput.value = num(product.price) || '';
+          if(productCostInput) productCostInput.value = num(product.cost) || '';
+          if(productBoxPriceInput) productBoxPriceInput.value = num(product.boxPrice) || '';
+          if(productBoxCostInput) productBoxCostInput.value = num(product.boxCost) || '';
+          if(sticksPerBoxInput) sticksPerBoxInput.value = getSticksPerBox(product);
+        } else {
+          if(productPriceInputNormal) productPriceInputNormal.value = num(product.price) || '';
+          if(productCostInputNormal) productCostInputNormal.value = num(product.cost) || '';
+        }
         totalStockInput.value=product.totalStock||'';
         stockLeftInput.value=product.stockLeft||'';
-        toggleCigaretteUnit();
         editingProductId=pid;
         addProductBtn.innerHTML='💾 Update product';
         formMessage.textContent='✏️ Editing "'+product.name+'" — modify and save.';
         productNameInput.classList.add('edit-input');
-        productPriceInput.classList.add('edit-input');
-        if(productCostInput) productCostInput.classList.add('edit-input');
         closeSaleWindow();
         switchTab('manage');
         setTimeout(()=>window.scrollTo({top:0,behavior:'smooth'}),100);
@@ -2584,13 +2815,28 @@ html.dark .restock-allgood{color:#34d399}
 
     if(target.classList.contains('add-customer-btn')){
       const pid=target.getAttribute('data-id');
+      const product=products.find(p=>p.id===pid);
+      if(!product) return;
+
       const inputField=document.querySelector('.customer-name-input[data-product-id="'+pid+'"]');
       const qtyField=document.querySelector('.customer-quantity-input[data-product-id="'+pid+'"]');
       const selField=document.querySelector('.customer-payment-select[data-product-id="'+pid+'"]');
       const cName=inputField?inputField.value.trim():'';
       const pType=selField?selField.value:'cash';
       const qty=qtyField?parseInt(qtyField.value)||1:1;
-      await addCustomerToProduct(pid, cName, pType, qty);
+
+      if(isCigarette(product)){
+        // show unit choice modal for cigarettes
+        const chosenUnit = await showUnitChoiceModal(product);
+        if(!chosenUnit) return;
+        await addCustomerToProduct(pid, cName, pType, qty, chosenUnit);
+        if(inputField) inputField.value = '';
+        if(qtyField) qtyField.value = 1;
+      } else {
+        await addCustomerToProduct(pid, cName, pType, qty, 'unit');
+        if(inputField) inputField.value = '';
+        if(qtyField) qtyField.value = 1;
+      }
       return;
     }
 
@@ -2606,9 +2852,11 @@ html.dark .restock-allgood{color:#34d399}
         if(!ok) return;
         const allowed=await verifyAuth();
         if(!allowed){ alert('Access denied'); return; }
+        const removedUnit = removed.unit || 'unit';
+        const restoreSticks = unitSticks(product, removedUnit) * (removed.quantity || 1);
         product.customers.splice(idx,1);
-        if(removed.quantity&&product.totalStock) product.stockLeft=Math.min(product.totalStock,(product.stockLeft||0)+removed.quantity);
-        else product.stockLeft=Math.min(product.totalStock||Infinity,(product.stockLeft||0)+(removed.quantity||1));
+        if(product.totalStock) product.stockLeft = Math.min(product.totalStock, (product.stockLeft||0) + restoreSticks);
+        else product.stockLeft = (product.stockLeft||0) + restoreSticks;
         saveProducts();
         renderProductList();
         renderDebtorsOverview();
@@ -2623,13 +2871,25 @@ html.dark .restock-allgood{color:#34d399}
     if(e.key==='Enter'&&e.target.classList.contains('customer-name-input')){
       const pid=e.target.getAttribute('data-product-id');
       const inputField=e.target;
+      const product = products.find(p=>p.id===pid);
+      if(!product) return;
       const qtyField=document.querySelector('.customer-quantity-input[data-product-id="'+pid+'"]');
       const selField=document.querySelector('.customer-payment-select[data-product-id="'+pid+'"]');
       const cName=inputField.value.trim();
       const pType=selField?selField.value:'cash';
       const qty=qtyField?parseInt(qtyField.value)||1:1;
       e.preventDefault();
-      await addCustomerToProduct(pid, cName, pType, qty);
+      if(isCigarette(product)){
+        const chosenUnit = await showUnitChoiceModal(product);
+        if(!chosenUnit) return;
+        await addCustomerToProduct(pid, cName, pType, qty, chosenUnit);
+        inputField.value = '';
+        if(qtyField) qtyField.value = 1;
+      } else {
+        await addCustomerToProduct(pid, cName, pType, qty, 'unit');
+        inputField.value = '';
+        if(qtyField) qtyField.value = 1;
+      }
     }
   });
 
